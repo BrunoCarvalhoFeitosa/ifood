@@ -9,13 +9,13 @@ export const Search = () => {
       <div className="flex items-center gap-4">
         <Input
           placeholder="Pesquisar por restaurantes..."
-          className="h-12 w-full border-transparent text-base placeholder:text-gray-300 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0 md:h-14"
+          className="h-12 w-full border-transparent text-base font-semibold text-zinc-800 placeholder:font-normal placeholder:text-gray-300 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0 md:h-14"
         />
         <Button
           type="button"
           variant="default"
           size="default"
-          className="h-12 md:h-14"
+          className="h-12 rounded-full transition-opacity duration-300 hover:opacity-80 md:h-14"
         >
           <SearchIcon size={22} />
         </Button>
