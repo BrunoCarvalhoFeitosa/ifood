@@ -10,16 +10,16 @@ export const metadata: Metadata = {
     "O jeito mais fácil de pedir delivery de comida e fazer mercado. Leia avaliações de restaurantes, faça seu pedido pela internet e receba em casa.",
   authors: {
     name: "Bruno Carvalho Feitosa",
-    url: "https://br.linkedin.com/in/bruno-carvalho-feitosa",
+    url: "https://br.linkedin.com/in/bruno-carvalho-feitosa"
   },
   icons: {
     icon: "./favicon/favicon.ico",
-    shortcut: "./favicon/favicon.ico",
-  },
+    shortcut: "./favicon/favicon.ico"
+  }
 }
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode
 }>) {
