@@ -26,7 +26,7 @@ export const Header = () => {
           type="button"
           variant="ghost"
           size="default"
-          className="h-12 rounded-full transition-all duration-700 hover:bg-primary hover:text-white md:h-14"
+          className="h-12 w-12 rounded-full transition-all duration-700 hover:bg-primary hover:text-white md:h-14 md:w-14"
         >
           <MenuIcon size={25} />
         </Button>
