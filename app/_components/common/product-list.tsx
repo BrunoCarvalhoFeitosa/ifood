@@ -4,6 +4,7 @@ import { ProductListItem } from "./product-list-item"
 import { ChevronRightIcon } from "lucide-react"
 
 interface ProductListProps {
+  title: string
   products: Prisma.ProductGetPayload<{
     include: {
       restaurant: {
@@ -16,14 +17,12 @@ interface ProductListProps {
   }>[]
 }
 
-export const ProductList = ({ products }: ProductListProps) => {
+export const ProductList = ({ title, products }: ProductListProps) => {
   return (
-    <section className="w-full px-5 py-6 lg:pt-24">
-      <div className="flex items-center justify-between">
+    <section className="w-full px-5 py-8">
+      <div className="flex flex-col justify-between md:flex-row md:items-center">
         <div>
-          <h2 className="text-base font-semibold md:text-xl">
-            Pedidos recomendados
-          </h2>
+          <h2 className="text-base font-semibold md:text-xl">{title}</h2>
         </div>
         <div>
           <Button
