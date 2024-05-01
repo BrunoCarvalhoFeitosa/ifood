@@ -18,13 +18,14 @@ export const ProductListItemImage = ({
           fill
           src={product.imageUrl}
           alt={product.name}
+          quality={100}
           className="cursor-zoom-in object-cover transition-transform duration-300 hover:scale-110"
         />
       </div>
       <div className="absolute left-3 top-3 z-10">
         <Badge variant="default" className="flex items-center px-2 py-[2px]">
           <div>
-            <ArrowDownIcon size={18} />
+            <ArrowDownIcon className="text-yellow-500" size={20} />
           </div>
           <div className="text-base">{product.discountPercentage}%</div>
         </Badge>
