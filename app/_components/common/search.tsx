@@ -15,7 +15,7 @@ export const Search = () => {
           type="button"
           variant="default"
           size="default"
-          className="h-12 rounded-full transition-opacity duration-300 hover:opacity-80 md:h-14"
+          className="h-12 w-12 rounded-full transition-opacity duration-300 hover:opacity-80 md:h-14 md:w-14"
         >
           <SearchIcon size={22} />
         </Button>
