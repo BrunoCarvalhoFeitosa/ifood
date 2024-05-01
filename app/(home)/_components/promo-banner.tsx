@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export const PromoBannerPizza = () => {
   return (
-    <section className="relative mb-24 w-full px-5 py-6">
+    <section className="relative w-full px-5 py-6 lg:mb-24">
       <div className="w-full bg-primary md:h-[340px] lg:h-[320px] xl:h-[490px]">
         <div className="flex h-full w-full flex-col justify-between xl:flex-row">
           <div className="h-full w-full p-8">
