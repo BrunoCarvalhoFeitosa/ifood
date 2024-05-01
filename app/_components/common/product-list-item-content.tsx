@@ -25,7 +25,7 @@ export const ProductListItemContent = ({
     <div>
       <div className="my-3 overflow-hidden">
         <div className="truncate">
-          <h3 className="text-base">{product.name}</h3>
+          <h3 className="text-base font-semibold">{product.name}</h3>
         </div>
         <div className="flex items-center gap-3">
           <h4 className="text-lg font-bold lg:text-xl">
