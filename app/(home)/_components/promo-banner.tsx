@@ -1,12 +1,12 @@
 "use client"
 import Image from "next/image"
 
-export const PromoBanner = () => {
+export const PromoBannerPizza = () => {
   return (
     <section className="relative w-full px-5 py-6">
       <div className="w-full bg-primary md:h-[340px] lg:h-[320px] xl:h-[490px]">
         <div className="flex h-full w-full flex-col justify-between xl:flex-row">
-          <div className="h-full p-8">
+          <div className="h-full w-full p-8">
             <div className="flex h-full items-center">
               <h2 className="text-3xl font-thin text-white md:text-5xl xl:text-7xl">
                 <div className="mb-2">Até</div>
@@ -28,14 +28,23 @@ export const PromoBanner = () => {
               </h2>
             </div>
           </div>
-          <div className="absolute -right-48 top-[50%] translate-y-[-50%] md:-right-28 xl:-right-40 ">
-            <Image
-              src="/images/pizza-image.png"
-              width={660}
-              height={450}
-              className="w-[350px] md:w-[450px] xl:w-full"
-              alt="Até 30% de desconto em pizzas"
-            />
+          <div className="absolute -right-48 top-[50%] translate-y-[-50%] md:-right-28 xl:-right-52">
+            <div className="flex">
+              <Image
+                src="/images/pizza-image.png"
+                width={620}
+                height={450}
+                className="hidden w-[350px] md:w-[450px] xl:block xl:w-2/4"
+                alt="Até 30% de desconto em pizzas"
+              />
+              <Image
+                src="/images/pizza-image.png"
+                width={620}
+                height={450}
+                className="w-[350px] md:w-[450px] xl:w-2/4"
+                alt="Até 30% de desconto em pizzas"
+              />
+            </div>
           </div>
         </div>
       </div>
