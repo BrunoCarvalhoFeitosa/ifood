@@ -1,25 +1,22 @@
-import { db } from "@/app/_lib/prisma"
+import { Prisma } from "@prisma/client"
 import { Button } from "@/app/_components/ui/button"
 import { ProductListItem } from "./product-list-item"
 import { ChevronRightIcon } from "lucide-react"
 
-export const ProductList = async () => {
-  const products = await db.product.findMany({
-    where: {
-      discountPercentage: {
-        gt: 0
-      }
-    },
+interface ProductListProps {
+  products: Prisma.ProductGetPayload<{
     include: {
       restaurant: {
         select: {
-          name: true,
+          name: true
           imageUrl: true
         }
       }
     }
-  })
+  }>[]
+}
 
+export const ProductList = ({ products }: ProductListProps) => {
   return (
     <section className="w-full px-5 py-6 lg:pt-24">
       <div className="flex items-center justify-between">
