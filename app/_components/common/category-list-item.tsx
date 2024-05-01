@@ -14,6 +14,7 @@ export const CategoryListItem = ({ category }: CategoryListItemProps) => {
           src={category.imageUrl}
           width={40}
           height={40}
+          quality={100}
           alt={category.name}
           className="object-cover"
         />
