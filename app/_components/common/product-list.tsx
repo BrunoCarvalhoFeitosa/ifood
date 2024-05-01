@@ -39,7 +39,7 @@ export const ProductList = ({ title, products }: ProductListProps) => {
         </div>
       </div>
       <div className="custom-scrollbar flex items-center gap-5 overflow-x-auto py-3">
-        {products.slice(13, 24).map((product) => (
+        {products.slice(12, 24).map((product) => (
           <ProductListItem key={product.id} product={product} />
         ))}
       </div>
