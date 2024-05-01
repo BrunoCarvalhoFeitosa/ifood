@@ -25,7 +25,7 @@ const Home = async () => {
     }),
 
     await db.restaurant.findMany({
-      take: 10
+      take: 12
     })
   ])
 
