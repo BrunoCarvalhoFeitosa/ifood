@@ -1,5 +1,6 @@
 "use client"
 import { Prisma } from "@prisma/client"
+import Link from "next/link"
 import { ProductListItemImage } from "./product-list-item-image"
 import { ProductListItemContent } from "./product-list-item-content"
 
@@ -10,6 +11,8 @@ interface ProductListItemProps {
         select: {
           name: true
           imageUrl: true
+          deliveryFee: true
+          deliveryTimeMinutes: true
         }
       }
     }
@@ -18,9 +21,9 @@ interface ProductListItemProps {
 
 export const ProductListItem = ({ product }: ProductListItemProps) => {
   return (
-    <div className="box-border">
+    <Link href={`/product/${product.id}`}>
       <ProductListItemImage product={product} />
       <ProductListItemContent product={product} />
-    </div>
+    </Link>
   )
 }

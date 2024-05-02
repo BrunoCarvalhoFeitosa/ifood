@@ -1,8 +1,7 @@
 "use client"
 import { Product } from "@prisma/client"
 import Image from "next/image"
-import { Badge } from "@/app/_components/ui/badge"
-import { ArrowDownIcon } from "lucide-react"
+import { ProductDiscountBadge } from "./product-discount-badge"
 
 interface ProductListItemImageProps {
   product: Product
@@ -23,12 +22,7 @@ export const ProductListItemImage = ({
         />
       </div>
       <div className="absolute left-3 top-3 z-10">
-        <Badge variant="default" className="flex items-center px-2 py-[2px]">
-          <div>
-            <ArrowDownIcon className="text-yellow-500" size={20} />
-          </div>
-          <div className="text-base">{product.discountPercentage}%</div>
-        </Badge>
+        <ProductDiscountBadge product={product} />
       </div>
     </div>
   )

@@ -22,7 +22,7 @@ export const ProductList = ({ title, products }: ProductListProps) => {
     <section className="w-full px-5 py-8">
       <div className="flex flex-col justify-between md:flex-row md:items-center">
         <div>
-          <h2 className="text-base font-semibold md:text-xl">{title}</h2>
+          <h2 className="text-2xl font-extrabold md:text-xl">{title}</h2>
         </div>
         <div>
           <Button
@@ -39,7 +39,7 @@ export const ProductList = ({ title, products }: ProductListProps) => {
         </div>
       </div>
       <div className="custom-scrollbar flex items-center gap-5 overflow-x-auto py-3">
-        {products.slice(12, 24).map((product) => (
+        {products.slice(0, 12).map((product) => (
           <ProductListItem key={product.id} product={product} />
         ))}
       </div>

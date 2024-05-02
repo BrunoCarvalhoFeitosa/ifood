@@ -48,6 +48,16 @@
   --radius: 0.75rem;
 }
 
+.react-transform-component,
+.react-transform-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.shadow-button {
+  box-shadow: 7px 7px 0px #000;
+}
+
 @layer base {
   * {
     @apply box-border;
@@ -57,16 +67,32 @@
     @apply bg-white overflow-x-hidden text-foreground antialiased;
   }
 
+  body::-webkit-scrollbar {
+    @apply w-[10px] h-[8px];
+  }
+
+  body::-webkit-scrollbar-track {
+    @apply bg-[#F5F5F5];
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply bg-[#E9E9E9];
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#DDD];
+  }
+
   .custom-scrollbar::-webkit-scrollbar {
     @apply w-[3px] h-[8px];
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    @apply bg-[#EEE] rounded-lg;
+    @apply bg-[#F5F5F5] rounded-lg;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-[#E5E5E5] rounded-lg;
+    @apply bg-[#E9E9E9] rounded-lg;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
