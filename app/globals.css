@@ -84,7 +84,7 @@
   }
 
   a {
-    outline: none;
+    @apply outline-none;
   }
 
   .custom-scrollbar::-webkit-scrollbar {
