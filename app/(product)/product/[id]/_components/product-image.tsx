@@ -92,7 +92,7 @@ export const ProductImage = ({ product }: ProductImageProps) => {
             />
           ))}
       </div>
-      <div className="relative h-[320px] flex-1 cursor-zoom-in bg-[#EEE] md:h-[480px] lg:h-full">
+      <div className="relative h-[320px] flex-1 cursor-zoom-in bg-black md:h-[480px] lg:h-full">
         <TransformWrapper>
           <div className="absolute top-2 z-10 flex w-full items-start justify-between px-4 py-2">
             <BackToHomeButton />
