@@ -30,7 +30,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
       <div className="hidden xl:flex">
         <Header />
       </div>
-      <main className="min-h-[100dvh] w-full overflow-hidden pb-16">
+      <main className="min-h-[100dvh] w-full overflow-hidden pb-24">
         <ProductContent product={product} />
         <RecommendedProductList
           title="Tão deliciosos quanto o"
