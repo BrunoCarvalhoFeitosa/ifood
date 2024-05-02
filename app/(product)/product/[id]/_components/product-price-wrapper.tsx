@@ -9,7 +9,7 @@ interface ProductPriceProps {
 
 export const ProductPriceWrapper = ({ product }: ProductPriceProps) => {
   return (
-    <div className="flex items-start justify-between">
+    <div className="flex flex-row items-start justify-between">
       <ProductPrice product={product} />
       <ProductQuantity />
     </div>

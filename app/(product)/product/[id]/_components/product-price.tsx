@@ -12,8 +12,8 @@ interface ProductPriceProps {
 
 export const ProductPrice = ({ product }: ProductPriceProps) => {
   return (
-    <div className="flex items-start gap-2">
-      <div>
+    <div className="flex flex-col items-start gap-2 md:flex-row">
+      <div className="order-2 md:order-1">
         <h2 className="text-2xl font-extrabold md:text-3xl">
           {formatCurrency(getCalculateProductTotalPrice(product))}
         </h2>
@@ -24,7 +24,7 @@ export const ProductPrice = ({ product }: ProductPriceProps) => {
           </strong>
         </h3>
       </div>
-      <div>
+      <div className="order-1 md:order-2">
         <ProductDiscountBadge product={product} />
       </div>
     </div>
