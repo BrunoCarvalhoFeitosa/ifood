@@ -11,6 +11,8 @@ interface ProductListProps {
         select: {
           name: true
           imageUrl: true
+          deliveryFee: true
+          deliveryTimeMinutes: true
         }
       }
     }
