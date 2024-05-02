@@ -83,6 +83,10 @@
     @apply bg-[#DDD];
   }
 
+  a {
+    outline: none;
+  }
+
   .custom-scrollbar::-webkit-scrollbar {
     @apply w-[3px] h-[8px];
   }

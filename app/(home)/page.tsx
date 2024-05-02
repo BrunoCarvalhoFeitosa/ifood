@@ -2,16 +2,15 @@ import { db } from "@/app/_lib/prisma"
 import { Header } from "@/app/_components/common/header"
 import { Search } from "@/app/_components/common/search"
 import { CategoryList } from "@/app/_components/common/category-list"
+import { ProductList } from "@/app/_components/common/product-list"
 import { PromoBannerPizza } from "./_components/promo-banner"
-import { ProductList } from "../_components/common/product-list"
-import { RestaurantList } from "../_components/common/restaurant-list"
 
-const Home = async () => {
-  const [products, restaurants] = await Promise.all([
+const HomePage = async () => {
+  const [brazilianFood, japaneseFood, fastFood] = await Promise.all([
     db.product.findMany({
       where: {
-        discountPercentage: {
-          gt: 0
+        category: {
+          name: "Comida Brasileira"
         }
       },
       include: {
@@ -24,28 +23,59 @@ const Home = async () => {
       }
     }),
 
-    await db.restaurant.findMany({
-      take: 12
+    db.product.findMany({
+      where: {
+        category: {
+          name: "Comida Japonesa"
+        }
+      },
+      include: {
+        restaurant: {
+          select: {
+            name: true,
+            imageUrl: true
+          }
+        }
+      }
+    }),
+
+    db.product.findMany({
+      where: {
+        category: {
+          name: "Hambúrgueres"
+        }
+      },
+      include: {
+        restaurant: {
+          select: {
+            name: true,
+            imageUrl: true
+          }
+        }
+      }
     })
   ])
 
   return (
-    <main className="min-h-[100dvh] overflow-hidden">
+    <main className="min-h-[100dvh] w-full overflow-hidden">
       <Header />
       <Search />
       <CategoryList />
       <PromoBannerPizza />
       <ProductList
-        title="Desconto ativo por tempo limitado"
-        products={products}
+        title="O melhor da culinária brasileira"
+        products={brazilianFood}
       />
-      <ProductList title="Seleção dos melhores da semana" products={products} />
-      <RestaurantList
-        title="Restaurantes recomendados"
-        restaurants={restaurants}
+      <ProductList
+        title="O melhor da culinária japonesa"
+        products={japaneseFood}
+      />
+      <ProductList
+        title="Desconto ativo por tempo limitado"
+        products={fastFood}
       />
     </main>
   )
 }
 
-export default Home
+export default HomePage
