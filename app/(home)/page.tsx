@@ -17,7 +17,9 @@ const HomePage = async () => {
         restaurant: {
           select: {
             name: true,
-            imageUrl: true
+            imageUrl: true,
+            deliveryFee: true,
+            deliveryTimeMinutes: true
           }
         }
       }
