@@ -19,7 +19,7 @@ interface ProductAddToCartProps {
 
 export const ProductAddToCart = ({ product }: ProductAddToCartProps) => {
   return (
-    <div className="w-full pt-6">
+    <div className="fixed bottom-5 left-[50%] mx-auto w-[95%] translate-x-[-50%] pt-6 lg:relative lg:bottom-0 lg:left-0 lg:mx-0 lg:w-full lg:translate-x-0">
       <Button
         type="button"
         variant="default"
