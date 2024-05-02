@@ -63,7 +63,7 @@ const HomePage = async () => {
   ])
 
   return (
-    <main className="min-h-[100dvh] w-full overflow-hidden">
+    <main className="min-h-[100dvh] w-full overflow-hidden pb-24">
       <Header />
       <Search />
       <CategoryList />
