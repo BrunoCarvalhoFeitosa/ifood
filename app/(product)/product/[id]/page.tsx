@@ -1,3 +1,4 @@
+import { ProductSlideButtonProvider } from "@/app/_contexts/ProductSlideButtonContext"
 import { notFound } from "next/navigation"
 import { db } from "@/app/_lib/prisma"
 import { Header } from "@/app/_components/common/header"
@@ -25,7 +26,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
   }
 
   return (
-    <div>
+    <ProductSlideButtonProvider>
       <div className="hidden xl:flex">
         <Header />
       </div>
@@ -37,7 +38,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
           categoryId={product.categoryId}
         />
       </main>
-    </div>
+    </ProductSlideButtonProvider>
   )
 }
 
