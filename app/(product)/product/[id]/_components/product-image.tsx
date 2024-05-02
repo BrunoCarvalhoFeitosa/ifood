@@ -76,8 +76,8 @@ export const ProductImage = ({ product }: ProductImageProps) => {
   }
 
   return (
-    <div className="flex w-full lg:h-[600px] xl:w-[50%]">
-      <div className="hidden h-full w-[160px] flex-col overflow-y-auto xl:flex [&::-webkit-scrollbar]:hidden">
+    <div className="flex w-full gap-[1px] lg:h-[600px] xl:w-[50%]">
+      <div className="hidden h-full w-[160px] flex-col gap-[1px] overflow-y-auto xl:flex [&::-webkit-scrollbar]:hidden">
         {Array(10)
           .fill(0)
           .map((_, index) => (
