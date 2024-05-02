@@ -67,7 +67,7 @@ export const ProductImage = ({ product }: ProductImageProps) => {
         type="button"
         variant="ghost"
         size="default"
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-white p-0 xl:hidden"
+        className="flex h-10 w-10 items-center justify-center rounded-full bg-white p-0 hover:bg-primary hover:text-white xl:hidden"
         onClick={() => router.push("/")}
       >
         <ChevronLeftIcon size={20} />
@@ -92,7 +92,7 @@ export const ProductImage = ({ product }: ProductImageProps) => {
             />
           ))}
       </div>
-      <div className="relative flex-1 cursor-zoom-in bg-[#EEE] lg:h-full">
+      <div className="relative h-[320px] flex-1 cursor-zoom-in bg-[#EEE] md:h-[480px] lg:h-full">
         <TransformWrapper>
           <div className="absolute top-2 z-10 flex w-full items-start justify-between px-4 py-2">
             <BackToHomeButton />
