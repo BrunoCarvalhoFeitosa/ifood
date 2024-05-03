@@ -9,7 +9,7 @@ import {
 } from "@/app/_components/ui/accordion"
 
 interface HeaderRestaurantListDropdownProps {
-  restaurants: Restaurant[]
+  restaurants?: Pick<Restaurant, "name" | "id">[]
 }
 
 export const HeaderRestaurantListDropdown = ({
@@ -25,7 +25,7 @@ export const HeaderRestaurantListDropdown = ({
       <AccordionItem value="item-1">
         <AccordionTrigger>Restaurantes</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-2">
-          {restaurants.map((restaurant) => (
+          {restaurants?.map((restaurant) => (
             <Link key={restaurant.id} href={`/restaurant/${restaurant.id}`}>
               {restaurant.name}
             </Link>

@@ -1,18 +1,19 @@
 const { PrismaClient } = require("@prisma/client")
 const prismaClient = new PrismaClient()
 
-const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec nisl lorem. Praesent pharetra, sapien ut fringilla malesuada, nisi felis ullamcorper ex, eu consectetur elit dolor sed dolor. Praesent orci mi, auctor aliquet semper vitae, volutpat quis augue. Cras porta sapien nec pharetra laoreet. Sed at velit sit amet mauris varius volutpat sit amet id mauris. Maecenas vitae mattis ante. Morbi nulla quam, sagittis at orci eu, scelerisque auctor neque."
+const description =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec nisl lorem. Praesent pharetra, sapien ut fringilla malesuada, nisi felis ullamcorper ex, eu consectetur elit dolor sed dolor. Praesent orci mi, auctor aliquet semper vitae, volutpat quis augue. Cras porta sapien nec pharetra laoreet. Sed at velit sit amet mauris varius volutpat sit amet id mauris. Maecenas vitae mattis ante. Morbi nulla quam, sagittis at orci eu, scelerisque auctor neque."
 
 const createBurguers = async (
   desertsCategoryId: string,
-  juicesCategoryId: string,
+  juicesCategoryId: string
 ) => {
   const burguersCategory = await prismaClient.category.create({
     data: {
       name: "Hambúrgueres",
       imageUrl:
-        "https://utfs.io/f/92918634-fc03-4425-bc1f-d1fbc8933586-vzk6us.png",
-    },
+        "https://utfs.io/f/92918634-fc03-4425-bc1f-d1fbc8933586-vzk6us.png"
+    }
   })
 
   const burguerRestaurants = [
@@ -24,9 +25,9 @@ const createBurguers = async (
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
-          id: burguersCategory.id,
-        },
-      },
+          id: burguersCategory.id
+        }
+      }
     },
     {
       name: "Omni Burguer",
@@ -36,9 +37,9 @@ const createBurguers = async (
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
-          id: burguersCategory.id,
-        },
-      },
+          id: burguersCategory.id
+        }
+      }
     },
     {
       name: "The Burguer Queen",
@@ -48,9 +49,9 @@ const createBurguers = async (
       deliveryTimeMinutes: 45,
       categories: {
         connect: {
-          id: burguersCategory.id,
-        },
-      },
+          id: burguersCategory.id
+        }
+      }
     },
     {
       name: "Burguer House",
@@ -60,15 +61,15 @@ const createBurguers = async (
       deliveryTimeMinutes: 20,
       categories: {
         connect: {
-          id: burguersCategory.id,
-        },
-      },
-    },
+          id: burguersCategory.id
+        }
+      }
+    }
   ]
 
   for (const item of burguerRestaurants) {
     const restaurant = await prismaClient.restaurant.create({
-      data: item,
+      data: item
     })
 
     await createDeserts(restaurant.id, desertsCategoryId)
@@ -86,14 +87,14 @@ const createBurguers = async (
           "https://utfs.io/f/ae177fa1-129c-4f43-9928-aa8ac1080a18-yqapzx.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: burguersCategory.id,
-          },
-        },
+            id: burguersCategory.id
+          }
+        }
       },
       {
         name: "Double Cheese Burguer",
@@ -104,14 +105,14 @@ const createBurguers = async (
           "https://utfs.io/f/dca007fe-0025-422e-9328-16d40f0a1792-yqapzy.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: burguersCategory.id,
-          },
-        },
+            id: burguersCategory.id
+          }
+        }
       },
       {
         name: "Bacon Burguer",
@@ -122,14 +123,14 @@ const createBurguers = async (
           "https://utfs.io/f/4cb1ca21-0748-4296-a23d-88e52687506a-yqapzz.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: burguersCategory.id,
-          },
-        },
+            id: burguersCategory.id
+          }
+        }
       },
       {
         name: "Double Bacon Burguer",
@@ -140,14 +141,14 @@ const createBurguers = async (
           "https://utfs.io/f/ed9fde1e-0675-4829-8001-a775e2825dc6-yqaq00.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: burguersCategory.id,
-          },
-        },
+            id: burguersCategory.id
+          }
+        }
       },
       {
         name: "Chicken Burguer",
@@ -158,14 +159,14 @@ const createBurguers = async (
           "https://utfs.io/f/0aff860a-3e05-42fd-9b2a-53d03c744949-yqaq01.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: burguersCategory.id,
-          },
-        },
+            id: burguersCategory.id
+          }
+        }
       },
       {
         name: "Double Chicken Burguer",
@@ -176,20 +177,20 @@ const createBurguers = async (
           "https://utfs.io/f/d2157790-fcb7-4d09-b074-80af4bfb9892-yqaq02.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: burguersCategory.id,
-          },
-        },
-      },
+            id: burguersCategory.id
+          }
+        }
+      }
     ]
 
     for (const product of burguerProducts) {
       await prismaClient.product.create({
-        data: product,
+        data: product
       })
 
       console.log(`Created ${product.name}`)
@@ -199,14 +200,14 @@ const createBurguers = async (
 
 const createPizzas = async (
   desertsCategoryId: string,
-  juicesCategoryId: string,
+  juicesCategoryId: string
 ) => {
   const pizzasCategory = await prismaClient.category.create({
     data: {
       name: "Pizzas",
       imageUrl:
-        "https://utfs.io/f/d9ca0163-6bc8-42dc-bbb3-377636849cd8-mtj7yz.png",
-    },
+        "https://utfs.io/f/d9ca0163-6bc8-42dc-bbb3-377636849cd8-mtj7yz.png"
+    }
   })
 
   const pizzaRestaurants = [
@@ -218,9 +219,9 @@ const createPizzas = async (
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
-          id: pizzasCategory.id,
-        },
-      },
+          id: pizzasCategory.id
+        }
+      }
     },
     {
       name: "Omni Pizza",
@@ -230,9 +231,9 @@ const createPizzas = async (
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
-          id: pizzasCategory.id,
-        },
-      },
+          id: pizzasCategory.id
+        }
+      }
     },
     {
       name: "The Pizza Queen",
@@ -242,9 +243,9 @@ const createPizzas = async (
       deliveryTimeMinutes: 45,
       categories: {
         connect: {
-          id: pizzasCategory.id,
-        },
-      },
+          id: pizzasCategory.id
+        }
+      }
     },
     {
       name: "Pizza House",
@@ -254,15 +255,15 @@ const createPizzas = async (
       deliveryTimeMinutes: 20,
       categories: {
         connect: {
-          id: pizzasCategory.id,
-        },
-      },
-    },
+          id: pizzasCategory.id
+        }
+      }
+    }
   ]
 
   for (const item of pizzaRestaurants) {
     const restaurant = await prismaClient.restaurant.create({
-      data: item,
+      data: item
     })
 
     await createDeserts(restaurant.id, desertsCategoryId)
@@ -280,14 +281,14 @@ const createPizzas = async (
           "https://utfs.io/f/645ba997-00b1-44ed-9928-b9eb41e93896-berpub.jpg",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: pizzasCategory.id,
-          },
-        },
+            id: pizzasCategory.id
+          }
+        }
       },
       {
         name: "Margarita Pizza",
@@ -298,14 +299,14 @@ const createPizzas = async (
           "https://utfs.io/f/4ee1f69b-e0a3-4166-bae5-b666996bcd3b-berpua.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: pizzasCategory.id,
-          },
-        },
+            id: pizzasCategory.id
+          }
+        }
       },
       {
         name: "Hawaiian Pizza",
@@ -316,14 +317,14 @@ const createPizzas = async (
           "https://utfs.io/f/0bb7a869-f369-4506-94ea-6cc23c8dd92f-berpu9.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: pizzasCategory.id,
-          },
-        },
+            id: pizzasCategory.id
+          }
+        }
       },
       {
         name: "Vegetarian Pizza",
@@ -334,14 +335,14 @@ const createPizzas = async (
           "https://utfs.io/f/1bb04a24-361c-4e3a-ad2f-81255f2d53b9-berpux.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: pizzasCategory.id,
-          },
-        },
+            id: pizzasCategory.id
+          }
+        }
       },
       {
         name: "Meat Lovers Pizza",
@@ -352,20 +353,20 @@ const createPizzas = async (
           "https://utfs.io/f/ead919ee-2e3d-423f-b294-e525f9d6a5b7-berpuy.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: pizzasCategory.id,
-          },
-        },
-      },
+            id: pizzasCategory.id
+          }
+        }
+      }
     ]
 
     for (const product of pizzaProducts) {
       await prismaClient.product.create({
-        data: product,
+        data: product
       })
 
       console.log(`Created ${product.name}`)
@@ -375,14 +376,14 @@ const createPizzas = async (
 
 const createJapanese = async (
   desertsCategoryId: string,
-  juicesCategoryId: string,
+  juicesCategoryId: string
 ) => {
   const japaneseCategory = await prismaClient.category.create({
     data: {
       name: "Japonesa",
       imageUrl:
-        "https://utfs.io/f/ccc2351a-49b0-4613-a233-3b3b3bd6a47c-yd9ii3.png",
-    },
+        "https://utfs.io/f/ccc2351a-49b0-4613-a233-3b3b3bd6a47c-yd9ii3.png"
+    }
   })
 
   const japaneseRestaurants = [
@@ -394,9 +395,9 @@ const createJapanese = async (
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
-          id: japaneseCategory.id,
-        },
-      },
+          id: japaneseCategory.id
+        }
+      }
     },
     {
       name: "Omni Sushi",
@@ -406,9 +407,9 @@ const createJapanese = async (
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
-          id: japaneseCategory.id,
-        },
-      },
+          id: japaneseCategory.id
+        }
+      }
     },
     {
       name: "The Sushi Queen",
@@ -418,9 +419,9 @@ const createJapanese = async (
       deliveryTimeMinutes: 45,
       categories: {
         connect: {
-          id: japaneseCategory.id,
-        },
-      },
+          id: japaneseCategory.id
+        }
+      }
     },
     {
       name: "Sushi House",
@@ -430,15 +431,15 @@ const createJapanese = async (
       deliveryTimeMinutes: 20,
       categories: {
         connect: {
-          id: japaneseCategory.id,
-        },
-      },
-    },
+          id: japaneseCategory.id
+        }
+      }
+    }
   ]
 
   for (const item of japaneseRestaurants) {
     const restaurant = await prismaClient.restaurant.create({
-      data: item,
+      data: item
     })
 
     console.log(`Created ${restaurant.name}`)
@@ -456,14 +457,14 @@ const createJapanese = async (
           "https://utfs.io/f/5ef70d5c-892b-424d-8655-6bc2716411e1-1lryd0.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: japaneseCategory.id,
-          },
-        },
+            id: japaneseCategory.id
+          }
+        }
       },
       {
         name: "Sashimi Combo",
@@ -474,14 +475,14 @@ const createJapanese = async (
           "https://utfs.io/f/e8b2fb18-d636-477f-8bed-cfe85358246f-1lryd1.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: japaneseCategory.id,
-          },
-        },
+            id: japaneseCategory.id
+          }
+        }
       },
       {
         name: "Nigiri Combo",
@@ -492,14 +493,14 @@ const createJapanese = async (
           "https://utfs.io/f/fd9458a3-153b-4833-aca1-61a882da1ce6-1lryd2.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: japaneseCategory.id,
-          },
-        },
+            id: japaneseCategory.id
+          }
+        }
       },
       {
         name: "Temaki Combo",
@@ -510,14 +511,14 @@ const createJapanese = async (
           "https://utfs.io/f/eec36a13-de2d-48ed-92d2-4f74477dad83-1lryd3.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: japaneseCategory.id,
-          },
-        },
+            id: japaneseCategory.id
+          }
+        }
       },
       {
         name: "Uramaki Combo",
@@ -528,14 +529,14 @@ const createJapanese = async (
           "https://utfs.io/f/c04a5df1-c1ac-4e28-ba48-27d856caa553-1lryd4.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: japaneseCategory.id,
-          },
-        },
+            id: japaneseCategory.id
+          }
+        }
       },
       {
         name: "Hosomaki Combo",
@@ -546,20 +547,20 @@ const createJapanese = async (
           "https://utfs.io/f/fd147569-14c6-428d-9a54-df64c61c6bb6-1lryd5.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: japaneseCategory.id,
-          },
-        },
-      },
+            id: japaneseCategory.id
+          }
+        }
+      }
     ]
 
     for (const product of japaneseProducts) {
       await prismaClient.product.create({
-        data: product,
+        data: product
       })
 
       console.log(`Created ${product.name}`)
@@ -569,14 +570,14 @@ const createJapanese = async (
 
 const createBrazilian = async (
   desertsCategoryId: string,
-  juicesCategoryId: string,
+  juicesCategoryId: string
 ) => {
   const brazilianCategory = await prismaClient.category.create({
     data: {
       name: "Brasileira",
       imageUrl:
-        "https://utfs.io/f/d84e3a7a-fcf6-4d3d-86bf-d62c0b1febdc-m1yv44.png",
-    },
+        "https://utfs.io/f/d84e3a7a-fcf6-4d3d-86bf-d62c0b1febdc-m1yv44.png"
+    }
   })
 
   const brazilianRestaurants = [
@@ -588,9 +589,9 @@ const createBrazilian = async (
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
-          id: brazilianCategory.id,
-        },
-      },
+          id: brazilianCategory.id
+        }
+      }
     },
     {
       name: "Omni Churrascaria",
@@ -600,9 +601,9 @@ const createBrazilian = async (
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
-          id: brazilianCategory.id,
-        },
-      },
+          id: brazilianCategory.id
+        }
+      }
     },
     {
       name: "The Churrascaria Queen",
@@ -612,9 +613,9 @@ const createBrazilian = async (
       deliveryTimeMinutes: 45,
       categories: {
         connect: {
-          id: brazilianCategory.id,
-        },
-      },
+          id: brazilianCategory.id
+        }
+      }
     },
     {
       name: "Churrascaria House",
@@ -624,15 +625,15 @@ const createBrazilian = async (
       deliveryTimeMinutes: 20,
       categories: {
         connect: {
-          id: brazilianCategory.id,
-        },
-      },
-    },
+          id: brazilianCategory.id
+        }
+      }
+    }
   ]
 
   for (const item of brazilianRestaurants) {
     const restaurant = await prismaClient.restaurant.create({
-      data: item,
+      data: item
     })
 
     console.log(`Created ${restaurant.name}`)
@@ -650,14 +651,14 @@ const createBrazilian = async (
           "https://utfs.io/f/cecdeeb8-10e6-4be8-8553-0a120717d194-xf34p9.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: brazilianCategory.id,
-          },
-        },
+            id: brazilianCategory.id
+          }
+        }
       },
       {
         name: "Picanha Especial",
@@ -668,14 +669,14 @@ const createBrazilian = async (
           "https://utfs.io/f/089299df-fcb9-446a-a8cc-75e4e26b7357-xf34p8.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: brazilianCategory.id,
-          },
-        },
+            id: brazilianCategory.id
+          }
+        }
       },
       {
         name: "Macarrão com Carne",
@@ -686,14 +687,14 @@ const createBrazilian = async (
           "https://utfs.io/f/891eb8aa-635e-4cb3-b7fd-eb8d1c9f14e1-xf34p7.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: brazilianCategory.id,
-          },
-        },
+            id: brazilianCategory.id
+          }
+        }
       },
       {
         name: "Carne com Salada",
@@ -704,14 +705,14 @@ const createBrazilian = async (
           "https://utfs.io/f/43d9e18a-4ba9-47b6-9a87-6d4fedbd6f41-xf34ol.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: brazilianCategory.id,
-          },
-        },
+            id: brazilianCategory.id
+          }
+        }
       },
       {
         name: "Filé Mignon com Fritas",
@@ -722,14 +723,14 @@ const createBrazilian = async (
           "https://utfs.io/f/0cfa51a6-1a88-4114-a6c6-bf607a5a1cb0-xf34ok.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: brazilianCategory.id,
-          },
-        },
+            id: brazilianCategory.id
+          }
+        }
       },
       {
         name: "Frango ao Molho",
@@ -740,20 +741,20 @@ const createBrazilian = async (
           "https://utfs.io/f/9158a622-4b87-4ec6-a726-569dee27a093-xf34oj.png",
         restaurant: {
           connect: {
-            id: restaurant.id,
-          },
+            id: restaurant.id
+          }
         },
         category: {
           connect: {
-            id: brazilianCategory.id,
-          },
-        },
-      },
+            id: brazilianCategory.id
+          }
+        }
+      }
     ]
 
     for (const product of brazilianProducts) {
       await prismaClient.product.create({
-        data: product,
+        data: product
       })
 
       console.log(`Created ${product.name}`)
@@ -764,15 +765,15 @@ const createBrazilian = async (
 const createDeserts = async (restaurantId: string, categoryId: string) => {
   await prismaClient.restaurant.update({
     where: {
-      id: restaurantId,
+      id: restaurantId
     },
     data: {
       categories: {
         connect: {
-          id: categoryId,
-        },
-      },
-    },
+          id: categoryId
+        }
+      }
+    }
   })
 
   const desertProducts = [
@@ -785,14 +786,14 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/b703fcaa-eb9c-4257-a08e-fba0f0e12fc1-pr8gxl.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
+          id: categoryId
+        }
+      }
     },
     {
       name: "Bolo de Chocolate",
@@ -803,14 +804,14 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/029befff-aba7-49b3-91c4-8da022e699b0-pr8gxm.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
+          id: categoryId
+        }
+      }
     },
     {
       name: "Petit Gateau",
@@ -821,14 +822,14 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/98f262f6-dc35-428b-bac9-ac443f9f41bb-pr8gxn.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
+          id: categoryId
+        }
+      }
     },
     {
       name: "Bolo de Morango",
@@ -839,14 +840,14 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/6e6ad97a-f1f1-4d4b-bb40-f5ff25ba97d4-pr8gxo.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
+          id: categoryId
+        }
+      }
     },
     {
       name: "Biscoito de Chocolate",
@@ -857,14 +858,14 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/4b8d0b7c-daa9-46f6-aebd-385cf5e086f7-pr8gxp.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
+          id: categoryId
+        }
+      }
     },
     {
       name: "Torta de Morango",
@@ -875,20 +876,20 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/4caadde1-0a1c-45a6-895b-4bfb6986099d-pr8gxq.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
-    },
+          id: categoryId
+        }
+      }
+    }
   ]
 
   for (const product of desertProducts) {
     await prismaClient.product.create({
-      data: product,
+      data: product
     })
 
     console.log(`Created ${product.name}`)
@@ -898,15 +899,15 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
 const createJuices = async (restaurantId: string, categoryId: string) => {
   await prismaClient.restaurant.update({
     where: {
-      id: restaurantId,
+      id: restaurantId
     },
     data: {
       categories: {
         connect: {
-          id: categoryId,
-        },
-      },
-    },
+          id: categoryId
+        }
+      }
+    }
   })
 
   const juiceProducts = [
@@ -919,14 +920,14 @@ const createJuices = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/5126e950-40ca-4ef1-a166-16274fec16bc-6b2vea.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
+          id: categoryId
+        }
+      }
     },
     {
       name: "Suco Cítrico",
@@ -937,14 +938,14 @@ const createJuices = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/6dbe915d-af87-4f2a-b841-864ba9427da8-6b2ve9.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
+          id: categoryId
+        }
+      }
     },
     {
       name: "Suco de Limão",
@@ -955,14 +956,14 @@ const createJuices = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/03aa4137-c949-4d2c-bdf2-bad6dd1f565e-6b2ve7.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
+          id: categoryId
+        }
+      }
     },
     {
       name: "Suco de Laranja",
@@ -973,14 +974,14 @@ const createJuices = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/ce2b8e30-b922-4b1e-bdde-656348cd25c3-6b2ve6.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
+          id: categoryId
+        }
+      }
     },
     {
       name: "Suco de Abacaxi",
@@ -991,14 +992,14 @@ const createJuices = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/c4202826-7014-4368-8941-fa1af9b9c8b2-6b2ve5.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
+          id: categoryId
+        }
+      }
     },
     {
       name: "Suco de Melancia",
@@ -1009,20 +1010,20 @@ const createJuices = async (restaurantId: string, categoryId: string) => {
         "https://utfs.io/f/a9ba878f-79a8-4c25-883c-5c2e1670b256-6b2ve4.png",
       restaurant: {
         connect: {
-          id: restaurantId,
-        },
+          id: restaurantId
+        }
       },
       category: {
         connect: {
-          id: categoryId,
-        },
-      },
-    },
+          id: categoryId
+        }
+      }
+    }
   ]
 
   for (const product of juiceProducts) {
     await prismaClient.product.create({
-      data: product,
+      data: product
     })
 
     console.log(`Created ${product.name}`)
@@ -1034,16 +1035,16 @@ const main = async () => {
     data: {
       name: "Sobremesas",
       imageUrl:
-        "https://utfs.io/f/0f81c141-4787-4a81-abce-cbd9c6596c7a-xayf5d.png",
-    },
+        "https://utfs.io/f/0f81c141-4787-4a81-abce-cbd9c6596c7a-xayf5d.png"
+    }
   })
 
   const juicesCategory = await prismaClient.category.create({
     data: {
       name: "Sucos",
       imageUrl:
-        "https://utfs.io/f/9f3013bf-0778-4d80-a330-4da2682deaf9-o41y62.png",
-    },
+        "https://utfs.io/f/9f3013bf-0778-4d80-a330-4da2682deaf9-o41y62.png"
+    }
   })
 
   await createBurguers(desertsCategory.id, juicesCategory.id)
@@ -1052,11 +1053,14 @@ const main = async () => {
   await createBrazilian(desertsCategory.id, juicesCategory.id)
 }
 
-main().then(() => {
-    console.log("Seed do banco de dados realizado com sucesso!")
-}).catch((error) => {
+main()
+  .then(() => {
+    console.log("Success to inject seed script.")
+  })
+  .catch((error) => {
     console.error(error)
     process.exit(1)
-}).finally(async () => {
+  })
+  .finally(async () => {
     await prismaClient.$disconnect()
-})
+  })

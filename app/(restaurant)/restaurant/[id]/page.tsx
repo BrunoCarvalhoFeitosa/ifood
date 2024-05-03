@@ -29,8 +29,13 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
               include: {
                 restaurant: {
                   select: {
+                    id: true,
                     name: true,
-                    categories: true
+                    imageUrl: true,
+                    deliveryFee: true,
+                    deliveryTimeMinutes: true,
+                    categories: true,
+                    products: true
                   }
                 }
               }

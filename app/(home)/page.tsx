@@ -39,10 +39,13 @@ const HomePage = async () => {
         include: {
           restaurant: {
             select: {
+              id: true,
               name: true,
               imageUrl: true,
               deliveryFee: true,
-              deliveryTimeMinutes: true
+              deliveryTimeMinutes: true,
+              categories: true,
+              products: true
             }
           }
         }
@@ -57,10 +60,13 @@ const HomePage = async () => {
         include: {
           restaurant: {
             select: {
+              id: true,
               name: true,
               imageUrl: true,
               deliveryFee: true,
-              deliveryTimeMinutes: true
+              deliveryTimeMinutes: true,
+              categories: true,
+              products: true
             }
           }
         }
