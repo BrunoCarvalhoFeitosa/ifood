@@ -1,9 +1,24 @@
 "use client"
+import { Category, Restaurant } from "@prisma/client"
 import Link from "next/link"
 import { Button } from "@/app/_components/ui/button"
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from "@/app/_components/ui/sheet"
+import { HeaderMenuListDropdown } from "./header-menu-list-dropdown"
+import { HeaderRestaurantListDropdown } from "./header-restaurant-list-dropdown"
 import { MenuIcon } from "lucide-react"
 
-export const Header = () => {
+interface HeaderProps {
+  categories: Category[]
+  restaurants?: Restaurant[]
+}
+
+export const Header = ({ categories, restaurants }: HeaderProps) => {
   return (
     <header className="flex w-full items-center justify-between p-5">
       <div>
@@ -21,16 +36,27 @@ export const Header = () => {
           </svg>
         </Link>
       </div>
-      <div>
-        <Button
-          type="button"
-          variant="ghost"
-          size="default"
-          className="h-12 w-12 rounded-full transition-all duration-700 hover:bg-primary hover:text-white md:h-14 md:w-14"
-        >
-          <MenuIcon size={25} />
-        </Button>
-      </div>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button
+            type="button"
+            variant="ghost"
+            size="default"
+            className="h-12 w-12 rounded-full transition-all duration-700 hover:bg-primary hover:text-white md:h-14 md:w-14"
+          >
+            <MenuIcon size={25} />
+          </Button>
+        </SheetTrigger>
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle>Menu</SheetTitle>
+          </SheetHeader>
+          <div className="max-h-[90%] overflow-y-auto [&::-webkit-scrollbar]:hidden">
+            <HeaderMenuListDropdown categories={categories} />
+            <HeaderRestaurantListDropdown restaurants={restaurants} />
+          </div>
+        </SheetContent>
+      </Sheet>
     </header>
   )
 }

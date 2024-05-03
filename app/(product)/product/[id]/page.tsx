@@ -12,14 +12,20 @@ interface ProductPageProps {
 }
 
 const ProductPage = async ({ params: { id } }: ProductPageProps) => {
-  const product = await db.product.findUnique({
-    where: {
-      id
-    },
-    include: {
-      restaurant: true
-    }
-  })
+  const [categories, restaurants, product] = await Promise.all([
+    db.category.findMany({}),
+
+    db.restaurant.findMany({}),
+
+    db.product.findUnique({
+      where: {
+        id
+      },
+      include: {
+        restaurant: true
+      }
+    })
+  ])
 
   if (!product) {
     return notFound()
@@ -28,7 +34,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
   return (
     <ProductSlideButtonProvider>
       <div className="hidden xl:flex">
-        <Header />
+        <Header categories={categories} restaurants={restaurants} />
       </div>
       <main className="min-h-[100dvh] w-full overflow-hidden pb-24">
         <ProductContent product={product} />
