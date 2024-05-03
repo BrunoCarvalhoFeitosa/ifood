@@ -1,10 +1,14 @@
 "use client"
-import { Restaurant } from "@prisma/client"
+import { Prisma } from "@prisma/client"
 import { RestaurantImage } from "./restaurant-image"
 import { RestaurantInfo } from "./restaurant-info"
 
 interface RestaurantContentProps {
-  restaurant: Restaurant
+  restaurant: Prisma.RestaurantGetPayload<{
+    include: {
+      categories: true
+    }
+  }>
 }
 
 export const RestaurantContent = ({ restaurant }: RestaurantContentProps) => {
