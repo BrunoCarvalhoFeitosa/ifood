@@ -1,7 +1,9 @@
 import { db } from "@/app/_lib/prisma"
 import { notFound } from "next/navigation"
 import { Header } from "@/app/_components/common/header"
+import { Breadcrumb } from "@/app/_components/common/breadcrumb"
 import { RestaurantContent } from "./_components/restaurant-content"
+import { RestaurantCategorieProducts } from "./_components/restaurant-categorie-products"
 
 interface RestaurantPageProps {
   params: {
@@ -21,6 +23,11 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
       },
       include: {
         categories: {
+          where: {
+            NOT: {
+              name: "Sucos e refrigerantes"
+            }
+          },
           include: {
             products: {
               where: {
@@ -47,7 +54,10 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
           include: {
             restaurant: {
               select: {
-                name: true
+                name: true,
+                imageUrl: true,
+                deliveryFee: true,
+                deliveryTimeMinutes: true
               }
             }
           }
@@ -56,7 +66,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
     })
   ])
 
-  if (!restaurant) {
+  if (!categories || !restaurants || !restaurant) {
     return notFound()
   }
 
@@ -66,7 +76,9 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
         <Header categories={categories} restaurants={restaurants} />
       </div>
       <main>
+        <Breadcrumb param={restaurant.name} />
         <RestaurantContent restaurant={restaurant} />
+        <RestaurantCategorieProducts restaurant={restaurant} />
       </main>
     </div>
   )

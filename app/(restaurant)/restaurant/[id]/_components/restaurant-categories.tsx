@@ -13,11 +13,11 @@ export const RestaurantCategories = ({
   restaurant
 }: RestaurantCategoriesProps) => {
   return (
-    <div className="flex items-center gap-3 pt-3">
+    <div className="custom-scrollbar flex flex-row-reverse items-center justify-end gap-3 overflow-x-auto py-4 pb-3">
       {restaurant.categories.map((category) => (
         <div
           key={category.id}
-          className="rounded-full bg-gray-100 p-2 text-sm text-muted-foreground"
+          className="min-w-fit bg-gray-100 p-2 px-5 text-sm text-muted-foreground"
         >
           {category.name}
         </div>
