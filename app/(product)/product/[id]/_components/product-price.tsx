@@ -24,7 +24,7 @@ export const ProductPrice = ({ product }: ProductPriceProps) => {
           </strong>
         </h3>
       </div>
-      <div className="order-1 md:order-2">
+      <div className="order-1 animate-bounce md:order-2">
         <ProductDiscountBadge product={product} />
       </div>
     </div>

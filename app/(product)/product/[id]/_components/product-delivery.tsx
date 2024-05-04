@@ -1,7 +1,7 @@
 "use client"
 import { Prisma } from "@prisma/client"
 import { formatCurrency } from "@/app/_helpers/price"
-import { BikeIcon, TimerIcon } from "lucide-react"
+import { BikeIcon, ChefHatIcon, ShieldCheckIcon, TimerIcon } from "lucide-react"
 
 interface ProductDeliveryProps {
   product: Prisma.ProductGetPayload<{
@@ -23,6 +23,14 @@ export const ProductDelivery = ({ product }: ProductDeliveryProps) => {
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-1">
         <div className="text-primary">
+          <ChefHatIcon size={24} />
+        </div>
+        <div className="text-sm text-muted-foreground">
+          Vendido e entregue por {product.restaurant.name}
+        </div>
+      </div>
+      <div className="flex items-center gap-1">
+        <div className="text-primary">
           <BikeIcon size={24} />
         </div>
         <div className="text-sm text-muted-foreground">
@@ -38,6 +46,14 @@ export const ProductDelivery = ({ product }: ProductDeliveryProps) => {
         </div>
         <div className="text-sm text-muted-foreground">
           Tempo de entrega {product.restaurant.deliveryTimeMinutes} min
+        </div>
+      </div>
+      <div className="flex items-center gap-1">
+        <div className="text-primary">
+          <ShieldCheckIcon size={24} />
+        </div>
+        <div className="text-sm text-muted-foreground">
+          Receba outro pedido em casos de má entrega.
         </div>
       </div>
     </div>

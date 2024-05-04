@@ -6,11 +6,11 @@ export const ProductSlideButton = () => {
   const { setIsOpen, isOpen } = useProductSlideButton()
 
   return (
-    <div className="mb-3 flex justify-center xl:hidden">
+    <div className="mb-5 flex justify-center xl:hidden">
       <Button
         type="button"
         variant="ghost"
-        className="h-2 w-16 rounded-full bg-zinc-300 p-0 hover:bg-zinc-300"
+        className="h-2 w-20 rounded-full bg-zinc-300 p-0 hover:bg-zinc-300"
         onClick={() => setIsOpen(!isOpen)}
       />
     </div>

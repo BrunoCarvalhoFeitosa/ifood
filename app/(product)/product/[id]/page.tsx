@@ -2,8 +2,10 @@ import { ProductSlideButtonProvider } from "@/app/_contexts/ProductSlideButtonCo
 import { notFound } from "next/navigation"
 import { db } from "@/app/_lib/prisma"
 import { Header } from "@/app/_components/common/header"
+import { ProductAddToCart } from "./_components/product-add-to-cart"
 import { ProductContent } from "./_components/product-content"
 import { RecommendedProductList } from "@/app/_components/common/recommended-product-list"
+import { Breadcrumb } from "@/app/_components/common/breadcrumb"
 
 interface ProductPageProps {
   params: {
@@ -37,7 +39,9 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
       <div className="hidden xl:flex">
         <Header categories={categories} restaurants={restaurants} />
       </div>
-      <main className="min-h-[100dvh] w-full overflow-hidden pb-24">
+      <main className="min-h-[100dvh] w-full overflow-hidden">
+        <Breadcrumb param={product.name} />
+        <ProductAddToCart product={product} />
         <ProductContent product={product} />
         <RecommendedProductList
           title="Tão deliciosos quanto o"
