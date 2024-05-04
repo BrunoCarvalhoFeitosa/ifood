@@ -54,6 +54,10 @@
   height: 100% !important;
 }
 
+.Toastify__toast-container {
+  width: fit-content !important;
+}
+
 .shadow-button {
   box-shadow: 7px 7px 0px #000;
 }
