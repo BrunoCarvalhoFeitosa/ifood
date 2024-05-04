@@ -21,13 +21,13 @@ interface HeaderProps {
 export const Header = ({ categories, restaurants }: HeaderProps) => {
   return (
     <header className="flex w-full items-center justify-between p-5">
-      <div>
+      <div className="box-border">
         <Link href="/">
           <svg
             viewBox="0 -0.35492335728912394 1004 566.9724898595939"
             xmlns="http://www.w3.org/2000/svg"
             width="100"
-            height="50"
+            height="60"
           >
             <g fill="#ea1d2c">
               <path d="M0 304.6h76.41l42.46-211.2H42.45zM46.66 68.21h76.73L136 5.02H59.3zm59.47 295.82h76.42l46.69-228.18h57.31L295 93.4h-56.21l2.13-9.55c3.18-18 9.55-38.21 38.2-38.21 17 0 32.91 1.06 48.82 8.49l8.5-44.57A167.8 167.8 0 0 0 281.25 0c-61.56 0-104 36.09-119.93 93.4h-26.53l-8.49 42.45h26.53z" />
