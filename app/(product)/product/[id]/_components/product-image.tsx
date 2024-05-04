@@ -88,7 +88,7 @@ export const ProductImage = ({ product }: ProductImageProps) => {
               width={200}
               height={200}
               quality={100}
-              className="h-[180px] w-full object-cover brightness-[.40]"
+              className="h-[130px] w-full object-cover brightness-[.40]"
             />
           ))}
       </div>
