@@ -9,7 +9,10 @@ interface DiscountBadge {
 
 export const ProductDiscountBadge = ({ product }: DiscountBadge) => {
   return (
-    <Badge variant="default" className="flex items-center px-2 py-[2px]">
+    <Badge
+      variant="default"
+      className="flex items-center px-2 py-[2px] hover:bg-primary"
+    >
       <div>
         {product.discountPercentage === 0 ? (
           <EqualNotIcon className="text-yellow-500" size={20} />
