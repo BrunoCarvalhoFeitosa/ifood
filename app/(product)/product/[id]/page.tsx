@@ -30,7 +30,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
     })
   ])
 
-  if (!product) {
+  if (!product || !restaurants || !product) {
     return notFound()
   }
 

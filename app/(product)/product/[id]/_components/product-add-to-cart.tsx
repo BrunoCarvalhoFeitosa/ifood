@@ -78,7 +78,7 @@ export const ProductAddToCart = ({ product }: ProductAddToCartProps) => {
                 className="h-[45px] w-full rounded-md text-base"
               >
                 <span>Comprar</span>
-                <span className="hidden xl:block">{product.name}</span>
+                <span className="ml-1 hidden xl:block">{product.name}</span>
               </Button>
             </div>
           </div>
