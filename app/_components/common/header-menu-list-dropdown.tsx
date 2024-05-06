@@ -20,7 +20,7 @@ export const HeaderMenuListDropdown = ({
       type="single"
       defaultValue="item-1"
       collapsible
-      className="mt-6 flex w-full flex-col gap-2"
+      className="flex w-full flex-col gap-2"
     >
       <AccordionItem value="item-1">
         <AccordionTrigger>Cardápio</AccordionTrigger>
