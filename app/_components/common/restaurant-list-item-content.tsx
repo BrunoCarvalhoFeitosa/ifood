@@ -23,14 +23,14 @@ export const RestaurantListItemContent = ({
             variant="ghost"
             className="rounded-full p-0 hover:bg-transparent hover:fill-primary hover:text-primary"
           >
-            <HeartIcon size={16} />
+            <HeartIcon size={20} />
           </Button>
         </div>
         <div className="flex items-center gap-1">
           <div className="text-primary">
-            <BikeIcon size={16} />
+            <BikeIcon size={20} />
           </div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-sm text-muted-foreground">
             {Number(restaurant.deliveryFee) === 0
               ? "Entrega Grátis"
               : formatCurrency(Number(restaurant.deliveryFee))}
@@ -38,9 +38,9 @@ export const RestaurantListItemContent = ({
         </div>
         <div className="flex items-center gap-1">
           <div className="text-primary">
-            <TimerIcon size={16} />
+            <TimerIcon size={20} />
           </div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-sm text-muted-foreground">
             {restaurant.deliveryTimeMinutes} min
           </div>
         </div>
