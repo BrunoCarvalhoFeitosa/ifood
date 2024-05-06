@@ -44,7 +44,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
         <ProductAddToCart product={product} />
         <ProductContent product={product} />
         <RecommendedProductList
-          title="Tão deliciosos quanto o"
+          title="Tão deliciosos quanto"
           productName={product.name}
           categoryId={product.categoryId}
         />
