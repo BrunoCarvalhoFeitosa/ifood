@@ -49,7 +49,7 @@ export const ProductAddToCart = ({ product }: ProductAddToCartProps) => {
     <div>
       <CartDialog product={product} />
       {scrolled && (
-        <div className="fixed bottom-0 left-[50%] z-50 mx-auto w-full translate-x-[-50%] border-t border-solid bg-white px-5 py-4 shadow-md">
+        <div className="fixed bottom-0 z-50 w-full border-t border-solid bg-white px-5 py-4 shadow-md">
           <div className="mt-2 flex justify-between">
             <div className="flex-1 truncate pr-10">
               <div className="w-full">
