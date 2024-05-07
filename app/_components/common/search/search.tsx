@@ -4,8 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import {
   Form,
-  FormControl,
   FormField,
+  FormControl,
   FormItem,
   FormMessage
 } from "@/app/_components/ui/form"
@@ -50,7 +50,6 @@ export const Search = ({ defaultValues }: SearchProps) => {
         className="relative flex items-center gap-2"
       >
         <FormField
-          control={form.control}
           name="term"
           render={({ field }) => (
             <FormItem className="flex-1">
