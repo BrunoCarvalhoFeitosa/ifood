@@ -21,7 +21,7 @@ export const RestaurantListItemContent = ({
           <Button
             type="button"
             variant="ghost"
-            className="rounded-full p-0 hover:bg-transparent hover:fill-primary hover:text-primary"
+            className="rounded-full p-0 hover:fill-primary hover:text-primary"
           >
             <HeartIcon size={20} />
           </Button>

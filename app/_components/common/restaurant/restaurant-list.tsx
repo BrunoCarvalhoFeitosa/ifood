@@ -20,7 +20,7 @@ export const RestaurantList = ({ title, restaurants }: RestaurantListProps) => {
             type="button"
             variant="ghost"
             size="default"
-            className="rounded-full p-0 text-sm font-semibold text-primary hover:bg-transparent hover:text-primary md:text-base"
+            className="rounded-full p-0 text-sm font-semibold text-primary hover:text-primary md:text-base"
           >
             <span>Ver todos</span>
             <span>

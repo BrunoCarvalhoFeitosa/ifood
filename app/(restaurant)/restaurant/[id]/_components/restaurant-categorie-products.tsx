@@ -1,6 +1,6 @@
 "use client"
-import { ProductList } from "@/app/_components/common/product-list"
 import { Prisma } from "@prisma/client"
+import { ProductList } from "@/app/_components/common/product/product-list"
 
 interface RestaurantCategorieProductsProps {
   restaurant: Prisma.RestaurantGetPayload<{

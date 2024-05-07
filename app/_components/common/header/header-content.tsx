@@ -1,9 +1,9 @@
 "use client"
 import { Category, Restaurant } from "@prisma/client"
+import { Button } from "@/app/_components/ui/button"
 import { HeaderMenuListDropdown } from "./header-menu-list-dropdown"
 import { HeaderRestaurantListDropdown } from "./header-restaurant-list-dropdown"
 import { HeartIcon, HomeIcon, LogInIcon, NotebookTextIcon } from "lucide-react"
-import { Button } from "../ui/button"
 
 interface HeaderContentProps {
   categories: Category[]

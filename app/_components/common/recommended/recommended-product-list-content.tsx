@@ -1,6 +1,6 @@
 "use client"
 import { Prisma } from "@prisma/client"
-import { ProductListItem } from "./product-list-item"
+import { ProductListItem } from "@/app/_components/common/product/product-list-item"
 
 interface RecommendedProductListContentProps {
   title: string

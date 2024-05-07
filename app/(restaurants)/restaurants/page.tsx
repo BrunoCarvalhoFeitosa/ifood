@@ -1,5 +1,5 @@
 import { db } from "@/app/_lib/prisma"
-import { Header } from "@/app/_components/common/header"
+import { Header } from "@/app/_components/common/header/header"
 import { RestaurantsList } from "./_components/restaurants-list"
 
 const RestaurantsPage = async () => {

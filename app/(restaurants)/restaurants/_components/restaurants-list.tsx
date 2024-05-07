@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import { Restaurant } from "@prisma/client"
 import { useSearchParams } from "next/navigation"
 import { searchRestaurants } from "@/app/_actions/search"
-import { RestaurantListItem } from "@/app/_components/common/restaurant-list-item"
-import { Search } from "@/app/_components/common/search"
+import { RestaurantListItem } from "@/app/_components/common/restaurant/restaurant-list-item"
+import { Search } from "@/app/_components/common/search/search"
 
 export const RestaurantsList = () => {
   const [restaurantsList, setRestaurantsList] = useState<Restaurant[]>([])

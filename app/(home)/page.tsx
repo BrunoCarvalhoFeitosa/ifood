@@ -1,8 +1,8 @@
 import { db } from "@/app/_lib/prisma"
-import { Header } from "@/app/_components/common/header"
-import { Search } from "@/app/_components/common/search"
-import { CategoryList } from "@/app/_components/common/category-list"
-import { ProductList } from "@/app/_components/common/product-list"
+import { Header } from "@/app/_components/common/header/header"
+import { Search } from "@/app/_components/common/search/search"
+import { CategoryList } from "@/app/_components/common/category/category-list"
+import { ProductList } from "@/app/_components/common/product/product-list"
 import { PromoBannerPizza } from "./_components/promo-banner"
 
 const HomePage = async () => {

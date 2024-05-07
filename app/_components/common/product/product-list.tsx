@@ -32,7 +32,7 @@ export const ProductList = ({ title, products }: ProductListProps) => {
               type="button"
               variant="ghost"
               size="lg"
-              className="rounded-full p-0 text-lg font-extrabold text-primary hover:bg-transparent hover:text-primary md:text-base"
+              className="rounded-full p-0 text-lg font-extrabold text-primary hover:text-primary md:text-base"
             >
               <span>Ver todos</span>
               <span>

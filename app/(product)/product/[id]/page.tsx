@@ -1,11 +1,11 @@
 import { ProductSlideButtonProvider } from "@/app/_contexts/ProductSlideButtonContext"
 import { notFound } from "next/navigation"
 import { db } from "@/app/_lib/prisma"
-import { Header } from "@/app/_components/common/header"
+import { Header } from "@/app/_components/common/header/header"
+import { Breadcrumb } from "@/app/_components/common/breadcrumb/breadcrumb"
 import { ProductAddToCart } from "./_components/product-add-to-cart"
 import { ProductContent } from "./_components/product-content"
-import { RecommendedProductList } from "@/app/_components/common/recommended-product-list"
-import { Breadcrumb } from "@/app/_components/common/breadcrumb"
+import { RecommendedProductList } from "@/app/_components/common/recommended/recommended-product-list"
 
 interface ProductPageProps {
   params: {
@@ -39,7 +39,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
       <div className="hidden xl:flex">
         <Header categories={categories} restaurants={restaurants} />
       </div>
-      <main className="min-h-[100dvh] w-full overflow-hidden">
+      <main className="min-h-[100dvh] w-full overflow-hidden xl:pb-36">
         <Breadcrumb param={product.name} />
         <ProductAddToCart product={product} />
         <ProductContent product={product} />

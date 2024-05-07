@@ -1,7 +1,7 @@
 import { db } from "@/app/_lib/prisma"
 import { notFound } from "next/navigation"
-import { Header } from "@/app/_components/common/header"
-import { Breadcrumb } from "@/app/_components/common/breadcrumb"
+import { Header } from "@/app/_components/common/header/header"
+import { Breadcrumb } from "@/app/_components/common/breadcrumb/breadcrumb"
 import { RestaurantContent } from "./_components/restaurant-content"
 import { RestaurantCategorieProducts } from "./_components/restaurant-categorie-products"
 

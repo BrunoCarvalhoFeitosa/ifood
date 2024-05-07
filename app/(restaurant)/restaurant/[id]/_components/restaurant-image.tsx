@@ -30,7 +30,7 @@ export const RestaurantImage = ({ restaurant }: RestaurantImageProps) => {
           title="Aumentar zoom"
           variant="ghost"
           size="sm"
-          className="p-0 text-white/60 hover:bg-transparent hover:text-primary"
+          className="p-0 text-white/60 hover:text-primary"
           onClick={() => zoomIn()}
         >
           <ZoomInIcon />
@@ -40,7 +40,7 @@ export const RestaurantImage = ({ restaurant }: RestaurantImageProps) => {
           title="Diminuir zoom"
           variant="ghost"
           size="sm"
-          className="p-0 text-white/60 hover:bg-transparent hover:text-primary"
+          className="p-0 text-white/60 hover:text-primary"
           onClick={() => zoomOut()}
         >
           <ZoomOutIcon />
@@ -50,7 +50,7 @@ export const RestaurantImage = ({ restaurant }: RestaurantImageProps) => {
           title="Resetar zoom"
           variant="ghost"
           size="sm"
-          className="p-0 text-white/60 hover:bg-transparent hover:text-primary"
+          className="p-0 text-white/60 hover:text-primary"
           onClick={() => resetTransform()}
         >
           <FullscreenIcon />
