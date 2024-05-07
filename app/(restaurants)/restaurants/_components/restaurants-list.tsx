@@ -6,7 +6,7 @@ import { searchRestaurants } from "@/app/_actions/search"
 import { RestaurantListItem } from "@/app/_components/common/restaurant/restaurant-list-item"
 import { Search } from "@/app/_components/common/search/search"
 
-export const RestaurantsList = () => {
+const RestaurantsList = () => {
   const [restaurantsList, setRestaurantsList] = useState<Restaurant[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const params = useSearchParams()
@@ -66,3 +66,5 @@ export const RestaurantsList = () => {
     </section>
   )
 }
+
+export default RestaurantsList
