@@ -39,7 +39,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
       <div className="hidden xl:flex">
         <Header categories={categories} restaurants={restaurants} />
       </div>
-      <main className="min-h-[100dvh] w-full overflow-hidden xl:pb-36">
+      <main className="min-h-[100dvh] w-full overflow-hidden pb-36 xl:pb-36">
         <Breadcrumb param={product.name} />
         <ProductAddToCart product={product} />
         <ProductContent product={product} />
