@@ -1,16 +1,18 @@
 "use client"
 import { useEffect, useState } from "react"
 import { Restaurant } from "@prisma/client"
-import { useSearchParams } from "next/navigation"
 import { searchRestaurants } from "@/app/_actions/search"
 import { RestaurantListItem } from "@/app/_components/common/restaurant/restaurant-list-item"
 import { Search } from "@/app/_components/common/search/search"
+import { Loader2Icon } from "lucide-react"
 
-const RestaurantsList = () => {
+interface RestaurantsListProps {
+  term: string
+}
+
+const RestaurantsList = ({ term }: RestaurantsListProps) => {
   const [restaurantsList, setRestaurantsList] = useState<Restaurant[]>([])
   const [loading, setLoading] = useState<boolean>(true)
-  const params = useSearchParams()
-  const term = params.get("search")
 
   useEffect(() => {
     const getRestaurants = async () => {
@@ -30,8 +32,8 @@ const RestaurantsList = () => {
 
   if (loading) {
     return (
-      <div className="flex h-full w-full items-center justify-center">
-        Carregando...
+      <div className="flex h-[calc(100dvh-200px)] w-full animate-spin items-center justify-center">
+        <Loader2Icon size={30} className="text-primary" />
       </div>
     )
   }
