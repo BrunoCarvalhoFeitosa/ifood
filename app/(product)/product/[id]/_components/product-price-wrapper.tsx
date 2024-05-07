@@ -11,7 +11,7 @@ export const ProductPriceWrapper = ({ product }: ProductPriceProps) => {
   return (
     <div className="flex flex-row items-start justify-between">
       <ProductPrice product={product} />
-      <ProductQuantity product={product} />
+      <ProductQuantity />
     </div>
   )
 }
