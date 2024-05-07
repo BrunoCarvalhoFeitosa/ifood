@@ -10,6 +10,9 @@ interface CategoryProductListProps {
           restaurant: {
             select: {
               name: true
+              imageUrl: true
+              deliveryFee: true
+              deliveryTimeMinutes: true
             }
           }
         }
