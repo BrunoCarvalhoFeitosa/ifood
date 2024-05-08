@@ -37,7 +37,7 @@ interface ICartContext {
   setIsCartOpen: (isOpen: boolean) => void
   isCartOpen: boolean
   setIsDifferentRestaurant: (isDifferentRestaurant: boolean) => void
-  isDiffferentRestaurant: boolean
+  isDifferentRestaurant: boolean
 }
 
 export const CartContext = createContext<ICartContext>({
