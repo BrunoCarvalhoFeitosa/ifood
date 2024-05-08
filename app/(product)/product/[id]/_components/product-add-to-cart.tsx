@@ -3,10 +3,8 @@ import { useContext } from "react"
 import { Prisma } from "@prisma/client"
 import { useScroll } from "@/app/_hooks/use-scroll"
 import { CartContext } from "@/app/_contexts/Cart"
-import {
-  formatCurrency,
-  getCalculateProductTotalPrice
-} from "@/app/_helpers/price"
+import { formatCurrency } from "@/app/_helpers/price"
+import { getCalculateProductTotalPrice } from "@/app/_helpers/price"
 import { Button } from "@/app/_components/ui/button"
 import { CartDialog } from "@/app/_components/common/cart/cart-dialog"
 import { ProductDiscountBadge } from "@/app/_components/common/product/product-discount-badge"
@@ -27,9 +25,9 @@ interface ProductAddToCartProps {
 }
 
 export const ProductAddToCart = ({ product }: ProductAddToCartProps) => {
+  const scrolled = useScroll()
   const { addProductToCart, products, setIsDifferentRestaurant } =
     useContext(CartContext)
-  const scrolled = useScroll()
 
   const handleAddToCartClick = () => {
     const hasDifferentRestaurantProduct = products.some(

@@ -18,12 +18,12 @@ interface CartDialogProps {
 }
 
 export const CartDialog = ({ product }: CartDialogProps) => {
-  const { setIsDifferentRestaurant, isDiffferentRestaurant, addProductToCart } =
+  const { setIsDifferentRestaurant, isDifferentRestaurant, addProductToCart } =
     useContext(CartContext)
 
   return (
     <AlertDialog
-      open={isDiffferentRestaurant}
+      open={isDifferentRestaurant}
       onOpenChange={setIsDifferentRestaurant}
     >
       <AlertDialogContent>

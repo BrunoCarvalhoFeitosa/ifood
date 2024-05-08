@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 "use client"
-import { ReactNode, createContext, useState } from "react"
+import { ReactNode, createContext, useEffect, useState } from "react"
 import { Prisma, Product } from "@prisma/client"
-import { getCalculateProductTotalPrice } from "@/app/_helpers/price"
 import { Flip, toast } from "react-toastify"
+import { getCalculateProductTotalPrice } from "@/app/_helpers/price"
 
 export interface CartProduct
   extends Prisma.ProductGetPayload<{
@@ -26,18 +25,18 @@ export interface CartProduct
 
 interface ICartContext {
   products: CartProduct[]
-  addProductToCart: (product: Product) => void
-  removeProductFromCart: (productId: string) => void
+  addProductToCart: () => void
+  removeProductFromCart: () => void
   subtotalPrice: number
   totalPrice: number
   deliveryPrice: number
   totalDiscounts: number
-  setQuantity: (value: number) => void
+  setQuantity: () => void
   quantity: number
-  setIsCartOpen: (isOpen: boolean) => void
+  setIsCartOpen: () => void
   isCartOpen: boolean
-  setIsDifferentRestaurant: (isDifferentRestaurant: boolean) => void
-  isDiffferentRestaurant: boolean
+  setIsDifferentRestaurant: () => void
+  isDifferentRestaurant: boolean
 }
 
 export const CartContext = createContext<ICartContext>({
@@ -53,15 +52,26 @@ export const CartContext = createContext<ICartContext>({
   setIsCartOpen: () => {},
   isCartOpen: false,
   setIsDifferentRestaurant: () => {},
-  isDiffferentRestaurant: false
+  isDifferentRestaurant: false
 })
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([])
   const [quantity, setQuantity] = useState<number>(1)
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
-  const [isDiffferentRestaurant, setIsDifferentRestaurant] =
+  const [isDifferentRestaurant, setIsDifferentRestaurant] =
     useState<boolean>(false)
+
+  useEffect(() => {
+    const cartProductsString = localStorage.getItem("cart-products")
+    if (cartProductsString) {
+      setProducts(JSON.parse(cartProductsString))
+    }
+  }, [])
+
+  const saveCartToLocalStorage = (cartData: CartProduct[]) => {
+    localStorage.setItem("cart-products", JSON.stringify(cartData))
+  }
 
   const addProductToCart = (product: Product) => {
     const isProductInCart = products.some(
@@ -98,7 +108,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
             return cartProduct
           } else if (cartProduct.id === product.id) {
-            toast("Produto adicionado ao carrinho.", {
+            toast("Produto adicionado a sacola com sucesso.", {
               type: "success",
               toastId: "id",
               position: "bottom-right",
@@ -111,24 +121,38 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
               transition: Flip
             })
 
-            return {
+            const updatedProduct = {
               ...cartProduct,
               quantity: cartProduct.quantity + quantity
             }
+
+            const updatedProducts = prev.map((p) =>
+              p.id === updatedProduct.id ? updatedProduct : p
+            )
+
+            saveCartToLocalStorage(updatedProducts)
+
+            return updatedProduct
           }
           return cartProduct
         })
       )
     } else {
-      setProducts((prev) => [
-        ...prev,
-        {
-          ...product,
-          quantity: quantity
-        } as CartProduct
-      ])
+      setProducts((prev) => {
+        const newProducts = [
+          ...prev,
+          {
+            ...product,
+            quantity: quantity
+          } as CartProduct
+        ]
 
-      toast("Produto adicionado ao carrinho.", {
+        saveCartToLocalStorage(newProducts)
+
+        return newProducts
+      })
+
+      toast("Produto adicionado a sacola com sucesso.", {
         type: "success",
         toastId: "id",
         position: "bottom-right",
@@ -144,9 +168,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const removeProductFromCart = (productId: string) => {
-    return setProducts((prev) =>
-      prev.filter((product) => product.id !== productId)
-    )
+    setProducts((prev) => {
+      const updatedProducts = prev.filter((product) => product.id !== productId)
+      saveCartToLocalStorage(updatedProducts)
+      return updatedProducts
+    })
   }
 
   const subtotalPrice = products.reduce((acc, product) => {
@@ -179,7 +205,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         setIsCartOpen,
         isCartOpen,
         setIsDifferentRestaurant,
-        isDiffferentRestaurant
+        isDifferentRestaurant
       }}
     >
       {children}

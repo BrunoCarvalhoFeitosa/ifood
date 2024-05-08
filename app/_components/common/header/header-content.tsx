@@ -16,12 +16,12 @@ export const HeaderContent = ({
 }: HeaderContentProps) => {
   return (
     <div>
-      <div className="mt-6 flex items-center justify-between border-b border-solid pb-3">
+      <div className="mt-8 flex items-center justify-between gap-3 border-b border-solid pb-3">
         <div className="text-sm font-semibold xl:text-base">
           Olá. Faça seu login!
         </div>
         <Button type="button" variant="default" size="icon">
-          <LogInIcon size={22} />
+          <LogInIcon size={20} />
         </Button>
       </div>
       <div className="my-6 flex flex-col gap-3 border-b border-solid pb-3">

@@ -66,7 +66,6 @@ export const ProductQuantity = () => {
       <Input
         readOnly
         type="text"
-        defaultValue={quantity}
         value={quantity}
         className="flex h-9 w-9 items-center justify-center border-transparent bg-white p-0 text-center text-base font-bold text-black focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0"
       />
