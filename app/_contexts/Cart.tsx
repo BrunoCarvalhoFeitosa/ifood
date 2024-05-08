@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use client"
 import { ReactNode, createContext, useEffect, useState } from "react"
 import { Prisma, Product } from "@prisma/client"
@@ -25,18 +26,18 @@ export interface CartProduct
 
 interface ICartContext {
   products: CartProduct[]
-  addProductToCart: () => void
-  removeProductFromCart: () => void
+  addProductToCart: (product: Product) => void
+  removeProductFromCart: (productId: string) => void
   subtotalPrice: number
   totalPrice: number
   deliveryPrice: number
   totalDiscounts: number
-  setQuantity: () => void
+  setQuantity: (value: number) => void
   quantity: number
-  setIsCartOpen: () => void
+  setIsCartOpen: (isOpen: boolean) => void
   isCartOpen: boolean
-  setIsDifferentRestaurant: () => void
-  isDifferentRestaurant: boolean
+  setIsDifferentRestaurant: (isDifferentRestaurant: boolean) => void
+  isDiffferentRestaurant: boolean
 }
 
 export const CartContext = createContext<ICartContext>({
