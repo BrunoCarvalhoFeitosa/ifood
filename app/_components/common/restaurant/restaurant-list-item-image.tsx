@@ -12,14 +12,14 @@ export const RestaurantListItemImage = ({
   restaurant
 }: RestaurantListItemImageProps) => {
   return (
-    <div className="relative w-full overflow-hidden md:w-[210px] lg:w-[340px]">
-      <div className="h-[200px] w-full lg:h-[240px]">
+    <div className="relative w-[210px] overflow-hidden lg:w-[calc((100dvw/4)-25px)]">
+      <div className="h-[150px] w-full bg-gray-100 lg:h-[300px]">
         <Image
           fill
           src={restaurant.imageUrl}
           alt={restaurant.name}
           quality={100}
-          className="w-full cursor-zoom-in object-cover transition-transform duration-300 hover:scale-110"
+          className="h-full w-full cursor-zoom-in object-cover transition-transform duration-300 hover:scale-110"
         />
       </div>
       <div className="absolute left-3 top-3 z-10">
