@@ -3,6 +3,7 @@ import { db } from "@/app/_lib/prisma"
 import { Header } from "@/app/_components/common/header/header"
 import { CategoryProductList } from "./_components/category-product-list"
 import { CategoryRestaurantList } from "./_components/category-restaurant-list"
+import { CategoryList } from "@/app/_components/common/category/category-list"
 
 interface CategoryPageProps {
   params: {
@@ -51,6 +52,7 @@ const CategoryPage = async ({ params: { id } }: CategoryPageProps) => {
     <div>
       <Header categories={categories} restaurants={restaurants} />
       <main>
+        <CategoryList selectedCategoryId={id} />
         <CategoryProductList category={category} />
         <CategoryRestaurantList restaurants={category.restaurants} />
       </main>
