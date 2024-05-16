@@ -1,5 +1,6 @@
 "use client"
 import { Category, Restaurant } from "@prisma/client"
+import Link from "next/link"
 import { Button } from "@/app/_components/ui/button"
 import { HeaderMenuListDropdown } from "./header-menu-list-dropdown"
 import { HeaderRestaurantListDropdown } from "./header-restaurant-list-dropdown"
@@ -20,25 +21,29 @@ export const HeaderContent = ({
         <div className="text-sm font-semibold xl:text-base">
           Olá. Faça seu login!
         </div>
-        <Button type="button" variant="default" size="icon">
-          <LogInIcon size={20} />
-        </Button>
+        <Link href="/sign-in" className="w-fit">
+          <Button type="button" variant="default" size="icon">
+            <LogInIcon size={20} />
+          </Button>
+        </Link>
       </div>
       <div className="my-6 flex flex-col gap-3 border-b border-solid pb-3">
-        <Button
-          type="button"
-          variant="default"
-          className="flex justify-start gap-2 rounded-full font-semibold"
-        >
-          <div>
-            <HomeIcon size={20} />
-          </div>
-          <div className="text-sm xl:text-base">Início</div>
-        </Button>
+        <Link href="/" className="w-full">
+          <Button
+            type="button"
+            variant="default"
+            className="flex w-full justify-start gap-2 rounded-full font-semibold"
+          >
+            <div>
+              <HomeIcon size={20} />
+            </div>
+            <div className="text-sm xl:text-base">Início</div>
+          </Button>
+        </Link>
         <Button
           type="button"
           variant="ghost"
-          className="flex justify-start gap-2 rounded-full font-semibold hover:bg-gray-200"
+          className="flex justify-start gap-2 rounded-full font-semibold hover:bg-gray-300"
         >
           <div>
             <NotebookTextIcon size={20} />
