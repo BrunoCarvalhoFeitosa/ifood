@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation"
-import { db } from "@/app/_lib/prisma"
+import { db } from "@/app/_libs/prisma"
 import { Header } from "@/app/_components/common/header/header"
 import RestaurantsList from "./_components/restaurants-list"
 

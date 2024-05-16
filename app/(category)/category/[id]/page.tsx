@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { db } from "@/app/_lib/prisma"
+import { db } from "@/app/_libs/prisma"
 import { Header } from "@/app/_components/common/header/header"
 import { CategoryProductList } from "./_components/category-product-list"
 import { CategoryRestaurantList } from "./_components/category-restaurant-list"

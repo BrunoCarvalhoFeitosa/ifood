@@ -6,7 +6,7 @@ import { ProductPriceWrapper } from "./product-price-wrapper"
 import { ProductDescription } from "./product-description"
 import { ProductDelivery } from "./product-delivery"
 import { ProductSlideButton } from "./product-slide-button"
-import { cn } from "@/app/_lib/utils"
+import { cn } from "@/app/_libs/utils"
 
 interface ProductInfoProps {
   product: Prisma.ProductGetPayload<{
