@@ -67,6 +67,10 @@
     @apply box-border;
   }
 
+  ::selection {
+    @apply bg-black text-white;
+  }
+
   body {
     @apply bg-white overflow-x-hidden text-foreground antialiased;
   }
