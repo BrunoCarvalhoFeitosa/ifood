@@ -4,10 +4,7 @@ const prismaClient = new PrismaClient()
 const description =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec nisl lorem. Praesent pharetra, sapien ut fringilla malesuada, nisi felis ullamcorper ex, eu consectetur elit dolor sed dolor. Praesent orci mi, auctor aliquet semper vitae, volutpat quis augue. Cras porta sapien nec pharetra laoreet. Sed at velit sit amet mauris varius volutpat sit amet id mauris. Maecenas vitae mattis ante. Morbi nulla quam, sagittis at orci eu, scelerisque auctor neque."
 
-const createBurguers = async (
-  desertsCategoryId: string,
-  juicesCategoryId: string
-) => {
+const createBurguers = async (desertsCategoryId: string) => {
   const burguersCategory = await prismaClient.category.create({
     data: {
       name: "Hambúrgueres",
@@ -44,7 +41,7 @@ const createBurguers = async (
     {
       name: "The Burguer Queen",
       imageUrl:
-        "https://utfs.io/f/d9834f2e-bc37-4c64-981b-cabf03018322-p3apy8.png",
+        "https://utfs.io/f/ff6ce134-ce5c-4c66-80c9-6e8adf4581d9-raq8nv.png",
       deliveryFee: 0,
       deliveryTimeMinutes: 45,
       categories: {
@@ -73,14 +70,13 @@ const createBurguers = async (
     })
 
     await createDeserts(restaurant.id, desertsCategoryId)
-    await createJuices(restaurant.id, juicesCategoryId)
 
     console.log(`Created ${restaurant.name}`)
 
     const burguerProducts = [
       {
         name: "Cheese Burguer",
-        price: 30,
+        price: "30",
         description: description,
         discountPercentage: 10,
         imageUrl:
@@ -98,7 +94,7 @@ const createBurguers = async (
       },
       {
         name: "Double Cheese Burguer",
-        price: 40,
+        price: "40",
         description: description,
         discountPercentage: 7,
         imageUrl:
@@ -116,7 +112,7 @@ const createBurguers = async (
       },
       {
         name: "Bacon Burguer",
-        price: 35,
+        price: "35",
         description: description,
         discountPercentage: 5,
         imageUrl:
@@ -134,7 +130,7 @@ const createBurguers = async (
       },
       {
         name: "Double Bacon Burguer",
-        price: 45,
+        price: "45",
         description: description,
         discountPercentage: 10,
         imageUrl:
@@ -152,7 +148,7 @@ const createBurguers = async (
       },
       {
         name: "Chicken Burguer",
-        price: 30,
+        price: "30",
         description: description,
         discountPercentage: 7,
         imageUrl:
@@ -170,7 +166,7 @@ const createBurguers = async (
       },
       {
         name: "Double Chicken Burguer",
-        price: 40,
+        price: "40",
         description: description,
         discountPercentage: 5,
         imageUrl:
@@ -198,10 +194,7 @@ const createBurguers = async (
   }
 }
 
-const createPizzas = async (
-  desertsCategoryId: string,
-  juicesCategoryId: string
-) => {
+const createPizzas = async (desertsCategoryId: string) => {
   const pizzasCategory = await prismaClient.category.create({
     data: {
       name: "Pizzas",
@@ -214,7 +207,7 @@ const createPizzas = async (
     {
       name: "Pizza Hut",
       imageUrl:
-        "https://utfs.io/f/f50301c9-7968-4d76-b4a3-b8ed24e2089c-5p2j0.png",
+        "https://utfs.io/f/8e62d810-f9e9-4cfd-a903-bd1b5c5068d4-y8cd6m.png",
       deliveryFee: 5,
       deliveryTimeMinutes: 30,
       categories: {
@@ -238,7 +231,7 @@ const createPizzas = async (
     {
       name: "The Pizza Queen",
       imageUrl:
-        "https://utfs.io/f/e83dc871-19e3-4d39-8163-fb2f1e24b6b1-5p2j2.png",
+        "https://utfs.io/f/8e62d810-f9e9-4cfd-a903-bd1b5c5068d4-y8cd6m.png",
       deliveryFee: 0,
       deliveryTimeMinutes: 45,
       categories: {
@@ -267,14 +260,13 @@ const createPizzas = async (
     })
 
     await createDeserts(restaurant.id, desertsCategoryId)
-    await createJuices(restaurant.id, juicesCategoryId)
 
     console.log(`Created ${restaurant.name}`)
 
     const pizzaProducts = [
       {
         name: "Pepperoni Pizza",
-        price: 45,
+        price: "45",
         description: description,
         discountPercentage: 0,
         imageUrl:
@@ -292,7 +284,7 @@ const createPizzas = async (
       },
       {
         name: "Margarita Pizza",
-        price: 40,
+        price: "40",
         description: description,
         discountPercentage: 5,
         imageUrl:
@@ -310,7 +302,7 @@ const createPizzas = async (
       },
       {
         name: "Hawaiian Pizza",
-        price: 45,
+        price: "45",
         description: "A delicious hawaiian pizza",
         discountPercentage: 5,
         imageUrl:
@@ -328,7 +320,7 @@ const createPizzas = async (
       },
       {
         name: "Vegetarian Pizza",
-        price: 35,
+        price: "35",
         description: description,
         discountPercentage: 0,
         imageUrl:
@@ -346,7 +338,7 @@ const createPizzas = async (
       },
       {
         name: "Meat Lovers Pizza",
-        price: 50,
+        price: "50",
         description: description,
         discountPercentage: 10,
         imageUrl:
@@ -374,10 +366,7 @@ const createPizzas = async (
   }
 }
 
-const createJapanese = async (
-  desertsCategoryId: string,
-  juicesCategoryId: string
-) => {
+const createJapanese = async (desertsCategoryId: string) => {
   const japaneseCategory = await prismaClient.category.create({
     data: {
       name: "Japonesa",
@@ -445,12 +434,11 @@ const createJapanese = async (
     console.log(`Created ${restaurant.name}`)
 
     await createDeserts(restaurant.id, desertsCategoryId)
-    await createJuices(restaurant.id, juicesCategoryId)
 
     const japaneseProducts = [
       {
         name: "Sushi Combo",
-        price: 30,
+        price: "30",
         description: description,
         discountPercentage: 5,
         imageUrl:
@@ -468,7 +456,7 @@ const createJapanese = async (
       },
       {
         name: "Sashimi Combo",
-        price: 40,
+        price: "40",
         description: description,
         discountPercentage: 10,
         imageUrl:
@@ -486,7 +474,7 @@ const createJapanese = async (
       },
       {
         name: "Nigiri Combo",
-        price: 35,
+        price: "35",
         description: description,
         discountPercentage: 7,
         imageUrl:
@@ -504,7 +492,7 @@ const createJapanese = async (
       },
       {
         name: "Temaki Combo",
-        price: 45,
+        price: "45",
         description: description,
         discountPercentage: 0,
         imageUrl:
@@ -522,7 +510,7 @@ const createJapanese = async (
       },
       {
         name: "Uramaki Combo",
-        price: 30,
+        price: "30",
         description: description,
         discountPercentage: 10,
         imageUrl:
@@ -540,7 +528,7 @@ const createJapanese = async (
       },
       {
         name: "Hosomaki Combo",
-        price: 40,
+        price: "40",
         description: description,
         discountPercentage: 0,
         imageUrl:
@@ -568,10 +556,7 @@ const createJapanese = async (
   }
 }
 
-const createBrazilian = async (
-  desertsCategoryId: string,
-  juicesCategoryId: string
-) => {
+const createBrazilian = async (desertsCategoryId: string) => {
   const brazilianCategory = await prismaClient.category.create({
     data: {
       name: "Brasileira",
@@ -639,12 +624,11 @@ const createBrazilian = async (
     console.log(`Created ${restaurant.name}`)
 
     await createDeserts(restaurant.id, desertsCategoryId)
-    await createJuices(restaurant.id, juicesCategoryId)
 
     const brazilianProducts = [
       {
         name: "Camarão Citrus",
-        price: 40,
+        price: "40",
         description: description,
         discountPercentage: 5,
         imageUrl:
@@ -662,7 +646,7 @@ const createBrazilian = async (
       },
       {
         name: "Picanha Especial",
-        price: 45,
+        price: "45",
         description: description,
         discountPercentage: 5,
         imageUrl:
@@ -680,7 +664,7 @@ const createBrazilian = async (
       },
       {
         name: "Macarrão com Carne",
-        price: 35,
+        price: "35",
         description: description,
         discountPercentage: 5,
         imageUrl:
@@ -698,7 +682,7 @@ const createBrazilian = async (
       },
       {
         name: "Carne com Salada",
-        price: 35,
+        price: "35",
         description: description,
         discountPercentage: 5,
         imageUrl:
@@ -716,7 +700,7 @@ const createBrazilian = async (
       },
       {
         name: "Filé Mignon com Fritas",
-        price: 40,
+        price: "40",
         description: description,
         discountPercentage: 0,
         imageUrl:
@@ -734,7 +718,7 @@ const createBrazilian = async (
       },
       {
         name: "Frango ao Molho",
-        price: 40,
+        price: "40",
         description: description,
         discountPercentage: 5,
         imageUrl:
@@ -779,7 +763,7 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
   const desertProducts = [
     {
       name: "Sorvete Especial",
-      price: 30,
+      price: "30",
       description: description,
       discountPercentage: 10,
       imageUrl:
@@ -797,7 +781,7 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
     },
     {
       name: "Bolo de Chocolate",
-      price: 40,
+      price: "40",
       description: description,
       discountPercentage: 7,
       imageUrl:
@@ -815,7 +799,7 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
     },
     {
       name: "Petit Gateau",
-      price: 55,
+      price: "55",
       description: description,
       discountPercentage: 5,
       imageUrl:
@@ -833,7 +817,7 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
     },
     {
       name: "Bolo de Morango",
-      price: 35,
+      price: "35",
       description: description,
       discountPercentage: 5,
       imageUrl:
@@ -851,7 +835,7 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
     },
     {
       name: "Biscoito de Chocolate",
-      price: 30,
+      price: "30",
       description: description,
       discountPercentage: 7,
       imageUrl:
@@ -869,7 +853,7 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
     },
     {
       name: "Torta de Morango",
-      price: 45,
+      price: "45",
       description: description,
       discountPercentage: 5,
       imageUrl:
@@ -888,140 +872,6 @@ const createDeserts = async (restaurantId: string, categoryId: string) => {
   ]
 
   for (const product of desertProducts) {
-    await prismaClient.product.create({
-      data: product
-    })
-
-    console.log(`Created ${product.name}`)
-  }
-}
-
-const createJuices = async (restaurantId: string, categoryId: string) => {
-  await prismaClient.restaurant.update({
-    where: {
-      id: restaurantId
-    },
-    data: {
-      categories: {
-        connect: {
-          id: categoryId
-        }
-      }
-    }
-  })
-
-  const juiceProducts = [
-    {
-      name: "Suco de Cenoura",
-      price: 15,
-      description: description,
-      discountPercentage: 5,
-      imageUrl:
-        "https://utfs.io/f/5126e950-40ca-4ef1-a166-16274fec16bc-6b2vea.png",
-      restaurant: {
-        connect: {
-          id: restaurantId
-        }
-      },
-      category: {
-        connect: {
-          id: categoryId
-        }
-      }
-    },
-    {
-      name: "Suco Cítrico",
-      price: 20,
-      description: description,
-      discountPercentage: 7,
-      imageUrl:
-        "https://utfs.io/f/6dbe915d-af87-4f2a-b841-864ba9427da8-6b2ve9.png",
-      restaurant: {
-        connect: {
-          id: restaurantId
-        }
-      },
-      category: {
-        connect: {
-          id: categoryId
-        }
-      }
-    },
-    {
-      name: "Suco de Limão",
-      price: 12,
-      description: description,
-      discountPercentage: 5,
-      imageUrl:
-        "https://utfs.io/f/03aa4137-c949-4d2c-bdf2-bad6dd1f565e-6b2ve7.png",
-      restaurant: {
-        connect: {
-          id: restaurantId
-        }
-      },
-      category: {
-        connect: {
-          id: categoryId
-        }
-      }
-    },
-    {
-      name: "Suco de Laranja",
-      price: 12,
-      description: description,
-      discountPercentage: 5,
-      imageUrl:
-        "https://utfs.io/f/ce2b8e30-b922-4b1e-bdde-656348cd25c3-6b2ve6.png",
-      restaurant: {
-        connect: {
-          id: restaurantId
-        }
-      },
-      category: {
-        connect: {
-          id: categoryId
-        }
-      }
-    },
-    {
-      name: "Suco de Abacaxi",
-      price: 12,
-      description: description,
-      discountPercentage: 7,
-      imageUrl:
-        "https://utfs.io/f/c4202826-7014-4368-8941-fa1af9b9c8b2-6b2ve5.png",
-      restaurant: {
-        connect: {
-          id: restaurantId
-        }
-      },
-      category: {
-        connect: {
-          id: categoryId
-        }
-      }
-    },
-    {
-      name: "Suco de Melancia",
-      price: 12,
-      description: description,
-      discountPercentage: 5,
-      imageUrl:
-        "https://utfs.io/f/a9ba878f-79a8-4c25-883c-5c2e1670b256-6b2ve4.png",
-      restaurant: {
-        connect: {
-          id: restaurantId
-        }
-      },
-      category: {
-        connect: {
-          id: categoryId
-        }
-      }
-    }
-  ]
-
-  for (const product of juiceProducts) {
     await prismaClient.product.create({
       data: product
     })
