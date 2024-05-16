@@ -18,7 +18,7 @@ const createBurguers = async (desertsCategoryId: string) => {
       name: "The Burguer King",
       imageUrl:
         "https://utfs.io/f/020e448e-a7d8-433f-9622-cb3b68f34d48-p3apya.png",
-      deliveryFee: 5,
+      deliveryFee: "5",
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
@@ -30,7 +30,7 @@ const createBurguers = async (desertsCategoryId: string) => {
       name: "Omni Burguer",
       imageUrl:
         "https://utfs.io/f/d0c54665-78d0-41af-98a4-8d1f459c622c-p3apy9.png",
-      deliveryFee: 5,
+      deliveryFee: "5",
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
@@ -42,7 +42,7 @@ const createBurguers = async (desertsCategoryId: string) => {
       name: "The Burguer Queen",
       imageUrl:
         "https://utfs.io/f/ff6ce134-ce5c-4c66-80c9-6e8adf4581d9-raq8nv.png",
-      deliveryFee: 0,
+      deliveryFee: "0",
       deliveryTimeMinutes: 45,
       categories: {
         connect: {
@@ -54,7 +54,7 @@ const createBurguers = async (desertsCategoryId: string) => {
       name: "Burguer House",
       imageUrl:
         "https://utfs.io/f/9c193fc1-9dcb-4394-8be4-d783266134dc-p3apy7.png",
-      deliveryFee: 10,
+      deliveryFee: "10",
       deliveryTimeMinutes: 20,
       categories: {
         connect: {
@@ -207,8 +207,8 @@ const createPizzas = async (desertsCategoryId: string) => {
     {
       name: "Pizza Hut",
       imageUrl:
-        "https://utfs.io/f/8e62d810-f9e9-4cfd-a903-bd1b5c5068d4-y8cd6m.png",
-      deliveryFee: 5,
+        "https://utfs.io/f/cdd9131e-fefd-4b41-bc7f-570c0595f90f-efd7ef.png",
+      deliveryFee: "5",
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
@@ -220,7 +220,7 @@ const createPizzas = async (desertsCategoryId: string) => {
       name: "Omni Pizza",
       imageUrl:
         "https://utfs.io/f/8a9eb9dc-6434-4246-91c9-1c0a60a6e5f0-5p2j1.png",
-      deliveryFee: 5,
+      deliveryFee: "5",
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
@@ -232,7 +232,7 @@ const createPizzas = async (desertsCategoryId: string) => {
       name: "The Pizza Queen",
       imageUrl:
         "https://utfs.io/f/8e62d810-f9e9-4cfd-a903-bd1b5c5068d4-y8cd6m.png",
-      deliveryFee: 0,
+      deliveryFee: "0",
       deliveryTimeMinutes: 45,
       categories: {
         connect: {
@@ -244,7 +244,7 @@ const createPizzas = async (desertsCategoryId: string) => {
       name: "Pizza House",
       imageUrl:
         "https://utfs.io/f/a73ec63a-7fc8-4a23-8d03-62debee79e6a-5p2j3.png",
-      deliveryFee: 10,
+      deliveryFee: "10",
       deliveryTimeMinutes: 20,
       categories: {
         connect: {
@@ -369,7 +369,7 @@ const createPizzas = async (desertsCategoryId: string) => {
 const createJapanese = async (desertsCategoryId: string) => {
   const japaneseCategory = await prismaClient.category.create({
     data: {
-      name: "Japonesa",
+      name: "Comida Japonesa",
       imageUrl:
         "https://utfs.io/f/ccc2351a-49b0-4613-a233-3b3b3bd6a47c-yd9ii3.png"
     }
@@ -380,7 +380,7 @@ const createJapanese = async (desertsCategoryId: string) => {
       name: "Sushi House",
       imageUrl:
         "https://utfs.io/f/7f52b936-9f7a-40cc-b22f-b62727ddb9cc-fu3r05.png",
-      deliveryFee: 5,
+      deliveryFee: "5",
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
@@ -392,7 +392,7 @@ const createJapanese = async (desertsCategoryId: string) => {
       name: "Omni Sushi",
       imageUrl:
         "https://utfs.io/f/f809b477-7cf1-47f5-8664-0a4566225867-fu3r06.png",
-      deliveryFee: 5,
+      deliveryFee: "5",
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
@@ -404,7 +404,7 @@ const createJapanese = async (desertsCategoryId: string) => {
       name: "The Sushi Queen",
       imageUrl:
         "https://utfs.io/f/42bb722a-0b76-40e8-8251-cee9093bed38-fu3r07.png",
-      deliveryFee: 0,
+      deliveryFee: "0",
       deliveryTimeMinutes: 45,
       categories: {
         connect: {
@@ -416,7 +416,7 @@ const createJapanese = async (desertsCategoryId: string) => {
       name: "Sushi House",
       imageUrl:
         "https://utfs.io/f/de37be82-23bf-4901-aeea-b93c281bf401-fu3r08.png",
-      deliveryFee: 10,
+      deliveryFee: "10",
       deliveryTimeMinutes: 20,
       categories: {
         connect: {
@@ -559,7 +559,7 @@ const createJapanese = async (desertsCategoryId: string) => {
 const createBrazilian = async (desertsCategoryId: string) => {
   const brazilianCategory = await prismaClient.category.create({
     data: {
-      name: "Brasileira",
+      name: "Comida Brasileira",
       imageUrl:
         "https://utfs.io/f/d84e3a7a-fcf6-4d3d-86bf-d62c0b1febdc-m1yv44.png"
     }
@@ -570,7 +570,7 @@ const createBrazilian = async (desertsCategoryId: string) => {
       name: "Churrascaria House",
       imageUrl:
         "https://utfs.io/f/5a090f6e-520f-418a-a42a-043b512314a2-n9n78u.png",
-      deliveryFee: 5,
+      deliveryFee: "5",
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
@@ -582,7 +582,7 @@ const createBrazilian = async (desertsCategoryId: string) => {
       name: "Omni Churrascaria",
       imageUrl:
         "https://utfs.io/f/87338583-660e-47f1-a80d-6ea804298bd5-n9n78v.png",
-      deliveryFee: 5,
+      deliveryFee: "5",
       deliveryTimeMinutes: 30,
       categories: {
         connect: {
@@ -594,7 +594,7 @@ const createBrazilian = async (desertsCategoryId: string) => {
       name: "The Churrascaria Queen",
       imageUrl:
         "https://utfs.io/f/b26b00ca-5041-46cb-9b68-a1856ed064ad-n9n78w.png",
-      deliveryFee: 0,
+      deliveryFee: "0",
       deliveryTimeMinutes: 45,
       categories: {
         connect: {
@@ -606,7 +606,7 @@ const createBrazilian = async (desertsCategoryId: string) => {
       name: "Churrascaria House",
       imageUrl:
         "https://utfs.io/f/c1f279ea-ac09-4e4f-9757-30018cb4c7bc-n9n78x.png",
-      deliveryFee: 10,
+      deliveryFee: "10",
       deliveryTimeMinutes: 20,
       categories: {
         connect: {
