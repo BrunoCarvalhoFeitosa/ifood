@@ -133,7 +133,7 @@ export const SignInForm = () => {
                         type="button"
                         variant="ghost"
                         className="absolute right-0 top-[50%] translate-y-[-50%]"
-                        onClick={() => handleShowOrHidePassword()}
+                        onClick={handleShowOrHidePassword}
                       >
                         <div>
                           {showPassword ? (

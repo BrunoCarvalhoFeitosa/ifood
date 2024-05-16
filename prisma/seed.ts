@@ -889,18 +889,10 @@ const main = async () => {
     }
   })
 
-  const juicesCategory = await prismaClient.category.create({
-    data: {
-      name: "Sucos",
-      imageUrl:
-        "https://utfs.io/f/9f3013bf-0778-4d80-a330-4da2682deaf9-o41y62.png"
-    }
-  })
-
-  await createBurguers(desertsCategory.id, juicesCategory.id)
-  await createPizzas(desertsCategory.id, juicesCategory.id)
-  await createJapanese(desertsCategory.id, juicesCategory.id)
-  await createBrazilian(desertsCategory.id, juicesCategory.id)
+  await createBurguers(desertsCategory.id)
+  await createPizzas(desertsCategory.id)
+  await createJapanese(desertsCategory.id)
+  await createBrazilian(desertsCategory.id)
 }
 
 main()

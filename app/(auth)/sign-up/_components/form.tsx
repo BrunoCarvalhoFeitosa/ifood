@@ -31,9 +31,7 @@ const formSchema = z.object({
       message: "Por favor, insira insira somente letras."
     }),
 
-  picture: z.instanceof(File, {
-    message: "Por favor, insira uma foto para o perfil."
-  }),
+  picture: z.string().nullable(),
 
   email: z.string().email({
     message: "Por favor, insira um endereço de e-mail válido."
@@ -58,7 +56,7 @@ export const SignUpForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      picture: undefined,
+      picture: null,
       email: "",
       password: ""
     }
@@ -151,8 +149,13 @@ export const SignUpForm = () => {
                           <Input
                             type="file"
                             id="dropzone-file"
+                            value={field.value ?? ""}
+                            onChange={field.onChange}
+                            onBlur={field.onBlur}
+                            disabled={field.disabled}
+                            name={field.name}
+                            ref={field.ref}
                             className="mt-2 hidden"
-                            {...field}
                           />
                         </label>
                       </div>

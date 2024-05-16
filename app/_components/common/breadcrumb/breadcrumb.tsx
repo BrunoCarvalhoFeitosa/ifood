@@ -9,7 +9,7 @@ interface BreadcumbProps {
 
 export const Breadcrumb = ({ param }: BreadcumbProps) => {
   const pathname = usePathname()
-  const path = pathname.split("/")
+  const path = pathname?.split("/")
 
   return (
     <div className="hidden items-center gap-3 px-5 text-sm font-semibold text-muted-foreground xl:flex">
@@ -19,9 +19,11 @@ export const Breadcrumb = ({ param }: BreadcumbProps) => {
         </div>
       </Link>
       <span>/</span>
-      <Link href={`/${path[1]}/${path.pop()}`}>
-        <span>{param}</span>
-      </Link>
+      {path && (
+        <Link href={`/${path[1]}/${path.pop()}`}>
+          <span>{param}</span>
+        </Link>
+      )}
     </div>
   )
 }
