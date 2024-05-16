@@ -21,7 +21,7 @@ interface SearchProps {
 const formSchema = z.object({
   term: z
     .string({
-      message: "Insira somente letras."
+      message: "Por favor, busque pelo nome de um restaurante."
     })
     .min(2, {
       message: "O valor mínimo para busca é de 2 caracteres."
