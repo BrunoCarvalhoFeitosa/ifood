@@ -60,7 +60,7 @@ export const Search = ({ defaultValues }: SearchProps) => {
                   className="h-12 w-full rounded-br-full rounded-tr-full border-transparent text-base font-semibold text-zinc-800 placeholder:font-normal placeholder:text-gray-300 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0 md:h-14"
                 />
               </FormControl>
-              <FormMessage className="text-sm font-semibold" />
+              <FormMessage className="text-sm font-bold" />
             </FormItem>
           )}
         />
