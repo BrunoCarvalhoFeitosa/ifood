@@ -11,8 +11,8 @@ export const ProductListItemImage = ({
   product
 }: ProductListItemImageProps) => {
   return (
-    <div className="relative w-[210px] overflow-hidden md:w-[210px] lg:w-[calc((100dvw/4)-25px)]">
-      <div className="bg-gray-210 h-[150px] w-full lg:h-[300px]">
+    <div className="relative w-full min-w-[275px] overflow-hidden md:min-w-[325px] lg:w-[calc((100dvw/4)-25px)]">
+      <div className="h-[220px] w-full bg-gray-100 md:h-[250px] lg:h-[300px]">
         <Image
           fill
           src={product.imageUrl}
