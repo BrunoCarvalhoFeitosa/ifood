@@ -16,7 +16,7 @@ export const ProductQuantity = () => {
       toast("Esta é a quantidade máxima permitida por pedido.", {
         type: "error",
         position: "bottom-right",
-        autoClose: 5000,
+        autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -38,7 +38,7 @@ export const ProductQuantity = () => {
       toast("Esta é a quantidade mínima permitida por pedido.", {
         type: "error",
         position: "bottom-right",
-        autoClose: 5000,
+        autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
