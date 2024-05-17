@@ -3,7 +3,6 @@ import { Header } from "@/app/_components/common/header/header"
 import { Search } from "@/app/_components/common/search/search"
 import { CategoryList } from "@/app/_components/common/category/category-list"
 import { ProductList } from "@/app/_components/common/product/product-list"
-import { PromoBannerPizza } from "./_components/promo-banner"
 
 const HomePage = async () => {
   const [categories, restaurants, brazilianFood, japaneseFood, fastFood] =
@@ -81,7 +80,6 @@ const HomePage = async () => {
           <Search />
         </div>
         <CategoryList />
-        <PromoBannerPizza />
         <div className="mt-8 flex flex-col gap-14">
           <ProductList
             title="O melhor da culinária brasileira"
