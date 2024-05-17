@@ -1,8 +1,11 @@
 "use client"
-import { useState } from "react"
+import { ChangeEvent, useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import axios from "axios"
+import { v4 as uuidv4 } from "uuid"
+import { supabase } from "@/app/_libs/supabase"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -17,6 +20,7 @@ import { Button } from "@/app/_components/ui/button"
 import { Input } from "@/app/_components/ui/input"
 import { Loader } from "@/public/svgs/loader"
 import { FolderUp, LucideEye, LucideEyeOff } from "lucide-react"
+import { Flip, toast } from "react-toastify"
 
 const formSchema = z.object({
   name: z
@@ -31,7 +35,7 @@ const formSchema = z.object({
       message: "Por favor, insira insira somente letras."
     }),
 
-  picture: z.string().nullable(),
+  image: z.string().nullable(),
 
   email: z.string().email({
     message: "Por favor, insira um endereço de e-mail válido."
@@ -49,6 +53,7 @@ const formSchema = z.object({
 })
 
 export const SignUpForm = () => {
+  const [imageUrl, setImageUrl] = useState<string>("")
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -56,7 +61,7 @@ export const SignUpForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      picture: null,
+      image: "",
       email: "",
       password: ""
     }
@@ -66,10 +71,70 @@ export const SignUpForm = () => {
     setShowPassword(!showPassword)
   }
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const handleUploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
+    let file
+
+    if (event.target.files) {
+      file = event.target.files[0]
+    }
+
+    const { data, error } = await supabase.storage
+      .from("images")
+      .upload("public/" + `${uuidv4()}_${file?.name}`, file as File)
+
+    if (data) {
+      setImageUrl(
+        `https://ezafeolqfkggqkvnyfxj.supabase.co/storage/v1/object/public/images/${data.path}`
+      )
+    } else {
+      console.error(
+        "Error while upload user image to supabase storage: ",
+        error
+      )
+    }
+  }
+
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
     setIsLoading(true)
 
-    console.log(values)
+    const formData = { ...data, image: imageUrl }
+
+    axios
+      .post("/api/register", formData)
+      .then(() => {
+        toast("Usuário cadastrado com sucesso.", {
+          type: "success",
+          toastId: "success",
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+          transition: Flip
+        })
+
+        form.reset()
+      })
+      .catch((error: Error) => {
+        console.error("Error while register user: ", error)
+        toast("Erro ao cadastrar usuário.", {
+          type: "error",
+          toastId: "error",
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+          transition: Flip
+        })
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   return (
@@ -111,7 +176,7 @@ export const SignUpForm = () => {
                       <FormLabel className="cursor-pointer text-base font-semibold text-black">
                         Nome completo
                       </FormLabel>
-                      <FormMessage className="my-2 p-0 text-xs" />
+                      <FormMessage className="my-2 p-0 text-xs font-bold" />
                       <FormControl>
                         <div className="mt-3">
                           <Input
@@ -128,13 +193,13 @@ export const SignUpForm = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="picture"
+                  name="image"
                   render={({ field }) => (
                     <FormItem className="w-full space-y-0">
                       <FormLabel className="cursor-pointer text-base font-semibold text-black">
                         Foto de perfil
                       </FormLabel>
-                      <FormMessage className="my-2 p-0 text-xs" />
+                      <FormMessage className="my-2 p-0 text-xs font-bold" />
                       <div className="flex w-full items-center justify-center">
                         <label
                           htmlFor="dropzone-file"
@@ -143,19 +208,16 @@ export const SignUpForm = () => {
                           <div className="flex flex-col items-center justify-center">
                             <FolderUp size={25} />
                             <p className="text-[11px] text-gray-500 dark:text-gray-400">
-                              SVG, PNG, JPG or GIF (MAX. 800x400px)
+                              PNG, JPG, ou WEBP (MAX. 800x400px)
                             </p>
                           </div>
                           <Input
                             type="file"
+                            accept="image/*"
                             id="dropzone-file"
-                            value={field.value ?? ""}
-                            onChange={field.onChange}
-                            onBlur={field.onBlur}
-                            disabled={field.disabled}
-                            name={field.name}
-                            ref={field.ref}
+                            onChange={(event) => handleUploadImage(event)}
                             className="mt-2 hidden"
+                            {...field}
                           />
                         </label>
                       </div>
@@ -171,7 +233,7 @@ export const SignUpForm = () => {
                     <FormLabel className="cursor-pointer text-base font-semibold text-black">
                       E-mail
                     </FormLabel>
-                    <FormMessage className="my-2 p-0 text-xs" />
+                    <FormMessage className="my-2 p-0 text-xs font-bold" />
                     <FormControl>
                       <div className="mt-3">
                         <Input
@@ -194,7 +256,7 @@ export const SignUpForm = () => {
                     <FormLabel className="cursor-pointer text-base font-semibold text-black">
                       Senha
                     </FormLabel>
-                    <FormMessage className="p-0 text-xs" />
+                    <FormMessage className="p-0 text-xs font-bold" />
                     <div className="relative">
                       <FormControl>
                         <div className="mt-3">
@@ -210,7 +272,7 @@ export const SignUpForm = () => {
                       <Button
                         type="button"
                         variant="ghost"
-                        onClick={() => handleShowOrHidePassword()}
+                        onClick={handleShowOrHidePassword}
                         className="absolute right-0 top-[50%] translate-y-[-50%]"
                       >
                         <div>
@@ -232,7 +294,7 @@ export const SignUpForm = () => {
               <div className="flex justify-end">
                 <Link
                   href="/sign-in"
-                  className="text-xs font-semibold text-red-600 underline"
+                  className="text-xs font-bold text-red-600 underline"
                 >
                   Já tem uma conta? Faça login agora.
                 </Link>
@@ -240,10 +302,12 @@ export const SignUpForm = () => {
               <div className="flex justify-end pt-4">
                 <Button
                   type="submit"
-                  className="flex h-14 w-full items-center gap-2 px-6 text-base xl:w-2/4"
+                  className="relative flex h-14 w-full items-center gap-2 px-6 text-base xl:w-2/4"
                 >
                   {isLoading && (
-                    <Loader color="#FFF" width="40px" height="40px" />
+                    <div className="absolute left-5 top-[50%] translate-y-[-50%]">
+                      <Loader color="#FFF" width="40px" height="40px" />
+                    </div>
                   )}
                   Criar minha conta agora
                 </Button>

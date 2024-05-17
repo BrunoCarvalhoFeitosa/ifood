@@ -1,8 +1,10 @@
 "use client"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
+import { signIn } from "next-auth/react"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Flip, toast } from "react-toastify"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -34,6 +36,8 @@ const formSchema = z.object({
     )
 })
 
+type FormValues = z.infer<typeof formSchema>
+
 export const SignInForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -50,9 +54,47 @@ export const SignInForm = () => {
     setShowPassword(!showPassword)
   }
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (data: FormValues) => {
     setIsLoading(true)
-    console.log(values)
+
+    signIn("credentials", {
+      ...data,
+      redirect: false
+    }).then((callback) => {
+      setIsLoading(false)
+
+      if (callback?.ok) {
+        toast("Autenticado com sucesso, seja bem-vindo.", {
+          type: "success",
+          toastId: "success",
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+          transition: Flip
+        })
+
+        window.location.assign("/")
+      }
+
+      if (callback?.error) {
+        toast("Erro ao autenticar usuário.", {
+          type: "error",
+          toastId: "error",
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+          transition: Flip
+        })
+      }
+    })
   }
 
   return (
@@ -93,7 +135,7 @@ export const SignInForm = () => {
                     <FormLabel className="cursor-pointer text-base font-semibold text-black">
                       E-mail
                     </FormLabel>
-                    <FormMessage className="my-2 p-0 text-xs" />
+                    <FormMessage className="my-2 p-0 text-xs font-bold" />
                     <FormControl>
                       <div className="mt-3">
                         <Input
@@ -116,7 +158,7 @@ export const SignInForm = () => {
                     <FormLabel className="cursor-pointer text-base font-semibold text-black">
                       Senha
                     </FormLabel>
-                    <FormMessage className="p-0 text-xs" />
+                    <FormMessage className="p-0 text-xs font-bold" />
                     <div className="relative">
                       <FormControl>
                         <div className="mt-3">
@@ -154,7 +196,7 @@ export const SignInForm = () => {
               <div className="flex justify-end">
                 <Link
                   href="/sign-up"
-                  className="text-xs font-semibold text-red-600 underline"
+                  className="text-xs font-bold text-red-600 underline"
                 >
                   Não tem uma conta? Cadastre-se agora.
                 </Link>
@@ -162,10 +204,12 @@ export const SignInForm = () => {
               <div className="flex justify-end pt-4">
                 <Button
                   type="submit"
-                  className="flex h-14 w-full items-center gap-2 px-6 text-base xl:w-2/4"
+                  className="relative flex h-14 w-full items-center gap-2 px-6 text-base xl:w-2/4"
                 >
                   {isLoading && (
-                    <Loader color="#FFF" width="40px" height="40px" />
+                    <div className="absolute left-5 top-[50%] translate-y-[-50%]">
+                      <Loader color="#FFF" width="40px" height="40px" />
+                    </div>
                   )}
                   Acessar minha conta agora
                 </Button>
