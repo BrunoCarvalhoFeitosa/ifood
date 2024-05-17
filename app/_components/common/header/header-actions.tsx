@@ -1,5 +1,4 @@
-"use client"
-import { Category, Restaurant } from "@prisma/client"
+import { Category, Restaurant, User } from "@prisma/client"
 import { Button } from "@/app/_components/ui/button"
 import {
   Sheet,
@@ -14,11 +13,13 @@ import { HeaderContent } from "./header-content"
 interface HeaderActionsProps {
   categories: Category[]
   restaurants?: Restaurant[]
+  currentUser?: User
 }
 
 export const HeaderActions = ({
   categories,
-  restaurants
+  restaurants,
+  currentUser
 }: HeaderActionsProps) => {
   return (
     <Sheet>
@@ -36,7 +37,11 @@ export const HeaderActions = ({
         <SheetHeader className="text-left">
           <SheetTitle>Menu</SheetTitle>
         </SheetHeader>
-        <HeaderContent categories={categories} restaurants={restaurants} />
+        <HeaderContent
+          categories={categories}
+          restaurants={restaurants}
+          currentUser={currentUser}
+        />
       </SheetContent>
     </Sheet>
   )
