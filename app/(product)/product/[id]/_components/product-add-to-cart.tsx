@@ -1,5 +1,5 @@
 "use client"
-import { useContext } from "react"
+import { useContext, useEffect, useRef } from "react"
 import { Prisma } from "@prisma/client"
 import { useScroll } from "@/app/_hooks/use-scroll"
 import { CartContext } from "@/app/_contexts/Cart"
@@ -26,8 +26,14 @@ interface ProductAddToCartProps {
 
 export const ProductAddToCart = ({ product }: ProductAddToCartProps) => {
   const scrolled = useScroll()
-  const { addProductToCart, products, setIsDifferentRestaurant } =
-    useContext(CartContext)
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const {
+    addProductToCart,
+    products,
+    setIsDifferentRestaurant,
+    setPlayAudio,
+    playAudio
+  } = useContext(CartContext)
 
   const handleAddToCartClick = () => {
     const hasDifferentRestaurantProduct = products.some(
@@ -42,6 +48,14 @@ export const ProductAddToCart = ({ product }: ProductAddToCartProps) => {
       addProductToCart(product)
     }
   }
+
+  useEffect(() => {
+    if (playAudio === true) {
+      audioRef?.current?.play()
+
+      setPlayAudio(false)
+    }
+  }, [playAudio, setPlayAudio, audioRef])
 
   return (
     <div>
@@ -88,6 +102,9 @@ export const ProductAddToCart = ({ product }: ProductAddToCartProps) => {
                 <span>Comprar</span>
                 <span className="ml-1 hidden xl:block">{product.name}</span>
               </Button>
+              <div className="hidden">
+                <audio src="/audio/ifood-sound.mp3" ref={audioRef} />
+              </div>
             </div>
           </div>
         </div>

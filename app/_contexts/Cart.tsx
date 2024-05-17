@@ -38,6 +38,8 @@ interface ICartContext {
   isCartOpen: boolean
   setIsDifferentRestaurant: (isDifferentRestaurant: boolean) => void
   isDifferentRestaurant: boolean
+  setPlayAudio: (playAudio: boolean) => void
+  playAudio: boolean
 }
 
 export const CartContext = createContext<ICartContext>({
@@ -53,7 +55,9 @@ export const CartContext = createContext<ICartContext>({
   setIsCartOpen: () => {},
   isCartOpen: false,
   setIsDifferentRestaurant: () => {},
-  isDifferentRestaurant: false
+  isDifferentRestaurant: false,
+  setPlayAudio: () => {},
+  playAudio: false
 })
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -62,6 +66,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
   const [isDifferentRestaurant, setIsDifferentRestaurant] =
     useState<boolean>(false)
+  const [playAudio, setPlayAudio] = useState<boolean>(false)
 
   useEffect(() => {
     const cartProductsString = localStorage.getItem("cart-products")
@@ -97,8 +102,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             toast("O máximo permitido é de 10 unidades por item.", {
               type: "error",
               toastId: "id",
-              position: "bottom-right",
-              autoClose: 5000,
+              position: "top-right",
+              autoClose: 2500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -107,13 +112,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
               transition: Flip
             })
 
+            setPlayAudio(false)
+
             return cartProduct
           } else if (cartProduct.id === product.id) {
             toast("Produto adicionado a sacola com sucesso.", {
               type: "success",
               toastId: "id",
-              position: "bottom-right",
-              autoClose: 5000,
+              position: "top-right",
+              autoClose: 2500,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -130,6 +137,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             const updatedProducts = prev.map((p) =>
               p.id === updatedProduct.id ? updatedProduct : p
             )
+
+            setPlayAudio(true)
 
             saveCartToLocalStorage(updatedProducts)
 
@@ -149,6 +158,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         ]
 
         saveCartToLocalStorage(newProducts)
+        setPlayAudio(true)
 
         return newProducts
       })
@@ -156,8 +166,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       toast("Produto adicionado a sacola com sucesso.", {
         type: "success",
         toastId: "id",
-        position: "bottom-right",
-        autoClose: 5000,
+        position: "top-right",
+        autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -165,6 +175,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         theme: "light",
         transition: Flip
       })
+
+      setPlayAudio(true)
     }
   }
 
@@ -206,7 +218,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         setIsCartOpen,
         isCartOpen,
         setIsDifferentRestaurant,
-        isDifferentRestaurant
+        isDifferentRestaurant,
+        setPlayAudio,
+        playAudio
       }}
     >
       {children}
