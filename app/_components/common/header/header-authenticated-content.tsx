@@ -1,11 +1,12 @@
 "use client"
 import { signOut } from "next-auth/react"
+import { SafeUser } from "@/app/_types/SafeUser"
 import { Button } from "@/app/_components/ui/button"
 import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
 import { LogOutIcon } from "lucide-react"
 
 interface HeaderAuthenticatedContentProps {
-  currentUser?: any
+  currentUser?: SafeUser | null
 }
 
 export const HeaderAuthenticatedContent = ({
