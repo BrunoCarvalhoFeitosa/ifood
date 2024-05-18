@@ -1,12 +1,20 @@
 "use client"
 import { signOut } from "next-auth/react"
-import { User } from "@prisma/client"
 import { Button } from "@/app/_components/ui/button"
 import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
 import { LogOutIcon } from "lucide-react"
 
 interface HeaderAuthenticatedContentProps {
-  currentUser: User
+  currentUser: {
+    id: string
+    name: string | null
+    image: string | null
+    email: string | null
+    emailVerified: string | null
+    hashedPassword: string | null
+    createdAt?: string
+    updatedAt?: string
+  } | null
 }
 
 export const HeaderAuthenticatedContent = ({
@@ -20,14 +28,14 @@ export const HeaderAuthenticatedContent = ({
             <Avatar>
               <AvatarImage
                 className="bg-gray-100"
-                src={currentUser.image as string | undefined}
+                src={currentUser?.image as string | undefined}
               />
             </Avatar>
           </div>
           <div>
-            <h3 className="font-semibold">{currentUser.name}</h3>
+            <h3 className="font-semibold">{currentUser?.name}</h3>
             <h4 className="block text-xs text-muted-foreground">
-              {currentUser.email}
+              {currentUser?.email}
             </h4>
           </div>
         </div>

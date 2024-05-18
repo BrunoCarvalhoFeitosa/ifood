@@ -1,4 +1,4 @@
-import { Category, Restaurant, User } from "@prisma/client"
+import { Category, Restaurant } from "@prisma/client"
 import { Button } from "@/app/_components/ui/button"
 import {
   Sheet,
@@ -13,7 +13,16 @@ import { HeaderContent } from "./header-content"
 interface HeaderActionsProps {
   categories: Category[]
   restaurants?: Restaurant[]
-  currentUser?: User
+  currentUser: {
+    id: string
+    name: string | null
+    image: string | null
+    email: string | null
+    emailVerified: string | null
+    hashedPassword: string | null
+    createdAt?: string
+    updatedAt?: string
+  } | null
 }
 
 export const HeaderActions = ({

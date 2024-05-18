@@ -194,7 +194,7 @@ export const SignUpForm = () => {
                 <FormField
                   control={form.control}
                   name="image"
-                  render={({ field }) => (
+                  render={({}) => (
                     <FormItem className="w-full space-y-0">
                       <FormLabel className="cursor-pointer text-base font-semibold text-black">
                         Foto de perfil
@@ -217,7 +217,6 @@ export const SignUpForm = () => {
                             id="dropzone-file"
                             onChange={(event) => handleUploadImage(event)}
                             className="mt-2 hidden"
-                            {...field}
                           />
                         </label>
                       </div>

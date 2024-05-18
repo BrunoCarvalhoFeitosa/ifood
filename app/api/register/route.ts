@@ -4,22 +4,17 @@ import bcrypt from "bcrypt"
 
 export async function POST(request: Request) {
   const body = await request.json()
-  const { name, email, image, password } = body
+  const { name, image, email, password } = body
   const hashedPassword = await bcrypt.hash(password, 12)
 
-  try {
-    const user = await db.user.create({
-      data: {
-        name,
-        email,
-        image,
-        hashedPassword
-      }
-    })
+  const user = await db.user.create({
+    data: {
+      name,
+      image,
+      email,
+      hashedPassword
+    }
+  })
 
-    return NextResponse.json(user)
-  } catch (error) {
-    console.error("Error creating user:", error)
-    return NextResponse.error("Error creating user", { status: 500 })
-  }
+  return NextResponse.json(user)
 }

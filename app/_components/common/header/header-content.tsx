@@ -1,4 +1,4 @@
-import { Category, Restaurant, User } from "@prisma/client"
+import { Category, Restaurant } from "@prisma/client"
 import Link from "next/link"
 import { Button } from "@/app/_components/ui/button"
 import { HeaderMenuListDropdown } from "./header-menu-list-dropdown"
@@ -10,7 +10,16 @@ import { HeaderUnauthenticatedContent } from "./header-unautheticated-content"
 interface HeaderContentProps {
   categories: Category[]
   restaurants?: Restaurant[]
-  currentUser?: User
+  currentUser: {
+    id: string
+    name: string | null
+    image: string | null
+    email: string | null
+    emailVerified: string | null
+    hashedPassword: string | null
+    createdAt?: string
+    updatedAt?: string
+  } | null
 }
 
 export const HeaderContent = async ({
