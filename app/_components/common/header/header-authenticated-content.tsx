@@ -27,7 +27,7 @@ export const HeaderAuthenticatedContent = ({
           <div>
             <Avatar>
               <AvatarImage
-                className="bg-gray-100"
+                className="bg-gray-100 object-cover"
                 src={currentUser?.image as string | undefined}
               />
             </Avatar>
