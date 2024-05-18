@@ -1,5 +1,5 @@
 "use server"
-import { db } from "@/app/_libs/prisma"
+import db from "@/app/_libs/prisma"
 import Link from "next/link"
 import { CategoryListItem } from "./category-list-item"
 

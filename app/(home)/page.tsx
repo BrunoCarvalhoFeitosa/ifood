@@ -1,4 +1,4 @@
-import { db } from "@/app/_libs/prisma"
+import db from "@/app/_libs/prisma"
 import { Header } from "@/app/_components/common/header/header"
 import { Search } from "@/app/_components/common/search/search"
 import { CategoryList } from "@/app/_components/common/category/category-list"

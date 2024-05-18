@@ -1,4 +1,4 @@
-import { db } from "@/app/_libs/prisma"
+import db from "@/app/_libs/prisma"
 import { notFound } from "next/navigation"
 import { Header } from "@/app/_components/common/header/header"
 import { Breadcrumb } from "@/app/_components/common/breadcrumb/breadcrumb"

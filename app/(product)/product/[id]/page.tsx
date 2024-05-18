@@ -1,6 +1,6 @@
 import { ProductSlideButtonProvider } from "@/app/_contexts/ProductSlideButtonContext"
 import { notFound } from "next/navigation"
-import { db } from "@/app/_libs/prisma"
+import db from "@/app/_libs/prisma"
 import { Header } from "@/app/_components/common/header/header"
 import { Breadcrumb } from "@/app/_components/common/breadcrumb/breadcrumb"
 import { ProductAddToCart } from "./_components/product-add-to-cart"
