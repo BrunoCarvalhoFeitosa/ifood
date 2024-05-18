@@ -10,7 +10,6 @@ export async function getSession() {
 export default async function getCurrentUser(): Promise<SafeUser | null> {
   try {
     const session = await getSession()
-
     if (!session?.user?.email) {
       return null
     }
@@ -25,21 +24,11 @@ export default async function getCurrentUser(): Promise<SafeUser | null> {
       return null
     }
 
-    let emailVerifiedDate: Date | null = null
-
-    if (currentUser.emailVerified) {
-      emailVerifiedDate = new Date(currentUser.emailVerified)
-    }
-
     return {
-      id: currentUser.id,
-      name: currentUser.name,
-      image: currentUser.image,
-      email: currentUser.email,
-      emailVerified: emailVerifiedDate,
-      hashedPassword: currentUser.hashedPassword || "",
+      ...currentUser,
       createdAt: currentUser.createdAt.toISOString(),
-      updatedAt: currentUser.updatedAt.toISOString()
+      updatedAt: currentUser.updatedAt.toISOString(),
+      emailVerified: currentUser.emailVerified?.toISOString() || ""
     }
   } catch (error: any) {
     console.error("Error fetching current user:", error)
