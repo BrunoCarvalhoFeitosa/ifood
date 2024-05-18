@@ -11,7 +11,7 @@ import { HeaderUnauthenticatedContent } from "./header-unautheticated-content"
 interface HeaderContentProps {
   categories: Category[]
   restaurants?: Restaurant[]
-  currentUser?: SafeUser | null
+  currentUser: SafeUser | null
 }
 
 export const HeaderContent = async ({

@@ -14,7 +14,7 @@ import { HeaderContent } from "./header-content"
 interface HeaderActionsProps {
   categories: Category[]
   restaurants?: Restaurant[]
-  currentUser?: SafeUser | null
+  currentUser: SafeUser | null
 }
 
 export const HeaderActions = ({
