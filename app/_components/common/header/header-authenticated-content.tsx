@@ -10,7 +10,6 @@ interface HeaderAuthenticatedContentProps {
     name: string | null
     image: string | null
     email: string | null
-    hashedPassword: string | null
     createdAt?: string | Date
     updatedAt?: string | Date
   } | null
