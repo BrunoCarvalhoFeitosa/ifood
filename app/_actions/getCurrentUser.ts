@@ -37,7 +37,7 @@ export default async function getCurrentUser(): Promise<SafeUser | null> {
       image: currentUser.image,
       email: currentUser.email,
       emailVerified: emailVerifiedDate,
-      hashedPassword: currentUser.hashedPassword,
+      hashedPassword: currentUser.hashedPassword || "",
       createdAt: currentUser.createdAt.toISOString(),
       updatedAt: currentUser.updatedAt.toISOString()
     }
