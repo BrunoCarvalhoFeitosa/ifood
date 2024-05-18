@@ -1,20 +1,17 @@
+import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { Category, Restaurant } from "@prisma/client"
 import { HeaderLogo } from "./header-logo"
 import { HeaderCart } from "./header-cart"
 import { HeaderActions } from "./header-actions"
-import { SafeUser } from "@/app/_types/SafeUser"
 
 interface HeaderProps {
   categories: Category[]
   restaurants?: Restaurant[]
-  currentUser: SafeUser | null
 }
 
-export const Header = ({
-  categories,
-  restaurants,
-  currentUser
-}: HeaderProps) => {
+export const Header = async ({ categories, restaurants }: HeaderProps) => {
+  const currentUser = await getCurrentUser()
+
   return (
     <header className="flex w-full items-center justify-between p-5">
       <HeaderLogo />
