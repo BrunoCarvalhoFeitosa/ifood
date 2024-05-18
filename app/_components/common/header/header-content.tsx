@@ -15,8 +15,7 @@ interface HeaderContentProps {
     name: string | null
     image: string | null
     email: string | null
-    createdAt?: string | Date
-    updatedAt?: string | Date
+    hashedPassword: string | null
   } | null
 }
 
