@@ -18,10 +18,9 @@ interface HeaderActionsProps {
     name: string | null
     image: string | null
     email: string | null
-    emailVerified: string | null
     hashedPassword: string | null
-    createdAt?: string
-    updatedAt?: string
+    createdAt?: string | Date
+    updatedAt?: string | Date
   } | null
 }
 
