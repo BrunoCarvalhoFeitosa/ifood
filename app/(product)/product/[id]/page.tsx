@@ -1,7 +1,6 @@
+import db from "@/app/_libs/prisma"
 import { ProductSlideButtonProvider } from "@/app/_contexts/ProductSlideButtonContext"
 import { notFound } from "next/navigation"
-import db from "@/app/_libs/prisma"
-import { Header } from "@/app/_components/common/header/header"
 import { Breadcrumb } from "@/app/_components/common/breadcrumb/breadcrumb"
 import { ProductAddToCart } from "./_components/product-add-to-cart"
 import { ProductContent } from "./_components/product-content"
@@ -14,11 +13,7 @@ interface ProductPageProps {
 }
 
 const ProductPage = async ({ params: { id } }: ProductPageProps) => {
-  const [categories, restaurants, product] = await Promise.all([
-    db.category.findMany({}),
-
-    db.restaurant.findMany({}),
-
+  const [product] = await Promise.all([
     db.product.findUnique({
       where: {
         id
@@ -30,15 +25,12 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
     })
   ])
 
-  if (!product || !restaurants || !product) {
+  if (!product) {
     return notFound()
   }
 
   return (
     <ProductSlideButtonProvider>
-      <div className="hidden xl:flex">
-        <Header categories={categories} restaurants={restaurants} />
-      </div>
       <main className="min-h-[100dvh] w-full overflow-hidden pb-36 xl:pb-36">
         <Breadcrumb param={product.name} />
         <ProductAddToCart product={product} />

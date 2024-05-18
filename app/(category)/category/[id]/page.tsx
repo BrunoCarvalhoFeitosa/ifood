@@ -1,6 +1,5 @@
-import { notFound } from "next/navigation"
 import db from "@/app/_libs/prisma"
-import { Header } from "@/app/_components/common/header/header"
+import { notFound } from "next/navigation"
 import { CategoryProductList } from "./_components/category-product-list"
 import { CategoryRestaurantList } from "./_components/category-restaurant-list"
 import { CategoryList } from "@/app/_components/common/category/category-list"
@@ -12,11 +11,7 @@ interface CategoryPageProps {
 }
 
 const CategoryPage = async ({ params: { id } }: CategoryPageProps) => {
-  const [categories, restaurants, category] = await Promise.all([
-    db.category.findMany({}),
-
-    db.restaurant.findMany({}),
-
+  const [category] = await Promise.all([
     db.category.findUnique({
       where: {
         id
@@ -44,19 +39,16 @@ const CategoryPage = async ({ params: { id } }: CategoryPageProps) => {
     })
   ])
 
-  if (!categories || !restaurants || !category) {
+  if (!category) {
     return notFound()
   }
 
   return (
-    <div>
-      <Header categories={categories} restaurants={restaurants} />
-      <main>
-        <CategoryList selectedCategoryId={id} />
-        <CategoryProductList category={category} />
-        <CategoryRestaurantList restaurants={category.restaurants} />
-      </main>
-    </div>
+    <main>
+      <CategoryList selectedCategoryId={id} />
+      <CategoryProductList category={category} />
+      <CategoryRestaurantList restaurants={category.restaurants} />
+    </main>
   )
 }
 

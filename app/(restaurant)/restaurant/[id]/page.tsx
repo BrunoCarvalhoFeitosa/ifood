@@ -1,6 +1,5 @@
 import db from "@/app/_libs/prisma"
 import { notFound } from "next/navigation"
-import { Header } from "@/app/_components/common/header/header"
 import { Breadcrumb } from "@/app/_components/common/breadcrumb/breadcrumb"
 import { RestaurantContent } from "./_components/restaurant-content"
 import { RestaurantCategorieProducts } from "./_components/restaurant-categorie-products"
@@ -12,11 +11,7 @@ interface RestaurantPageProps {
 }
 
 const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
-  const [categories, restaurants, restaurant] = await Promise.all([
-    db.category.findMany({}),
-
-    db.restaurant.findMany({}),
-
+  const [restaurant] = await Promise.all([
     db.restaurant.findUnique({
       where: {
         id
@@ -66,21 +61,16 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
     })
   ])
 
-  if (!categories || !restaurants || !restaurant) {
+  if (!restaurant) {
     return notFound()
   }
 
   return (
-    <div>
-      <div className="hidden xl:flex">
-        <Header categories={categories} restaurants={restaurants} />
-      </div>
-      <main>
-        <Breadcrumb param={restaurant.name} />
-        <RestaurantContent restaurant={restaurant} />
-        <RestaurantCategorieProducts restaurant={restaurant} />
-      </main>
-    </div>
+    <main>
+      <Breadcrumb param={restaurant.name} />
+      <RestaurantContent restaurant={restaurant} />
+      <RestaurantCategorieProducts restaurant={restaurant} />
+    </main>
   )
 }
 
