@@ -6,7 +6,7 @@ import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
 import { LogOutIcon } from "lucide-react"
 
 interface HeaderAuthenticatedContentProps {
-  currentUser: SafeUser
+  currentUser?: SafeUser | null
 }
 
 export const HeaderAuthenticatedContent = ({

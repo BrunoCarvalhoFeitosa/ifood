@@ -1,13 +1,13 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import { db } from "@/app/_libs/prisma"
-import { User } from "@prisma/client"
+import { SafeUser } from "@/app/_types/SafeUser"
 
 export async function getSession() {
   return await getServerSession(authOptions)
 }
 
-export default async function getCurrentUser(): Promise<User | null> {
+export default async function getCurrentUser(): Promise<SafeUser | null> {
   try {
     const session = await getSession()
 
@@ -32,8 +32,14 @@ export default async function getCurrentUser(): Promise<User | null> {
     }
 
     return {
-      ...currentUser,
-      emailVerified: emailVerifiedDate
+      id: currentUser.id,
+      name: currentUser.name,
+      image: currentUser.image,
+      email: currentUser.email,
+      emailVerified: emailVerifiedDate,
+      hashedPassword: currentUser.hashedPassword,
+      createdAt: currentUser.createdAt.toISOString(),
+      updatedAt: currentUser.updatedAt.toISOString()
     }
   } catch (error: any) {
     console.error("Error fetching current user:", error)
