@@ -76,7 +76,7 @@ export const ProductImage = ({ product }: ProductImageProps) => {
   }
 
   return (
-    <div className="flex w-full gap-[1px] lg:h-[600px] xl:w-[50%]">
+    <div className="flex w-full gap-[1px] lg:h-[600px] xl:w-[60%] 2xl:w-[50%]">
       <div className="hidden h-full w-[180px] flex-col gap-[1px] overflow-hidden xl:flex [&::-webkit-scrollbar]:hidden">
         {Array(6)
           .fill(0)
