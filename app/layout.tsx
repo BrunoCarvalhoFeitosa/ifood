@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { ClientSideHydration } from "./_components/common/client-side-hydration"
+// import { ClientSideHydration } from "./_components/common/client-side-hydration"
 import { CartProvider } from "@/app/_contexts/Cart"
 import { Cart } from "@/app/_components/common/cart/cart"
 import { ToastContainer } from "react-toastify"
@@ -31,13 +31,13 @@ export default async function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <ClientSideHydration>
-          <CartProvider>
-            {children}
-            <Cart />
-            <ToastContainer toastStyle={{ width: "100%" }} />
-          </CartProvider>
-        </ClientSideHydration>
+        {/* <ClientSideHydration> */}
+        <CartProvider>
+          {children}
+          <Cart />
+          <ToastContainer toastStyle={{ width: "100%" }} />
+        </CartProvider>
+        {/* </ClientSideHydration> */}
       </body>
     </html>
   )
