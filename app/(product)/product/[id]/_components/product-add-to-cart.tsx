@@ -58,57 +58,57 @@ export const ProductAddToCart = ({ product }: ProductAddToCartProps) => {
   }, [playAudio, setPlayAudio, audioRef])
 
   return (
-    <div>
+    <div
+      className={`${scrolled ? "visible opacity-100" : "invisible opacity-0"}`}
+    >
       <CartDialog product={product} />
-      {scrolled && (
-        <div className="fixed bottom-0 z-50 w-full border-t border-solid bg-white px-5 py-4 shadow-md">
-          <div className="mt-2 flex justify-between">
-            <div className="flex-1 truncate pr-10">
-              <div className="w-full">
-                <h2 className="truncate text-lg font-extrabold">
-                  {product.name}
-                </h2>
-                <div className="flex items-center gap-2">
-                  <h3 className="text-base font-extrabold">
-                    <span>
-                      {formatCurrency(getCalculateProductTotalPrice(product))}
-                    </span>
-                  </h3>
-                  {product.discountPercentage > 0 && (
-                    <div className="flex items-center gap-2">
-                      <div>
-                        <h4 className="text-sm text-muted-foreground">
-                          <span>De:</span>
-                          <span className="line-through">
-                            {formatCurrency(Number(product.price))}
-                          </span>
-                        </h4>
-                      </div>
-                      <div className="hidden xl:block">
-                        <ProductDiscountBadge product={product} />
-                      </div>
+      <div className="fixed bottom-0 z-50 w-full border-t border-solid bg-white px-5 py-4 shadow-md">
+        <div className="mt-2 flex justify-between">
+          <div className="flex-1 truncate pr-10">
+            <div className="w-full">
+              <h2 className="truncate text-lg font-extrabold">
+                {product.name}
+              </h2>
+              <div className="flex items-center gap-2">
+                <h3 className="text-base font-extrabold">
+                  <span>
+                    {formatCurrency(getCalculateProductTotalPrice(product))}
+                  </span>
+                </h3>
+                {product.discountPercentage > 0 && (
+                  <div className="flex items-center gap-2">
+                    <div>
+                      <h4 className="text-sm text-muted-foreground">
+                        <span>De:</span>
+                        <span className="line-through">
+                          {formatCurrency(Number(product.price))}
+                        </span>
+                      </h4>
                     </div>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div>
-              <Button
-                type="button"
-                variant="default"
-                className="h-[45px] w-full rounded-md text-base"
-                onClick={() => handleAddToCartClick()}
-              >
-                <span>Comprar</span>
-                <span className="ml-1 hidden xl:block">{product.name}</span>
-              </Button>
-              <div className="hidden">
-                <audio src="/audio/ifood-sound.mp3" ref={audioRef} />
+                    <div className="hidden xl:block">
+                      <ProductDiscountBadge product={product} />
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
+          <div>
+            <Button
+              type="button"
+              variant="default"
+              className="h-[45px] w-full rounded-md text-base"
+              onClick={() => handleAddToCartClick()}
+            >
+              <span>Comprar</span>
+              <span className="ml-1 hidden xl:block">{product.name}</span>
+            </Button>
+            <div className="hidden">
+              <audio src="/audio/ifood-sound.mp3" ref={audioRef} />
+            </div>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   )
 }
