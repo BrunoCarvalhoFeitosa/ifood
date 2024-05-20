@@ -1,9 +1,9 @@
 "use client"
-import { useProductSlideButton } from "@/app/_contexts/ProductSlideButtonContext"
+import { useSlideButton } from "@/app/_contexts/SlideButtonContext"
 import { Button } from "@/app/_components/ui/button"
 
 export const ProductSlideButton = () => {
-  const { setIsOpen, isOpen } = useProductSlideButton()
+  const { setIsOpen, isOpen } = useSlideButton()
 
   return (
     <div className="mb-5 flex justify-center xl:hidden">
