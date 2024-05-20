@@ -62,7 +62,7 @@ export const ProductAddToCart = ({ product }: ProductAddToCartProps) => {
       className={`${scrolled ? "visible opacity-100" : "invisible opacity-0"}`}
     >
       <CartDialog product={product} />
-      <div className="fixed bottom-0 z-50 w-full border-t border-solid bg-white px-5 py-4 shadow-md">
+      <div className="fixed left-0 top-0 z-50 w-full border-t border-solid bg-white px-5 py-4 shadow-md">
         <div className="mt-2 flex justify-between">
           <div className="flex-1 truncate pr-10">
             <div className="w-full">
