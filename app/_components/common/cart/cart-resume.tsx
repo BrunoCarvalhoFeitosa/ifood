@@ -21,7 +21,7 @@ export const CartResume = () => {
   }
 
   return (
-    <div className="flex w-full flex-col gap-3">
+    <div className="flex w-full flex-col gap-5">
       {products.length >= 1 && (
         <div className="text-sm xl:text-base">
           <div className="flex items-center justify-between gap-2">
