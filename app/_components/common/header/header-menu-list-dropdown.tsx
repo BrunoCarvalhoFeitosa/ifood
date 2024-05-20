@@ -25,11 +25,13 @@ export const HeaderMenuListDropdown = ({
       <AccordionItem value="item-1">
         <AccordionTrigger>Cardápio</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-2">
-          {categories.map((category) => (
-            <Link key={category.id} href={`/category/${category.id}`}>
-              {category.name}
-            </Link>
-          ))}
+          {categories
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((category) => (
+              <Link key={category.id} href={`/category/${category.id}`}>
+                {category.name}
+              </Link>
+            ))}
         </AccordionContent>
       </AccordionItem>
     </Accordion>
