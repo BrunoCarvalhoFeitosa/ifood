@@ -10,7 +10,7 @@ export const CartProducts = () => {
   return (
     <div className="mt-2 h-[calc(100%-280px)] overflow-y-auto [&::-webkit-scrollbar]:hidden">
       {products.length >= 1 ? (
-        <div className="flex flex-col gap-6  ">
+        <div className="flex flex-col gap-3">
           {products.map((product) => (
             <CartItem key={product.id} cartProduct={product} />
           ))}
