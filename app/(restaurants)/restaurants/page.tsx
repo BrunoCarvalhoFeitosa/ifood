@@ -1,6 +1,6 @@
 import db from "@/app/_libs/prisma"
 import { notFound, redirect } from "next/navigation"
-import { Header } from "@/app/_components/common/header/header"
+import { Header } from "@/app/_components/common/header"
 import RestaurantsList from "./_components/restaurants-list"
 
 interface RestaurantPageProps {

@@ -1,6 +1,6 @@
 import db from "@/app/_libs/prisma"
 import { notFound } from "next/navigation"
-import { Header } from "@/app/_components/common/header/header"
+import { Header } from "@/app/_components/common/header"
 import { CategoryProductList } from "./_components/category-product-list"
 import { CategoryRestaurantList } from "./_components/category-restaurant-list"
 import { CategoryList } from "@/app/_components/common/category/category-list"

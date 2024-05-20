@@ -1,6 +1,7 @@
 import db from "@/app/_libs/prisma"
+import { SlideButtonProvider } from "@/app/_contexts/SlideButtonContext"
 import { notFound } from "next/navigation"
-import { Header } from "@/app/_components/common/header/header"
+import { Header } from "@/app/_components/common/header"
 import { Breadcrumb } from "@/app/_components/common/breadcrumb/breadcrumb"
 import { RestaurantContent } from "./_components/restaurant-content"
 import { RestaurantCategorieProducts } from "./_components/restaurant-categorie-products"
@@ -71,7 +72,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
   }
 
   return (
-    <div>
+    <SlideButtonProvider>
       <div className="hidden xl:flex">
         <Header categories={categories} restaurants={restaurants} />
       </div>
@@ -80,7 +81,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
         <RestaurantContent restaurant={restaurant} />
         <RestaurantCategorieProducts restaurant={restaurant} />
       </main>
-    </div>
+    </SlideButtonProvider>
   )
 }
 

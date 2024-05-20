@@ -1,7 +1,7 @@
 import db from "@/app/_libs/prisma"
-import { ProductSlideButtonProvider } from "@/app/_contexts/ProductSlideButtonContext"
+import { SlideButtonProvider } from "@/app/_contexts/SlideButtonContext"
 import { notFound } from "next/navigation"
-import { Header } from "@/app/_components/common/header/header"
+import { Header } from "@/app/_components/common/header"
 import { Breadcrumb } from "@/app/_components/common/breadcrumb/breadcrumb"
 import { ProductAddToCart } from "./_components/product-add-to-cart"
 import { ProductContent } from "./_components/product-content"
@@ -35,11 +35,11 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
   }
 
   return (
-    <ProductSlideButtonProvider>
+    <SlideButtonProvider>
       <div className="hidden xl:flex">
         <Header categories={categories} restaurants={restaurants} />
       </div>
-      <main className="min-h-[100dvh] w-full overflow-hidden pb-36 xl:pb-36">
+      <main className="min-h-[100dvh] w-full overflow-hidden">
         <Breadcrumb param={product.name} />
         <ProductAddToCart product={product} />
         <ProductContent product={product} />
@@ -49,7 +49,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
           categoryId={product.categoryId}
         />
       </main>
-    </ProductSlideButtonProvider>
+    </SlideButtonProvider>
   )
 }
 

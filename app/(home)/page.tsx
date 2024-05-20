@@ -1,6 +1,6 @@
 import db from "@/app/_libs/prisma"
 import { notFound } from "next/navigation"
-import { Header } from "@/app/_components/common/header/header"
+import { Header } from "@/app/_components/common/header"
 import { Search } from "@/app/_components/common/search/search"
 import { CategoryList } from "@/app/_components/common/category/category-list"
 import { ProductList } from "@/app/_components/common/product/product-list"
@@ -43,9 +43,7 @@ const HomePage = async () => {
               name: true,
               imageUrl: true,
               deliveryFee: true,
-              deliveryTimeMinutes: true,
-              categories: true,
-              products: true
+              deliveryTimeMinutes: true
             }
           }
         }
@@ -64,9 +62,7 @@ const HomePage = async () => {
               name: true,
               imageUrl: true,
               deliveryFee: true,
-              deliveryTimeMinutes: true,
-              categories: true,
-              products: true
+              deliveryTimeMinutes: true
             }
           }
         }
