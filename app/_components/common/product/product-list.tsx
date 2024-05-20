@@ -1,3 +1,4 @@
+"use client"
 import { Prisma } from "@prisma/client"
 import { ProductListItem } from "./product-list-item"
 
