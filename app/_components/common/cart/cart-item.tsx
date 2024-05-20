@@ -6,8 +6,9 @@ import {
   getCalculateProductTotalPrice
 } from "@/app/_helpers/price"
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/app/_components/ui/button"
-import { Trash2Icon } from "lucide-react"
+import { FileStackIcon, Trash2Icon } from "lucide-react"
 
 interface CartItemProps {
   cartProduct: CartProduct
@@ -25,6 +26,11 @@ export const CartItem = ({ cartProduct }: CartItemProps) => {
           alt={cartProduct.name}
           className="h-full w-full object-cover"
         />
+        <div className="absolute -left-0 top-0 bg-primary p-1.5 text-white">
+          <Link href={`/product/${cartProduct.id}`}>
+            <FileStackIcon size={18} />
+          </Link>
+        </div>
       </div>
       <div className="flex-1 truncate">
         <div className="flex w-full items-center gap-2">
