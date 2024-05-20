@@ -1,8 +1,9 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { ClientSideHydration } from "./_components/common/client-side-hydration"
+import { ClientSideHydration } from "@/app/_components/common/client-side-hydration"
 import { CartProvider } from "@/app/_contexts/Cart"
 import { Cart } from "@/app/_components/common/cart/cart"
+import { Footer } from "@/app/_components/common/footer"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import "./globals.css"
@@ -35,6 +36,7 @@ export default function RootLayout({
           <CartProvider>
             {children}
             <Cart />
+            <Footer />
             <ToastContainer toastStyle={{ width: "100%" }} />
           </CartProvider>
         </ClientSideHydration>
