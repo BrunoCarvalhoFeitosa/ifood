@@ -1,9 +1,9 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
+import Link from "next/link"
 import { Button } from "@/app/_components/ui/button"
 import { Logo } from "@/public/svgs/logo"
 import { FooterWave } from "@/public/svgs/footer-wave"
-import Link from "next/link"
 
 export const Footer = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
@@ -41,7 +41,7 @@ export const Footer = () => {
           <div className="text-white">
             <div className="text-center lg:text-left">
               <h5 className="text-2xl font-extrabold">Já baixou nosso App?</h5>
-              <p>
+              <p className="text-base">
                 Peça seu delivery, veja o menu, baixe stickers, peça e retire,
                 encontre os restaurantes mais próximos, tenha todos os cupons e
                 muito mais.
@@ -66,38 +66,46 @@ export const Footer = () => {
         <div className="text-center lg:text-left">
           <h6 className="mb-3 font-extrabold">Departamentos</h6>
           <ul className="flex flex-col gap-1">
-            <li className="cursor-pointer">Comida brasileira</li>
-            <li className="cursor-pointer">Comida japonesa</li>
-            <li className="cursor-pointer">Hambúrgueres</li>
-            <li className="cursor-pointer">Pizzas</li>
-            <li className="cursor-pointer">Sobremesas</li>
+            <li className="cursor-pointer text-base">Comida brasileira</li>
+            <li className="cursor-pointer text-base">Comida japonesa</li>
+            <li className="cursor-pointer text-base">Hambúrgueres</li>
+            <li className="cursor-pointer text-base">Pizzas</li>
+            <li className="cursor-pointer text-base">Sobremesas</li>
           </ul>
         </div>
         <div className="text-center lg:text-left">
           <h6 className="mb-3 font-extrabold">Institucional</h6>
           <ul className="flex flex-col gap-1">
-            <li className="cursor-pointer">Institucional</li>
-            <li className="cursor-pointer">Políticas de privacidade</li>
-            <li className="cursor-pointer">Políticas de cookies</li>
-            <li className="cursor-pointer">Código de conduta e ética</li>
-            <li className="cursor-pointer">Segurança e privacidade</li>
+            <li className="cursor-pointer text-base">Institucional</li>
+            <li className="cursor-pointer text-base">
+              Políticas de privacidade
+            </li>
+            <li className="cursor-pointer text-base">Políticas de cookies</li>
+            <li className="cursor-pointer text-base">
+              Código de conduta e ética
+            </li>
+            <li className="cursor-pointer text-base">
+              Segurança e privacidade
+            </li>
           </ul>
         </div>
         <div className="text-center lg:text-left">
           <h6 className="mb-3 font-extrabold">Descubra</h6>
           <ul className="flex flex-col gap-1">
-            <li className="cursor-pointer">Newsletter</li>
-            <li className="cursor-pointer">Fale conosco</li>
-            <li className="cursor-pointer">Carreiras</li>
-            <li className="cursor-pointer">Seja um entregador</li>
-            <li className="cursor-pointer">
+            <li className="cursor-pointer text-base">Newsletter</li>
+            <li className="cursor-pointer text-base">Fale conosco</li>
+            <li className="cursor-pointer text-base">Carreiras</li>
+            <li className="cursor-pointer text-base">Seja um entregador</li>
+            <li className="cursor-pointer text-base">
               Cadastre seu restaurante ou mercado
             </li>
           </ul>
         </div>
       </div>
       <div className="mx-auto w-[97%] py-4">
-        <p className="text-center lg:text-left">© Copyright 2024 - iFood</p>
+        <p className="text-center text-base lg:text-left">
+          © Copyright 2024 - iFood
+        </p>
       </div>
     </footer>
   )
