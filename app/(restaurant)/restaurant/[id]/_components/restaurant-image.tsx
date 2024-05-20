@@ -1,4 +1,6 @@
 "use client"
+import { useContext } from "react"
+import { CartContext } from "@/app/_contexts/Cart"
 import { Restaurant } from "@prisma/client"
 import { useRouter } from "next/navigation"
 import {
@@ -11,6 +13,7 @@ import { Button } from "@/app/_components/ui/button"
 import {
   ChevronLeftIcon,
   FullscreenIcon,
+  ShoppingBagIcon,
   ZoomInIcon,
   ZoomOutIcon
 } from "lucide-react"
@@ -22,9 +25,20 @@ interface RestaurantImageProps {
 export const RestaurantImage = ({ restaurant }: RestaurantImageProps) => {
   const Controls = () => {
     const { zoomIn, zoomOut, resetTransform } = useControls()
+    const { setIsCartOpen } = useContext(CartContext)
 
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
+        <Button
+          type="button"
+          title="Abrir carrinho"
+          variant="ghost"
+          size="sm"
+          className="flex p-0 text-white/60 hover:text-primary xl:hidden"
+          onClick={() => setIsCartOpen(true)}
+        >
+          <ShoppingBagIcon />
+        </Button>
         <Button
           type="button"
           title="Aumentar zoom"
