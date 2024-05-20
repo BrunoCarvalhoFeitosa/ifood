@@ -3,7 +3,6 @@ import { signOut } from "next-auth/react"
 import { SafeUser } from "@/app/_types/SafeUser"
 import { Button } from "@/app/_components/ui/button"
 import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
-import { LogOutIcon } from "lucide-react"
 
 interface HeaderAuthenticatedContentProps {
   currentUser: SafeUser | null
@@ -25,21 +24,22 @@ export const HeaderAuthenticatedContent = ({
             </Avatar>
           </div>
           <div>
-            <h3 className="font-semibold">{currentUser?.name}</h3>
-            <h4 className="block text-xs text-muted-foreground">
+            <h3 className="text-base font-semibold">{currentUser?.name}</h3>
+            <h4 className="block text-sm text-muted-foreground">
               {currentUser?.email}
             </h4>
+            <div>
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon"
+                className="h-fit w-fit text-sm"
+                onClick={() => signOut()}
+              >
+                Sair da conta
+              </Button>
+            </div>
           </div>
-        </div>
-        <div>
-          <Button
-            type="button"
-            variant="default"
-            size="icon"
-            onClick={() => signOut()}
-          >
-            <LogOutIcon size={20} />
-          </Button>
         </div>
       </div>
     </div>
