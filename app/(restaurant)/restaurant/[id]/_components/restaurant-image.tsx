@@ -91,7 +91,7 @@ export const RestaurantImage = ({ restaurant }: RestaurantImageProps) => {
               height={0}
               quality={100}
               sizes="100vw 100vh"
-              className="h-full w-full object-cover brightness-[.40]"
+              className="h-full w-full object-cover brightness-[.50]"
             />
           </TransformComponent>
         </TransformWrapper>

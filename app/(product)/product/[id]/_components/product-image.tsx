@@ -77,7 +77,7 @@ export const ProductImage = ({ product }: ProductImageProps) => {
 
   return (
     <div className="flex w-full gap-[1px] lg:h-[600px] xl:w-[60%] 2xl:w-[50%]">
-      <div className="hidden h-full w-[180px] flex-col gap-[1px] overflow-hidden xl:flex [&::-webkit-scrollbar]:hidden">
+      <div className="hidden h-full w-[180px] flex-col gap-[2px] overflow-hidden xl:flex [&::-webkit-scrollbar]:hidden">
         {Array(6)
           .fill(0)
           .map((_, index) => (
@@ -88,7 +88,7 @@ export const ProductImage = ({ product }: ProductImageProps) => {
               width={200}
               height={200}
               quality={100}
-              className="h-[calc(100%/6)] w-[180px] object-cover brightness-[.40]"
+              className="h-[calc(100%/6)] w-[180px] cursor-zoom-in overflow-hidden object-cover brightness-[.50] hover:brightness-75"
             />
           ))}
       </div>
@@ -98,17 +98,19 @@ export const ProductImage = ({ product }: ProductImageProps) => {
             <BackToHomeButton />
             <Controls />
           </div>
-          <TransformComponent>
-            <Image
-              src={product.imageUrl}
-              alt={product.name}
-              width={0}
-              height={0}
-              quality={100}
-              sizes="100vw 100vh"
-              className="h-full w-full object-cover brightness-[.40]"
-            />
-          </TransformComponent>
+          <div className="h-full">
+            <TransformComponent>
+              <Image
+                src={product.imageUrl}
+                alt={product.name}
+                width={0}
+                height={0}
+                quality={100}
+                sizes="100vw 100vh"
+                className="h-full w-full object-cover brightness-[.50] hover:brightness-100"
+              />
+            </TransformComponent>
+          </div>
         </TransformWrapper>
       </div>
     </div>
