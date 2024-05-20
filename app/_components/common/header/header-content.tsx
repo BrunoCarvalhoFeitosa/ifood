@@ -1,3 +1,4 @@
+"use server"
 import { Category, Restaurant } from "@prisma/client"
 import { SafeUser } from "@/app/_types/SafeUser"
 import Link from "next/link"
@@ -42,7 +43,7 @@ export const HeaderContent = async ({
         <Button
           type="button"
           variant="ghost"
-          className="flex justify-start gap-2 rounded-full font-semibold hover:bg-gray-200"
+          className="flex justify-start gap-2 rounded-full font-semibold hover:bg-gray-100"
         >
           <div>
             <NotebookTextIcon size={20} />
@@ -52,7 +53,7 @@ export const HeaderContent = async ({
         <Button
           type="button"
           variant="ghost"
-          className="flex justify-start gap-2 rounded-full font-semibold hover:bg-gray-200"
+          className="flex justify-start gap-2 rounded-full font-semibold hover:bg-gray-100"
         >
           <div>
             <HeartIcon size={20} />
