@@ -61,7 +61,7 @@ export const HeaderContent = async ({
           <div className="text-sm xl:text-base">Restaurantes Favoritos</div>
         </Button>
       </div>
-      <div className="max-h-[62vh] overflow-y-auto [&::-webkit-scrollbar]:hidden">
+      <div className="max-h-[60vh] overflow-y-auto [&::-webkit-scrollbar]:hidden">
         <HeaderMenuListDropdown categories={categories} />
         <HeaderRestaurantListDropdown restaurants={restaurants} />
       </div>
