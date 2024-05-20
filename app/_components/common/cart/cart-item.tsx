@@ -44,12 +44,12 @@ export const CartItem = ({ cartProduct }: CartItemProps) => {
         <div className="mb-2">
           <h4 className="text-xs">{cartProduct.restaurant.name}</h4>
         </div>
-        <div className="flex flex-col items-center gap-2 xl:flex-row">
-          <h4 className="text-lg font-extrabold">
+        <div className="flex flex-col items-start xl:flex-row xl:items-center xl:gap-2">
+          <h4 className="text-base font-extrabold xl:text-lg">
             {formatCurrency(getCalculateProductTotalPrice(cartProduct))}
           </h4>
           {cartProduct.discountPercentage > 0 && (
-            <h5 className="text-sm text-muted-foreground line-through">
+            <h5 className="text-xs text-muted-foreground line-through xl:text-sm">
               {formatCurrency(Number(cartProduct.price))}
             </h5>
           )}
