@@ -1,4 +1,14 @@
-export const AccountIllustration = () => {
+"use client"
+
+interface AccountIllustrationProps {
+  width?: string
+  height?: string
+}
+
+export const AccountIllustration = ({
+  width,
+  height
+}: AccountIllustrationProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +16,8 @@ export const AccountIllustration = () => {
       x="0px"
       y="0px"
       viewBox="0 0 750 500"
+      width={width}
+      height={height}
     >
       <g id="Background_Complete">
         <g>
