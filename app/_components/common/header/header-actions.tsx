@@ -1,3 +1,4 @@
+"use server"
 import { Category, Restaurant } from "@prisma/client"
 import { SafeUser } from "@/app/_types/SafeUser"
 import { Button } from "@/app/_components/ui/button"
@@ -27,9 +28,9 @@ export const HeaderActions = ({
       <SheetTrigger asChild>
         <Button
           type="button"
-          variant="ghost"
+          variant="default"
           size="default"
-          className="h-12 w-12 rounded-full transition-all duration-700 hover:bg-primary hover:text-white md:h-14 md:w-14"
+          className="h-12 w-12 rounded-full transition-all duration-700 hover:text-white hover:opacity-80 md:h-14 md:w-14"
         >
           <MenuIcon size={25} />
         </Button>

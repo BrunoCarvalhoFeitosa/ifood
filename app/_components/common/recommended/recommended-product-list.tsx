@@ -1,3 +1,4 @@
+"use server"
 import db from "@/app/_libs/prisma"
 import { RecommendedProductListContent } from "./recommended-product-list-content"
 
