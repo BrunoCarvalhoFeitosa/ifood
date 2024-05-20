@@ -14,15 +14,13 @@ export const RestaurantDelivery = ({ restaurant }: RestaurantDeliveryProps) => {
         <div className="text-primary">
           <FlameIcon size={24} />
         </div>
-        <div className="text-sm text-muted-foreground">
-          Pedidos entregue hoje 192
-        </div>
+        <div className="text-sm">Pedidos entregue hoje 192</div>
       </div>
       <div className="flex items-center gap-1">
         <div className="text-primary">
           <BikeIcon size={24} />
         </div>
-        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+        <div className="flex items-center gap-1 text-sm">
           {Number(restaurant.deliveryFee) === 0 ? (
             <div>
               <span>Entrega grátis</span>
@@ -43,7 +41,7 @@ export const RestaurantDelivery = ({ restaurant }: RestaurantDeliveryProps) => {
         <div className="text-primary">
           <TimerIcon size={24} />
         </div>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm">
           Tempo de entrega {restaurant.deliveryTimeMinutes} min
         </div>
       </div>
@@ -51,8 +49,8 @@ export const RestaurantDelivery = ({ restaurant }: RestaurantDeliveryProps) => {
         <div className="text-primary">
           <ShieldCheckIcon size={24} />
         </div>
-        <div className="text-sm text-muted-foreground">
-          Receba outro pedido em casos de má entrega.
+        <div className="text-sm">
+          Receba outro pedido em casos de má entrega
         </div>
       </div>
     </div>

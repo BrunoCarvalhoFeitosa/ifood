@@ -25,7 +25,7 @@ export const ProductDelivery = ({ product }: ProductDeliveryProps) => {
         <div className="text-primary">
           <ChefHatIcon size={24} />
         </div>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm">
           Vendido e entregue por {product.restaurant.name}
         </div>
       </div>
@@ -33,8 +33,8 @@ export const ProductDelivery = ({ product }: ProductDeliveryProps) => {
         <div className="text-primary">
           <BikeIcon size={24} />
         </div>
-        <div className="text-sm text-muted-foreground">
-          Preço de entrega{" "}
+        <div className="text-sm">
+          <span>Preço de entrega</span>
           {Number(product.restaurant.deliveryFee) === 0
             ? "Entrega Grátis"
             : formatCurrency(Number(product.restaurant.deliveryFee))}
@@ -44,7 +44,7 @@ export const ProductDelivery = ({ product }: ProductDeliveryProps) => {
         <div className="text-primary">
           <TimerIcon size={24} />
         </div>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-sm">
           Tempo de entrega {product.restaurant.deliveryTimeMinutes} min
         </div>
       </div>
@@ -52,8 +52,8 @@ export const ProductDelivery = ({ product }: ProductDeliveryProps) => {
         <div className="text-primary">
           <ShieldCheckIcon size={24} />
         </div>
-        <div className="text-sm text-muted-foreground">
-          Receba outro pedido em casos de má entrega.
+        <div className="text-sm">
+          Receba outro pedido em casos de má entrega
         </div>
       </div>
     </div>
