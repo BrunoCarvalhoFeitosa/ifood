@@ -139,6 +139,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
             )
 
             setPlayAudio(true)
+            setQuantity(1)
 
             saveCartToLocalStorage(updatedProducts)
 
@@ -159,6 +160,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
         saveCartToLocalStorage(newProducts)
         setPlayAudio(true)
+        setQuantity(1)
 
         return newProducts
       })
@@ -177,6 +179,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       })
 
       setPlayAudio(true)
+      setQuantity(1)
     }
   }
 
