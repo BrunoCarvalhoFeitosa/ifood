@@ -22,9 +22,7 @@ export const CategoryList = async ({
               <CategoryListItem
                 key={category.id}
                 category={category}
-                selectedCategoryId={
-                  selectedCategoryId ?? "ba1ce418-5249-40f7-9678-0c4cb4a5915b"
-                }
+                selectedCategoryId={selectedCategoryId ?? categories[0].id}
               />
             </Link>
           ))}
