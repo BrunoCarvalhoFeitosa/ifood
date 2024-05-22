@@ -52,6 +52,7 @@ model User {
   sessions Session[]
   orders Order[]
   favoriteRestaurants UserFavoriteRestaurant[]
+  favoriteProducts UserFavoriteProduct[]
 
   @@map("users")
 }
@@ -86,6 +87,15 @@ model UserFavoriteRestaurant {
    @@id([userId, restaurantId])
 }
 
+model UserFavoriteProduct {
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  productId String
+  product Product @relation(fields: [productId], references: [id])
+
+   @@id([userId, productId])
+}
+
 model Category {
   id String @id @default(uuid())
   name String
@@ -106,6 +116,7 @@ model Product {
   categoryId String
   category Category @relation(fields: [categoryId], references: [id])
   orderProducts OrderProduct[]
+  favoritedByUsers UserFavoriteProduct[]
 }
 
 model OrderProduct {
