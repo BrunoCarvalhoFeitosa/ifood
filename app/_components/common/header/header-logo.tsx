@@ -11,7 +11,7 @@ export const HeaderLogo = () => {
       type="button"
       size="lg"
       variant="ghost"
-      className="h-auto px-0"
+      className="h-auto border-none px-0 outline-none"
       onClick={() => router.push("/")}
     >
       <Logo width="100px" height="60px" />

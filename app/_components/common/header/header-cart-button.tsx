@@ -1,11 +1,17 @@
 "use client"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { CartContext } from "@/app/_contexts/Cart"
 import { Button } from "@/app/_components/ui/button"
 import { ShoppingBagIcon } from "lucide-react"
+import { usePathname } from "next/navigation"
 
-export const HeaderCart = () => {
+export const HeaderCartButton = () => {
   const { setIsCartOpen, products } = useContext(CartContext)
+  const pathname = usePathname()
+
+  useEffect(() => {
+    setIsCartOpen(false)
+  }, [pathname])
 
   return (
     <div className="relative">

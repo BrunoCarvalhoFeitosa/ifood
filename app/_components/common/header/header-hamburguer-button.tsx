@@ -9,20 +9,20 @@ import {
   SheetTitle,
   SheetTrigger
 } from "@/app/_components/ui/sheet"
+import { HeaderSideMenu } from "./header-side-menu"
 import { MenuIcon } from "lucide-react"
-import { HeaderContent } from "./header-content"
 
-interface HeaderActionsProps {
+interface HeaderHamburguerButtonProps {
   categories: Category[]
   restaurants?: Restaurant[]
   currentUser: SafeUser | null
 }
 
-export const HeaderActions = ({
+export const HeaderHamburguerButton = ({
   categories,
   restaurants,
   currentUser
-}: HeaderActionsProps) => {
+}: HeaderHamburguerButtonProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -39,7 +39,7 @@ export const HeaderActions = ({
         <SheetHeader className="text-left">
           <SheetTitle>Menu</SheetTitle>
         </SheetHeader>
-        <HeaderContent
+        <HeaderSideMenu
           categories={categories}
           restaurants={restaurants}
           currentUser={currentUser}

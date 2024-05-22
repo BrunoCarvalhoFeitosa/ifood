@@ -2,8 +2,8 @@
 import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { Category, Restaurant } from "@prisma/client"
 import { HeaderLogo } from "./header-logo"
-import { HeaderCart } from "./header-cart"
-import { HeaderActions } from "./header-actions"
+import { HeaderCartButton } from "./header-cart-button"
+import { HeaderHamburguerButton } from "./header-hamburguer-button"
 
 interface HeaderProps {
   categories: Category[]
@@ -17,8 +17,8 @@ export const Header = async ({ categories, restaurants }: HeaderProps) => {
     <header className="sticky top-0 z-50 flex w-full items-center justify-between bg-white p-5">
       <HeaderLogo />
       <div className="flex items-center gap-1">
-        <HeaderCart />
-        <HeaderActions
+        <HeaderCartButton />
+        <HeaderHamburguerButton
           categories={categories}
           restaurants={restaurants}
           currentUser={currentUser}
