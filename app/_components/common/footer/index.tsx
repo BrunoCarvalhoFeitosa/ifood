@@ -30,7 +30,7 @@ export const Footer = () => {
   }, [footerRef, options])
 
   return (
-    <footer ref={footerRef} className="mt-20 w-full">
+    <footer ref={footerRef} className="mt-10 w-full lg:mt-20">
       <div className="w-full bg-primary px-5 py-10 lg:py-14">
         <div className="flex flex-col items-center gap-6 lg:flex-row">
           <div>
