@@ -19,7 +19,7 @@ const AccountPageLayout = async ({
   ])
 
   if (!currentUser) {
-    return redirect("/")
+    return redirect("/sign-in")
   }
 
   return (
