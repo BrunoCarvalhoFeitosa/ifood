@@ -41,13 +41,13 @@ interface RestaurantCategorieProductsProps {
     }
   }>
   currentUser: SafeUser | null
-  userFavoriteProduct: UserFavoriteProduct[]
+  userFavoriteProducts: UserFavoriteProduct[]
 }
 
 export const RestaurantCategorieProducts = ({
   restaurant,
   currentUser,
-  userFavoriteProduct
+  userFavoriteProducts
 }: RestaurantCategorieProductsProps) => {
   return (
     <section className="mt-5 flex w-full flex-col-reverse gap-8">
@@ -57,7 +57,7 @@ export const RestaurantCategorieProducts = ({
           title={category.name}
           products={category.products}
           currentUser={currentUser}
-          userFavoriteProducts={userFavoriteProduct}
+          userFavoriteProducts={userFavoriteProducts}
         />
       ))}
     </section>
