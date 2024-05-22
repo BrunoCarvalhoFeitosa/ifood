@@ -1,6 +1,7 @@
 "use client"
-import { Prisma } from "@prisma/client"
+import { Prisma, UserFavoriteProduct } from "@prisma/client"
 import { ProductListItem } from "./product-list-item"
+import { SafeUser } from "@/app/_types/SafeUser"
 
 interface ProductListProps {
   title: string
@@ -16,9 +17,16 @@ interface ProductListProps {
       }
     }
   }>[]
+  currentUser: SafeUser | null
+  userFavoriteProducts: UserFavoriteProduct[]
 }
 
-export const ProductList = ({ title, products }: ProductListProps) => {
+export const ProductList = ({
+  title,
+  products,
+  currentUser,
+  userFavoriteProducts
+}: ProductListProps) => {
   return (
     <section className="w-full px-5">
       <div className="flex flex-col justify-between md:flex-row md:items-center">
@@ -28,7 +36,12 @@ export const ProductList = ({ title, products }: ProductListProps) => {
       </div>
       <div className="custom-scrollbar flex items-center gap-5 overflow-x-auto py-3">
         {products.slice(0, 12).map((product) => (
-          <ProductListItem key={product.id} product={product} />
+          <ProductListItem
+            key={product.id}
+            product={product}
+            currentUser={currentUser}
+            userFavoriteProducts={userFavoriteProducts}
+          />
         ))}
       </div>
     </section>

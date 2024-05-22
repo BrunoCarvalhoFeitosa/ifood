@@ -1,4 +1,5 @@
 import db from "@/app/_libs/prisma"
+import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { SlideButtonProvider } from "@/app/_contexts/SlideButtonContext"
 import { notFound } from "next/navigation"
 import { Header } from "@/app/_components/common/header"
@@ -14,23 +15,35 @@ interface ProductPageProps {
 }
 
 const ProductPage = async ({ params: { id } }: ProductPageProps) => {
-  const [categories, restaurants, product] = await Promise.all([
-    db.category.findMany({}),
+  const currentUser = await getCurrentUser()
 
-    db.restaurant.findMany({}),
+  const [categories, restaurants, product, userFavoriteProducts] =
+    await Promise.all([
+      db.category.findMany({}),
 
-    db.product.findUnique({
-      where: {
-        id
-      },
-      include: {
-        restaurant: true,
-        category: true
-      }
-    })
-  ])
+      db.restaurant.findMany({}),
 
-  if (!categories || !restaurants || !product) {
+      db.product.findUnique({
+        where: {
+          id
+        },
+        include: {
+          restaurant: true,
+          category: true
+        }
+      }),
+
+      db.userFavoriteProduct.findMany({
+        where: {
+          userId: currentUser?.id
+        },
+        include: {
+          product: true
+        }
+      })
+    ])
+
+  if (!categories || !restaurants || !product || !userFavoriteProducts) {
     return notFound()
   }
 
@@ -42,11 +55,17 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
       <main className="min-h-[100dvh] w-full overflow-hidden">
         <Breadcrumb param={product.name} />
         <ProductAddToCart product={product} />
-        <ProductContent product={product} />
+        <ProductContent
+          product={product}
+          currentUser={currentUser}
+          userFavoriteProducts={userFavoriteProducts}
+        />
         <RecommendedProductList
           title="Tão deliciosos quanto"
           productName={product.name}
           categoryId={product.categoryId}
+          currentUser={currentUser}
+          userFavoriteProducts={userFavoriteProducts}
         />
       </main>
     </SlideButtonProvider>

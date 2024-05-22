@@ -1,8 +1,11 @@
 "use client"
 import { useContext } from "react"
+import { SafeUser } from "@/app/_types/SafeUser"
 import { CartContext } from "@/app/_contexts/Cart"
-import { Product } from "@prisma/client"
+import { Product, UserFavoriteProduct } from "@prisma/client"
 import { useRouter } from "next/navigation"
+import { Flip, toast } from "react-toastify"
+import { toggleFavoriteProduct } from "@/app/_actions/product"
 import {
   TransformComponent,
   TransformWrapper,
@@ -13,6 +16,7 @@ import { Button } from "@/app/_components/ui/button"
 import {
   ChevronLeftIcon,
   FullscreenIcon,
+  HeartIcon,
   ShoppingBagIcon,
   ZoomInIcon,
   ZoomOutIcon
@@ -20,55 +24,117 @@ import {
 
 interface ProductImageProps {
   product: Product
+  currentUser: SafeUser | null
+  userFavoriteProducts: UserFavoriteProduct[]
 }
 
-export const ProductImage = ({ product }: ProductImageProps) => {
+export const ProductImage = ({
+  product,
+  currentUser,
+  userFavoriteProducts
+}: ProductImageProps) => {
   const Controls = () => {
     const { zoomIn, zoomOut, resetTransform } = useControls()
     const { setIsCartOpen } = useContext(CartContext)
 
+    const isFavorite = userFavoriteProducts.some(
+      (fav) => fav.productId === product.id
+    )
+
+    const handleFavoriteClick = async () => {
+      if (!currentUser?.id) return
+
+      try {
+        await toggleFavoriteProduct(currentUser.id, product.id)
+
+        if (isFavorite) {
+          toast("Produto removido dos favoritos com sucesso.", {
+            type: "success",
+            toastId: "id",
+            position: "top-right",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+            transition: Flip
+          })
+        } else {
+          toast("Produto favoritado com sucesso.", {
+            type: "success",
+            toastId: "id",
+            position: "top-right",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+            transition: Flip
+          })
+        }
+      } catch (error) {
+        toast.error("Error while favorite product.")
+      }
+    }
+
     return (
-      <div className="flex items-center gap-3">
-        <Button
-          type="button"
-          title="Abrir carrinho"
-          variant="ghost"
-          size="sm"
-          className="flex p-0 text-white/60 hover:text-primary xl:hidden"
-          onClick={() => setIsCartOpen(true)}
-        >
-          <ShoppingBagIcon />
-        </Button>
-        <Button
-          type="button"
-          title="Aumentar zoom"
-          variant="ghost"
-          size="sm"
-          className="p-0 text-white/60 hover:text-primary"
-          onClick={() => zoomIn()}
-        >
-          <ZoomInIcon />
-        </Button>
-        <Button
-          type="button"
-          title="Diminuir zoom"
-          variant="ghost"
-          size="sm"
-          className="p-0 text-white/60 hover:text-primary"
-          onClick={() => zoomOut()}
-        >
-          <ZoomOutIcon />
-        </Button>
-        <Button
-          type="button"
-          title="Resetar zoom"
-          variant="ghost"
-          size="sm"
-          className="p-0 text-white/60 hover:text-primary"
-          onClick={() => resetTransform()}
-        >
-          <FullscreenIcon />
-        </Button>
+      <div className="flex w-full items-center justify-between gap-3">
+        <div className="flex w-full items-center justify-end gap-3 xl:justify-start">
+          <Button
+            type="button"
+            title="Abrir carrinho"
+            variant="ghost"
+            size="sm"
+            className="flex p-0 text-white/60 hover:text-primary xl:hidden"
+            onClick={() => setIsCartOpen(true)}
+          >
+            <ShoppingBagIcon />
+          </Button>
+          <Button
+            type="button"
+            title="Aumentar zoom"
+            variant="ghost"
+            size="sm"
+            className="p-0 text-white/60 hover:text-primary"
+            onClick={() => zoomIn()}
+          >
+            <ZoomInIcon />
+          </Button>
+          <Button
+            type="button"
+            title="Diminuir zoom"
+            variant="ghost"
+            size="sm"
+            className="p-0 text-white/60 hover:text-primary"
+            onClick={() => zoomOut()}
+          >
+            <ZoomOutIcon />
+          </Button>
+          <Button
+            type="button"
+            title="Resetar zoom"
+            variant="ghost"
+            size="sm"
+            className="p-0 text-white/60 hover:text-primary"
+            onClick={() => resetTransform()}
+          >
+            <FullscreenIcon />
+          </Button>
+        </div>
+        <div>
+          <Button
+            type="button"
+            title="Favoritar"
+            variant="ghost"
+            size="sm"
+            className={`p-0 ${isFavorite ? "text-primary" : "text-white/60"} hover:text-primary`}
+            onClick={handleFavoriteClick}
+          >
+            {isFavorite ? <HeartIcon fill="#FF0000" /> : <HeartIcon />}
+          </Button>
+        </div>
       </div>
     )
   }

@@ -1,5 +1,6 @@
 "use client"
-import { Prisma } from "@prisma/client"
+import { Prisma, UserFavoriteProduct } from "@prisma/client"
+import { SafeUser } from "@/app/_types/SafeUser"
 import Link from "next/link"
 import { ProductListItemImage } from "./product-list-item-image"
 import { ProductListItemContent } from "./product-list-item-content"
@@ -17,13 +18,23 @@ interface ProductListItemProps {
       }
     }
   }>
+  currentUser: SafeUser | null
+  userFavoriteProducts: UserFavoriteProduct[]
 }
 
-export const ProductListItem = ({ product }: ProductListItemProps) => {
+export const ProductListItem = ({
+  product,
+  currentUser,
+  userFavoriteProducts
+}: ProductListItemProps) => {
   return (
     <Link href={`/product/${product.id}`}>
       <ProductListItemImage product={product} />
-      <ProductListItemContent product={product} />
+      <ProductListItemContent
+        product={product}
+        currentUser={currentUser}
+        userFavoriteProducts={userFavoriteProducts}
+      />
     </Link>
   )
 }
