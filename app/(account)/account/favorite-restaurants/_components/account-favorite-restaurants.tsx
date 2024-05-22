@@ -35,8 +35,8 @@ export const AccountFavoriteRestaurants = ({
         </div>
       ) : (
         <div>
-          <h3 className="font-medium">
-            Você ainda não marcou nenhum restaurante como favorito.
+          <h3 className="font-semibold">
+            Nenhum restaurante foi marcado como favorito.
           </h3>
         </div>
       )}
