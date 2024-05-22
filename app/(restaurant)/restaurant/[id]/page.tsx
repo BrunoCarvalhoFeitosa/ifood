@@ -16,69 +16,83 @@ interface RestaurantPageProps {
 const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
   const currentUser = await getCurrentUser()
 
-  const [categories, restaurants, restaurant, userFavoriteRestaurants] =
-    await Promise.all([
-      db.category.findMany({}),
+  const [
+    categories,
+    restaurants,
+    restaurant,
+    userFavoriteRestaurants,
+    userFavoriteProducts
+  ] = await Promise.all([
+    db.category.findMany({}),
 
-      db.restaurant.findMany({}),
+    db.restaurant.findMany({}),
 
-      db.restaurant.findUnique({
-        where: {
-          id
-        },
-        include: {
-          categories: {
-            where: {
-              NOT: {
-                name: "Sucos e refrigerantes"
-              }
-            },
-            include: {
-              products: {
-                where: {
-                  restaurantId: id
-                },
-                include: {
-                  restaurant: {
-                    select: {
-                      id: true,
-                      name: true,
-                      imageUrl: true,
-                      deliveryFee: true,
-                      deliveryTimeMinutes: true,
-                      categories: true,
-                      products: true
-                    }
+    db.restaurant.findUnique({
+      where: {
+        id
+      },
+      include: {
+        categories: {
+          where: {
+            NOT: {
+              name: "Sucos e refrigerantes"
+            }
+          },
+          include: {
+            products: {
+              where: {
+                restaurantId: id
+              },
+              include: {
+                restaurant: {
+                  select: {
+                    id: true,
+                    name: true,
+                    imageUrl: true,
+                    deliveryFee: true,
+                    deliveryTimeMinutes: true,
+                    categories: true,
+                    products: true
                   }
                 }
               }
             }
-          },
-          products: {
-            take: 10,
-            include: {
-              restaurant: {
-                select: {
-                  name: true,
-                  imageUrl: true,
-                  deliveryFee: true,
-                  deliveryTimeMinutes: true
-                }
+          }
+        },
+        products: {
+          take: 10,
+          include: {
+            restaurant: {
+              select: {
+                name: true,
+                imageUrl: true,
+                deliveryFee: true,
+                deliveryTimeMinutes: true
               }
             }
           }
         }
-      }),
+      }
+    }),
 
-      db.userFavoriteRestaurant.findMany({
-        where: {
-          userId: currentUser?.id
-        },
-        include: {
-          restaurant: true
-        }
-      })
-    ])
+    db.userFavoriteRestaurant.findMany({
+      where: {
+        userId: currentUser?.id
+      },
+      include: {
+        restaurant: true
+      }
+    }),
+
+    db.userFavoriteProduct.findMany({
+      where: {
+        userId: currentUser?.id
+      },
+      include: {
+        product: true
+      }
+    })
+  ])
 
   if (!categories || !restaurants || !restaurant || !userFavoriteRestaurants) {
     return notFound()
@@ -96,7 +110,11 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
           currentUser={currentUser}
           userFavoriteRestaurants={userFavoriteRestaurants}
         />
-        <RestaurantCategorieProducts restaurant={restaurant} />
+        <RestaurantCategorieProducts
+          restaurant={restaurant}
+          currentUser={currentUser}
+          userFavoriteProducts={userFavoriteProducts}
+        />
       </main>
     </SlideButtonProvider>
   )

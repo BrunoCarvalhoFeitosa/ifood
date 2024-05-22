@@ -1,5 +1,6 @@
 "use client"
-import { Prisma } from "@prisma/client"
+import { Prisma, UserFavoriteProduct } from "@prisma/client"
+import { SafeUser } from "@/app/_types/SafeUser"
 import { ProductList } from "@/app/_components/common/product/product-list"
 
 interface RestaurantCategorieProductsProps {
@@ -39,10 +40,14 @@ interface RestaurantCategorieProductsProps {
       }
     }
   }>
+  currentUser: SafeUser | null
+  userFavoriteProduct: UserFavoriteProduct[]
 }
 
 export const RestaurantCategorieProducts = ({
-  restaurant
+  restaurant,
+  currentUser,
+  userFavoriteProduct
 }: RestaurantCategorieProductsProps) => {
   return (
     <section className="mt-5 flex w-full flex-col-reverse gap-8">
@@ -51,6 +56,8 @@ export const RestaurantCategorieProducts = ({
           key={category.id}
           title={category.name}
           products={category.products}
+          currentUser={currentUser}
+          userFavoriteProducts={userFavoriteProduct}
         />
       ))}
     </section>
