@@ -220,7 +220,7 @@ export const SignInForm = () => {
         <div className="relative hidden h-full flex-1 overflow-hidden bg-gray-100 lg:flex">
           <Image
             fill
-            src="/images/authentication-image.jpg"
+            src="/images/image-authentication.jpg"
             width={0}
             height={0}
             sizes="100vw"
