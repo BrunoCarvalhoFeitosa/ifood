@@ -1,15 +1,23 @@
 "use server"
-import { Restaurant } from "@prisma/client"
+import { Restaurant, UserFavoriteRestaurant } from "@prisma/client"
 import { Button } from "@/app/_components/ui/button"
 import { RestaurantListItem } from "./restaurant-list-item"
 import { ChevronRightIcon } from "lucide-react"
+import { SafeUser } from "@/app/_types/SafeUser"
 
 interface RestaurantListProps {
   title: string
   restaurants: Restaurant[]
+  currentUser: SafeUser | null
+  userFavoriteRestaurants: UserFavoriteRestaurant[]
 }
 
-export const RestaurantList = ({ title, restaurants }: RestaurantListProps) => {
+export const RestaurantList = ({
+  title,
+  restaurants,
+  currentUser,
+  userFavoriteRestaurants
+}: RestaurantListProps) => {
   return (
     <section className="w-full px-5 py-8 lg:py-12">
       <div className="flex flex-col justify-between md:flex-row md:items-center">
@@ -32,7 +40,12 @@ export const RestaurantList = ({ title, restaurants }: RestaurantListProps) => {
       </div>
       <div className="custom-scrollbar flex items-center gap-5 overflow-x-auto py-3">
         {restaurants.map((restaurant) => (
-          <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
+          <RestaurantListItem
+            key={restaurant.id}
+            restaurant={restaurant}
+            currentUser={currentUser}
+            userFavoriteRestaurants={userFavoriteRestaurants}
+          />
         ))}
       </div>
     </section>

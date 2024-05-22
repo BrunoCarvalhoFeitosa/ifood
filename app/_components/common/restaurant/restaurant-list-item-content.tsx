@@ -1,16 +1,65 @@
 "use client"
-import { Restaurant } from "@prisma/client"
+import { Restaurant, UserFavoriteRestaurant } from "@prisma/client"
+import { SafeUser } from "@/app/_types/SafeUser"
 import { formatCurrency } from "@/app/_helpers/price"
+import { Flip, toast } from "react-toastify"
+import { toggleFavoriteRestaurant } from "@/app/_actions/restaurant"
 import { Button } from "@/app/_components/ui/button"
 import { BikeIcon, HeartIcon, TimerIcon } from "lucide-react"
 
 interface RestaurantListItemContentProps {
   restaurant: Restaurant
+  currentUser: SafeUser | null
+  userFavoriteRestaurants: UserFavoriteRestaurant[]
 }
 
 export const RestaurantListItemContent = ({
-  restaurant
+  restaurant,
+  currentUser,
+  userFavoriteRestaurants
 }: RestaurantListItemContentProps) => {
+  const isFavorite = userFavoriteRestaurants.some(
+    (fav) => fav.restaurantId === restaurant.id
+  )
+
+  const handleFavoriteClick = async () => {
+    if (!currentUser?.id) return
+
+    try {
+      await toggleFavoriteRestaurant(currentUser.id, restaurant.id)
+
+      if (isFavorite) {
+        toast("Restaurante removido dos favoritos com sucesso.", {
+          type: "success",
+          toastId: "id",
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+          transition: Flip
+        })
+      } else {
+        toast("Restaurante favoritado com sucesso.", {
+          type: "success",
+          toastId: "id",
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+          transition: Flip
+        })
+      }
+    } catch (error) {
+      toast.error("Error while favorite restaurant.")
+    }
+  }
+
   return (
     <div>
       <div className="my-3">
@@ -20,10 +69,13 @@ export const RestaurantListItemContent = ({
         <div className="text-primary">
           <Button
             type="button"
+            title="Favoritar"
             variant="ghost"
-            className="rounded-full p-0 hover:fill-primary hover:text-primary"
+            size="sm"
+            className={`p-0 text-primary hover:text-primary`}
+            onClick={handleFavoriteClick}
           >
-            <HeartIcon size={20} />
+            {isFavorite ? <HeartIcon fill="#FF0000" /> : <HeartIcon />}
           </Button>
         </div>
         <div className="flex items-center gap-1">

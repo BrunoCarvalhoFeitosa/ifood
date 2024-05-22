@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
-import { Restaurant } from "@prisma/client"
+import { Restaurant, UserFavoriteRestaurant } from "@prisma/client"
+import { SafeUser } from "@/app/_types/SafeUser"
 import { searchRestaurants } from "@/app/_actions/search"
 import { RestaurantListItem } from "@/app/_components/common/restaurant/restaurant-list-item"
 import { Search } from "@/app/_components/common/search/search"
@@ -8,9 +9,15 @@ import { Loader2Icon } from "lucide-react"
 
 interface RestaurantsListProps {
   term: string
+  currentUser: SafeUser | null
+  userFavoriteRestaurants: UserFavoriteRestaurant[]
 }
 
-const RestaurantsList = ({ term }: RestaurantsListProps) => {
+const RestaurantsList = ({
+  term,
+  currentUser,
+  userFavoriteRestaurants
+}: RestaurantsListProps) => {
   const [restaurantsList, setRestaurantsList] = useState<Restaurant[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
@@ -62,7 +69,12 @@ const RestaurantsList = ({ term }: RestaurantsListProps) => {
       </div>
       <div className="mt-5 flex flex-col flex-wrap items-center gap-4 xl:flex-row">
         {restaurantsList.map((restaurant) => (
-          <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
+          <RestaurantListItem
+            key={restaurant.id}
+            restaurant={restaurant}
+            currentUser={currentUser}
+            userFavoriteRestaurants={userFavoriteRestaurants}
+          />
         ))}
       </div>
     </section>

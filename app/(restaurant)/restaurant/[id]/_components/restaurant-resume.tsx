@@ -1,6 +1,6 @@
 "use client"
-import { Badge } from "@/app/_components/ui/badge"
 import { Restaurant } from "@prisma/client"
+import { Badge } from "@/app/_components/ui/badge"
 import { StarIcon } from "lucide-react"
 
 interface RestaurantResumeProps {

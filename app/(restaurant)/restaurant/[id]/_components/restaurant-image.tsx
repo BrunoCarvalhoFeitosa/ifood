@@ -1,8 +1,11 @@
 "use client"
 import { useContext } from "react"
 import { CartContext } from "@/app/_contexts/Cart"
-import { Restaurant } from "@prisma/client"
+import { Restaurant, UserFavoriteRestaurant } from "@prisma/client"
+import { SafeUser } from "@/app/_types/SafeUser"
 import { useRouter } from "next/navigation"
+import { toggleFavoriteRestaurant } from "@/app/_actions/restaurant"
+import { Flip, toast } from "react-toastify"
 import {
   TransformComponent,
   TransformWrapper,
@@ -13,62 +16,125 @@ import { Button } from "@/app/_components/ui/button"
 import {
   ChevronLeftIcon,
   FullscreenIcon,
+  HeartIcon,
   ShoppingBagIcon,
   ZoomInIcon,
   ZoomOutIcon
 } from "lucide-react"
 
 interface RestaurantImageProps {
-  restaurant: Pick<Restaurant, "name" | "imageUrl">
+  restaurant: Pick<Restaurant, "name" | "imageUrl" | "id">
+  currentUser: SafeUser | null
+  userFavoriteRestaurants: UserFavoriteRestaurant[]
 }
 
-export const RestaurantImage = ({ restaurant }: RestaurantImageProps) => {
+export const RestaurantImage = ({
+  restaurant,
+  currentUser,
+  userFavoriteRestaurants
+}: RestaurantImageProps) => {
   const Controls = () => {
     const { zoomIn, zoomOut, resetTransform } = useControls()
     const { setIsCartOpen } = useContext(CartContext)
 
+    const isFavorite = userFavoriteRestaurants.some(
+      (fav) => fav.restaurantId === restaurant.id
+    )
+
+    const handleFavoriteClick = async () => {
+      if (!currentUser?.id) return
+
+      try {
+        await toggleFavoriteRestaurant(currentUser.id, restaurant.id)
+
+        if (isFavorite) {
+          toast("Restaurante removido dos favoritos com sucesso.", {
+            type: "success",
+            toastId: "id",
+            position: "top-right",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+            transition: Flip
+          })
+        } else {
+          toast("Restaurante favoritado com sucesso.", {
+            type: "success",
+            toastId: "id",
+            position: "top-right",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+            transition: Flip
+          })
+        }
+      } catch (error) {
+        toast.error("Error while favorite restaurant.")
+      }
+    }
+
     return (
-      <div className="flex items-center gap-3">
-        <Button
-          type="button"
-          title="Abrir carrinho"
-          variant="ghost"
-          size="sm"
-          className="flex p-0 text-white/60 hover:text-primary xl:hidden"
-          onClick={() => setIsCartOpen(true)}
-        >
-          <ShoppingBagIcon />
-        </Button>
-        <Button
-          type="button"
-          title="Aumentar zoom"
-          variant="ghost"
-          size="sm"
-          className="p-0 text-white/60 hover:text-primary"
-          onClick={() => zoomIn()}
-        >
-          <ZoomInIcon />
-        </Button>
-        <Button
-          type="button"
-          title="Diminuir zoom"
-          variant="ghost"
-          size="sm"
-          className="p-0 text-white/60 hover:text-primary"
-          onClick={() => zoomOut()}
-        >
-          <ZoomOutIcon />
-        </Button>
-        <Button
-          type="button"
-          title="Resetar zoom"
-          variant="ghost"
-          size="sm"
-          className="p-0 text-white/60 hover:text-primary"
-          onClick={() => resetTransform()}
-        >
-          <FullscreenIcon />
-        </Button>
+      <div className="flex w-full items-center justify-between gap-3">
+        <div className="flex w-full items-center justify-end gap-3 xl:justify-start">
+          <Button
+            type="button"
+            title="Abrir carrinho"
+            variant="ghost"
+            size="sm"
+            className="flex p-0 text-white/60 hover:text-primary xl:hidden"
+            onClick={() => setIsCartOpen(true)}
+          >
+            <ShoppingBagIcon />
+          </Button>
+          <Button
+            type="button"
+            title="Aumentar zoom"
+            variant="ghost"
+            size="sm"
+            className="p-0 text-white/60 hover:text-primary"
+            onClick={() => zoomIn()}
+          >
+            <ZoomInIcon />
+          </Button>
+          <Button
+            type="button"
+            title="Diminuir zoom"
+            variant="ghost"
+            size="sm"
+            className="p-0 text-white/60 hover:text-primary"
+            onClick={() => zoomOut()}
+          >
+            <ZoomOutIcon />
+          </Button>
+          <Button
+            type="button"
+            title="Resetar zoom"
+            variant="ghost"
+            size="sm"
+            className="p-0 text-white/60 hover:text-primary"
+            onClick={() => resetTransform()}
+          >
+            <FullscreenIcon />
+          </Button>
+        </div>
+        <div>
+          <Button
+            type="button"
+            title="Favoritar"
+            variant="ghost"
+            size="sm"
+            className={`p-0 ${isFavorite ? "text-primary" : "text-white/60"} hover:text-primary`}
+            onClick={handleFavoriteClick}
+          >
+            {isFavorite ? <HeartIcon fill="#FF0000" /> : <HeartIcon />}
+          </Button>
+        </div>
       </div>
     )
   }
@@ -77,15 +143,17 @@ export const RestaurantImage = ({ restaurant }: RestaurantImageProps) => {
     const router = useRouter()
 
     return (
-      <Button
-        type="button"
-        variant="ghost"
-        size="default"
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-white p-0 hover:bg-primary hover:text-white xl:hidden"
-        onClick={() => router.push("/")}
-      >
-        <ChevronLeftIcon size={20} />
-      </Button>
+      <div className="flex-1">
+        <Button
+          type="button"
+          variant="ghost"
+          size="default"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-white p-0 hover:bg-primary hover:text-white xl:hidden"
+          onClick={() => router.push("/")}
+        >
+          <ChevronLeftIcon size={20} />
+        </Button>
+      </div>
     )
   }
 
