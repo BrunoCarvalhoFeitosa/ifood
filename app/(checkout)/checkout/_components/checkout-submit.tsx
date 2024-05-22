@@ -44,14 +44,16 @@ export const CheckoutSubmit = ({ currentUser }: CheckoutSubmitProps) => {
           )}
         </div>
       ) : (
-        <Button
-          type="button"
-          variant="default"
-          size="default"
-          onClick={() => router.push("/sign-in")}
-        >
-          Para finalizar o pedido, identifique-se
-        </Button>
+        <div className="flex justify-center">
+          <Button
+            type="button"
+            variant="default"
+            size="default"
+            onClick={() => router.push("/sign-in")}
+          >
+            Para finalizar pedidos, identifique-se
+          </Button>
+        </div>
       )}
       <CheckoutAlertDialog
         setIsConfirmDialogOpen={setIsConfirmDialogOpen}
