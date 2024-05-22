@@ -80,7 +80,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
       })
     ])
 
-  if (!categories || !restaurants || !restaurant) {
+  if (!categories || !restaurants || !restaurant || !userFavoriteRestaurants) {
     return notFound()
   }
 
