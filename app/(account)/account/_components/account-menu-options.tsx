@@ -3,9 +3,9 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/app/_components/ui/button"
 import {
+  ChefHatIcon,
   CircleUserRoundIcon,
   CookingPotIcon,
-  HeartIcon,
   HomeIcon,
   NotebookTextIcon
 } from "lucide-react"
@@ -80,7 +80,7 @@ export const AccountMenuOptions = () => {
               className={`flex w-full justify-start gap-2 rounded-full font-semibold ${pathname === "/account/favorite-restaurants" ? "bg-white text-black hover:bg-white" : "bg-primary hover:bg-red-800"}`}
             >
               <div>
-                <HeartIcon size={20} />
+                <ChefHatIcon size={22} />
               </div>
               <div className="text-sm xl:text-base">Restaurantes Favoritos</div>
             </Button>
