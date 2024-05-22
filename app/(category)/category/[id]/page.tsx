@@ -15,47 +15,61 @@ interface CategoryPageProps {
 const CategoryPage = async ({ params: { id } }: CategoryPageProps) => {
   const currentUser = await getCurrentUser()
 
-  const [categories, restaurants, category, userFavoriteRestaurants] =
-    await Promise.all([
-      db.category.findMany({}),
+  const [
+    categories,
+    restaurants,
+    category,
+    userFavoriteRestaurants,
+    userFavoriteProducts
+  ] = await Promise.all([
+    db.category.findMany({}),
 
-      db.restaurant.findMany({}),
+    db.restaurant.findMany({}),
 
-      db.category.findUnique({
-        where: {
-          id
-        },
-        include: {
-          products: {
-            include: {
-              restaurant: {
-                select: {
-                  name: true
-                }
+    db.category.findUnique({
+      where: {
+        id
+      },
+      include: {
+        products: {
+          include: {
+            restaurant: {
+              select: {
+                name: true
               }
             }
-          },
-          restaurants: {
-            select: {
-              id: true,
-              name: true,
-              imageUrl: true,
-              deliveryFee: true,
-              deliveryTimeMinutes: true
-            }
+          }
+        },
+        restaurants: {
+          select: {
+            id: true,
+            name: true,
+            imageUrl: true,
+            deliveryFee: true,
+            deliveryTimeMinutes: true
           }
         }
-      }),
+      }
+    }),
 
-      db.userFavoriteRestaurant.findMany({
-        where: {
-          userId: currentUser?.id
-        },
-        include: {
-          restaurant: true
-        }
-      })
-    ])
+    db.userFavoriteRestaurant.findMany({
+      where: {
+        userId: currentUser?.id
+      },
+      include: {
+        restaurant: true
+      }
+    }),
+
+    db.userFavoriteProduct.findMany({
+      where: {
+        userId: currentUser?.id
+      },
+      include: {
+        product: true
+      }
+    })
+  ])
 
   if (!categories || !restaurants || !category || !userFavoriteRestaurants) {
     return notFound()
@@ -66,7 +80,11 @@ const CategoryPage = async ({ params: { id } }: CategoryPageProps) => {
       <Header categories={categories} restaurants={restaurants} />
       <main>
         <CategoryList selectedCategoryId={id} />
-        <CategoryProductList category={category} />
+        <CategoryProductList
+          category={category}
+          currentUser={currentUser}
+          userFavoriteProducts={userFavoriteProducts}
+        />
         <CategoryRestaurantList
           restaurants={category.restaurants}
           currentUser={currentUser}
