@@ -1,3 +1,4 @@
+"use server"
 import { supabase } from "@/app/_libs/supabase"
 import getCurrentUser from "./getCurrentUser"
 
