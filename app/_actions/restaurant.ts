@@ -1,6 +1,5 @@
 "use server"
 import db from "@/app/_libs/prisma"
-import { revalidatePath } from "next/cache"
 
 export const toggleFavoriteRestaurant = async (
   userId: string,
@@ -22,21 +21,12 @@ export const toggleFavoriteRestaurant = async (
         }
       }
     })
-
-    revalidatePath("/")
-    revalidatePath("/product/*")
-    revalidatePath("/account/favorite-restaurants")
-    return
+  } else {
+    await db.userFavoriteRestaurant.create({
+      data: {
+        userId,
+        restaurantId
+      }
+    })
   }
-
-  await db.userFavoriteRestaurant.create({
-    data: {
-      userId,
-      restaurantId
-    }
-  })
-
-  revalidatePath("/")
-  revalidatePath("/product/*")
-  revalidatePath("/account/favorite-restaurants")
 }
