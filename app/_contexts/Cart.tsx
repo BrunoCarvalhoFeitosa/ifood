@@ -28,6 +28,7 @@ interface ICartContext {
   products: CartProduct[]
   addProductToCart: (product: Product) => void
   removeProductFromCart: (productId: string) => void
+  clearCart: () => void
   subtotalPrice: number
   totalPrice: number
   deliveryPrice: number
@@ -46,6 +47,7 @@ export const CartContext = createContext<ICartContext>({
   products: [],
   addProductToCart: () => {},
   removeProductFromCart: () => {},
+  clearCart: () => {},
   subtotalPrice: 0,
   totalPrice: 0,
   deliveryPrice: 0,
@@ -191,6 +193,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     })
   }
 
+  const clearCart = () => {
+    setProducts([])
+    return localStorage.setItem("cart-products", JSON.stringify([]))
+  }
+
   const subtotalPrice = products.reduce((acc, product) => {
     return acc + Number(product.price) * product.quantity
   }, 0)
@@ -212,6 +219,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         products,
         addProductToCart,
         removeProductFromCart,
+        clearCart,
         subtotalPrice,
         totalPrice,
         deliveryPrice,
