@@ -5,15 +5,15 @@ import Link from "next/link"
 import { Button } from "@/app/_components/ui/button"
 import { HeaderMenuListDropdown } from "./header-menu-list-dropdown"
 import { HeaderRestaurantListDropdown } from "./header-restaurant-list-dropdown"
+import { HeaderAuthenticatedContent } from "./header-authenticated-content"
+import { HeaderUnauthenticatedContent } from "./header-unautheticated-content"
 import {
+  ChefHatIcon,
   CircleUserRoundIcon,
   CookingPotIcon,
-  HeartIcon,
   HomeIcon,
   NotebookTextIcon
 } from "lucide-react"
-import { HeaderAuthenticatedContent } from "./header-authenticated-content"
-import { HeaderUnauthenticatedContent } from "./header-unautheticated-content"
 
 interface HeaderSideMenuProps {
   categories: Category[]
@@ -89,7 +89,7 @@ export const HeaderSideMenu = async ({
             className="flex w-full justify-start gap-2 rounded-full font-semibold hover:bg-gray-100"
           >
             <div>
-              <HeartIcon size={20} />
+              <ChefHatIcon size={22} />
             </div>
             <div className="text-sm xl:text-base">Restaurantes Favoritos</div>
           </Button>
