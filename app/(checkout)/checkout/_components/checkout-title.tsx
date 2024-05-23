@@ -12,10 +12,16 @@ export const CheckoutTitle = () => {
           <h1 className="text-lg font-extrabold md:text-xl">
             Sacola de compras
           </h1>
-          <p className="text-sm">
-            Este foram os <strong>{products.length} produtos</strong> que você
-            adicionou a sacola.
-          </p>
+          {products.length >= 2 ? (
+            <p className="text-sm">
+              Estes foram os <strong>{products.length} produtos</strong> que
+              você adicionou a sacola.
+            </p>
+          ) : (
+            <p className="text-sm">
+              Este foi o <strong>produto</strong> que você adicionou a sacola.
+            </p>
+          )}
         </div>
       )}
     </Fragment>
