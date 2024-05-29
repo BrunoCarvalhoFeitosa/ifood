@@ -75,7 +75,11 @@ export const RestaurantListItemContent = ({
             className={`p-0 text-primary hover:text-primary`}
             onClick={handleFavoriteClick}
           >
-            {isFavorite ? <HeartIcon fill="#FF0000" /> : <HeartIcon />}
+            {isFavorite && currentUser ? (
+              <HeartIcon fill="#FF0000" />
+            ) : (
+              <HeartIcon />
+            )}
           </Button>
         </div>
         <div className="flex items-center gap-1">

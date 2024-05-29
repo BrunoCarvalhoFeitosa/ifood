@@ -132,7 +132,11 @@ export const RestaurantImage = ({
             className={`p-0 ${isFavorite ? "text-primary" : "text-white/60"} hover:text-primary`}
             onClick={handleFavoriteClick}
           >
-            {isFavorite ? <HeartIcon fill="#FF0000" /> : <HeartIcon />}
+            {isFavorite && currentUser ? (
+              <HeartIcon fill="#FF0000" />
+            ) : (
+              <HeartIcon />
+            )}
           </Button>
         </div>
       </div>
