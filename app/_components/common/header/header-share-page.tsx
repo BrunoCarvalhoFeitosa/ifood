@@ -1,12 +1,12 @@
 "use client"
 import { Flip, toast } from "react-toastify"
+import { Button } from "@/app/_components/ui/button"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
 } from "@/app/_components/ui/tooltip"
-import { Button } from "@/app/_components/ui/button"
 import { Share2Icon } from "lucide-react"
 
 export const HeaderSharePage = () => {
