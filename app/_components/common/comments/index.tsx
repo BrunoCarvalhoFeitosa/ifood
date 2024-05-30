@@ -12,7 +12,7 @@ interface CommentsProps {
   comments: Comment[]
 }
 
-export const Comments = async ({
+export const Comments = ({
   type,
   productId,
   currentUser,
