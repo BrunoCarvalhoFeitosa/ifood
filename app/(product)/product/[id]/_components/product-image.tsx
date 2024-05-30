@@ -17,6 +17,7 @@ import {
   ChevronLeftIcon,
   FullscreenIcon,
   HeartIcon,
+  Share2Icon,
   ShoppingBagIcon,
   ZoomInIcon,
   ZoomOutIcon
@@ -79,9 +80,28 @@ export const ProductImage = ({
       }
     }
 
+    const handleSharePageClick = () => {
+      navigator.clipboard.writeText(window.location.href)
+      toast(
+        "Link da página copiado, agora é só colar e compartilhar onde quiser.",
+        {
+          type: "success",
+          toastId: "success",
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+          transition: Flip
+        }
+      )
+    }
+
     return (
-      <div className="flex w-full items-center justify-between gap-3">
-        <div className="flex w-full items-center justify-end gap-3 xl:justify-start">
+      <div className="flex w-full flex-1 items-center justify-between gap-2 xl:flex-auto">
+        <div className="flex w-full flex-1 items-center justify-end gap-2 xl:flex-auto xl:justify-start">
           <Button
             type="button"
             title="Abrir carrinho"
@@ -139,6 +159,18 @@ export const ProductImage = ({
             )}
           </Button>
         </div>
+        <div className="xl:hidden">
+          <Button
+            type="button"
+            title="Favoritar"
+            variant="ghost"
+            size="sm"
+            className={`p-0 ${isFavorite ? "text-primary" : "text-white/60"} hover:text-primary`}
+            onClick={handleSharePageClick}
+          >
+            <Share2Icon />
+          </Button>
+        </div>
       </div>
     )
   }
@@ -154,7 +186,7 @@ export const ProductImage = ({
         className="flex h-10 w-10 items-center justify-center rounded-full bg-white p-0 hover:bg-primary hover:text-white xl:hidden"
         onClick={() => router.push("/")}
       >
-        <ChevronLeftIcon size={20} />
+        <ChevronLeftIcon size={24} />
       </Button>
     )
   }

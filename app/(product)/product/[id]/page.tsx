@@ -7,6 +7,7 @@ import { Breadcrumb } from "@/app/_components/common/breadcrumb/breadcrumb"
 import { ProductAddToCart } from "./_components/product-add-to-cart"
 import { ProductContent } from "./_components/product-content"
 import { RecommendedProductList } from "@/app/_components/common/recommended/recommended-product-list"
+import { Comments } from "@/app/_components/common/comments"
 
 interface ProductPageProps {
   params: {
@@ -17,7 +18,7 @@ interface ProductPageProps {
 const ProductPage = async ({ params: { id } }: ProductPageProps) => {
   const currentUser = await getCurrentUser()
 
-  const [categories, restaurants, product, userFavoriteProducts] =
+  const [categories, restaurants, product, userFavoriteProducts, comments] =
     await Promise.all([
       db.category.findMany({}),
 
@@ -40,7 +41,9 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
         include: {
           product: true
         }
-      })
+      }),
+
+      db.comment.findMany({})
     ])
 
   if (!categories || !restaurants || !product || !userFavoriteProducts) {
@@ -66,6 +69,12 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
           categoryId={product.categoryId}
           currentUser={currentUser}
           userFavoriteProducts={userFavoriteProducts}
+        />
+        <Comments
+          type="produto"
+          productId={product.id}
+          currentUser={currentUser}
+          comments={comments}
         />
       </main>
     </SlideButtonProvider>

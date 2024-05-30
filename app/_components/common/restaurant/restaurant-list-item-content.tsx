@@ -31,7 +31,7 @@ export const RestaurantListItemContent = ({
       if (isFavorite) {
         toast("Restaurante removido dos favoritos com sucesso.", {
           type: "success",
-          toastId: "id",
+          toastId: "success-remove-fav",
           position: "top-right",
           autoClose: 2500,
           hideProgressBar: false,
@@ -44,7 +44,7 @@ export const RestaurantListItemContent = ({
       } else {
         toast("Restaurante favoritado com sucesso.", {
           type: "success",
-          toastId: "id",
+          toastId: "success-add-fav",
           position: "top-right",
           autoClose: 2500,
           hideProgressBar: false,

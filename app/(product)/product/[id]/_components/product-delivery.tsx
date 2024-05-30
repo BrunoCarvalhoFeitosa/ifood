@@ -1,7 +1,12 @@
 "use client"
 import { Prisma } from "@prisma/client"
 import { formatCurrency } from "@/app/_helpers/price"
-import { BikeIcon, ChefHatIcon, ShieldCheckIcon, TimerIcon } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger
+} from "@/app/_components/ui/accordion"
 
 interface ProductDeliveryProps {
   product: Prisma.ProductGetPayload<{
@@ -20,42 +25,36 @@ interface ProductDeliveryProps {
 
 export const ProductDelivery = ({ product }: ProductDeliveryProps) => {
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex items-center gap-1">
-        <div className="text-primary">
-          <ChefHatIcon size={24} />
-        </div>
-        <div className="text-sm">
-          Vendido e entregue por {product.restaurant.name}
-        </div>
-      </div>
-      <div className="flex items-center gap-1">
-        <div className="text-primary">
-          <BikeIcon size={24} />
-        </div>
-        <div className="text-sm">
-          <span>Preço de entrega</span>
-          {Number(product.restaurant.deliveryFee) === 0
-            ? "Entrega Grátis"
-            : formatCurrency(Number(product.restaurant.deliveryFee))}
-        </div>
-      </div>
-      <div className="flex items-center gap-1">
-        <div className="text-primary">
-          <TimerIcon size={24} />
-        </div>
-        <div className="text-sm">
-          Tempo de entrega {product.restaurant.deliveryTimeMinutes} min
-        </div>
-      </div>
-      <div className="flex items-center gap-1">
-        <div className="text-primary">
-          <ShieldCheckIcon size={24} />
-        </div>
-        <div className="text-sm">
-          Receba outro pedido em casos de má entrega
-        </div>
-      </div>
-    </div>
+    <Accordion type="single" collapsible className="w-full">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Vendido por</AccordionTrigger>
+        <AccordionContent>
+          Vendido e entregue por <strong>{product.restaurant.name}</strong>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Preço de entrega</AccordionTrigger>
+        <AccordionContent>
+          O preço de entrega é de{" "}
+          <strong>
+            {formatCurrency(Number(product.restaurant.deliveryFee))}
+          </strong>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Tempo de entrega</AccordionTrigger>
+        <AccordionContent>
+          O tempo estimado de entrega é de{" "}
+          <strong>{product.restaurant.deliveryTimeMinutes} minutos</strong>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-4">
+        <AccordionTrigger>Compra segura</AccordionTrigger>
+        <AccordionContent>
+          Receba outro pedido em casos de{" "}
+          <strong>má entrega, avaria ou furto</strong>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   )
 }

@@ -68,7 +68,7 @@ export const AccountOrderItem = ({ order }: AccountOrderItemProps) => {
           <h4 className="flex items-center gap-1 text-xs">
             <strong>Hora do pedido:</strong>
             <span>
-              {format(order.createdAt, "hh:mm:ss", {
+              {format(order.createdAt, "HH:mm:ss", {
                 locale: ptBR
               })}
               .

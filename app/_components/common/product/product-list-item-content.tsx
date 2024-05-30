@@ -43,7 +43,7 @@ export const ProductListItemContent = ({
       if (isFavorite) {
         toast("Produto removido dos favoritos com sucesso.", {
           type: "success",
-          toastId: "id",
+          toastId: "success-remove-fav",
           position: "top-right",
           autoClose: 2500,
           hideProgressBar: false,
@@ -56,7 +56,7 @@ export const ProductListItemContent = ({
       } else {
         toast("Produto favoritado com sucesso.", {
           type: "success",
-          toastId: "id",
+          toastId: "success-add-fav",
           position: "top-right",
           autoClose: 2500,
           hideProgressBar: false,
