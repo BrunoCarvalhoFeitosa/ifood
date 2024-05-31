@@ -1,7 +1,12 @@
 "use client"
 import { Restaurant } from "@prisma/client"
 import { formatCurrency } from "@/app/_helpers/price"
-import { BikeIcon, FlameIcon, ShieldCheckIcon, TimerIcon } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger
+} from "@/app/_components/ui/accordion"
 
 interface RestaurantDeliveryProps {
   restaurant: Restaurant
@@ -9,50 +14,49 @@ interface RestaurantDeliveryProps {
 
 export const RestaurantDelivery = ({ restaurant }: RestaurantDeliveryProps) => {
   return (
-    <div className="my-4 flex flex-col gap-2">
-      <div className="flex items-center gap-1">
-        <div className="text-primary">
-          <FlameIcon size={24} />
-        </div>
-        <div className="text-sm">Pedidos entregue hoje 192</div>
-      </div>
-      <div className="flex items-center gap-1">
-        <div className="text-primary">
-          <BikeIcon size={24} />
-        </div>
-        <div className="flex items-center gap-1 text-sm">
-          {Number(restaurant.deliveryFee) === 0 ? (
-            <div>
-              <span>Entrega grátis</span>
-            </div>
-          ) : (
-            <div>
-              <span>Preço de entrega</span>
-              <span>
-                {Number(restaurant.deliveryFee) === 0
-                  ? "grátis"
-                  : formatCurrency(Number(restaurant.deliveryFee))}
-              </span>
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="flex items-center gap-1">
-        <div className="text-primary">
-          <TimerIcon size={24} />
-        </div>
-        <div className="text-sm">
-          Tempo de entrega {restaurant.deliveryTimeMinutes} min
-        </div>
-      </div>
-      <div className="flex items-center gap-1">
-        <div className="text-primary">
-          <ShieldCheckIcon size={24} />
-        </div>
-        <div className="text-sm">
-          Receba outro pedido em casos de má entrega
-        </div>
-      </div>
-    </div>
+    <Accordion type="single" collapsible className="w-full">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Pedidos entregues hoje</AccordionTrigger>
+        <AccordionContent>
+          Hoje foram entregues <strong>192 pedidos</strong>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Preço de entrega</AccordionTrigger>
+        <AccordionContent className="flex items-center gap-1">
+          <span>O preço de entrega é de</span>
+          <strong>{formatCurrency(Number(restaurant.deliveryFee))}</strong>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Tempo de entrega</AccordionTrigger>
+        <AccordionContent className="flex items-center gap-1">
+          <span>O tempo estimado de entrega é de</span>
+          <strong>{restaurant.deliveryTimeMinutes} minutos</strong>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-4">
+        <AccordionTrigger>Formas de atendimento/vendas</AccordionTrigger>
+        <AccordionContent>
+          Vendemos pelo <strong>iFood, WhatsApp</strong> e{" "}
+          <strong>presencialmente</strong>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-5">
+        <AccordionTrigger>Formas de pagamento</AccordionTrigger>
+        <AccordionContent className="flex items-center gap-1">
+          <span>Trabalhamos com todas as bandeiras de</span>
+          <strong>cartão de credito</strong> e aceitamos{" "}
+          <strong>pix e dinheiro em espécie</strong>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-6">
+        <AccordionTrigger>Compra segura</AccordionTrigger>
+        <AccordionContent className="flex items-center gap-1">
+          <span>Receba outro pedido em casos de</span>
+          <strong>má entrega, avaria</strong> ou <strong>furto</strong>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   )
 }

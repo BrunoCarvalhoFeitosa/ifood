@@ -34,8 +34,8 @@ export const ProductDelivery = ({ product }: ProductDeliveryProps) => {
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>Preço de entrega</AccordionTrigger>
-        <AccordionContent>
-          O preço de entrega é de{" "}
+        <AccordionContent className="flex items-center gap-1">
+          <span>O preço de entrega é de</span>
           <strong>
             {formatCurrency(Number(product.restaurant.deliveryFee))}
           </strong>
@@ -43,16 +43,16 @@ export const ProductDelivery = ({ product }: ProductDeliveryProps) => {
       </AccordionItem>
       <AccordionItem value="item-3">
         <AccordionTrigger>Tempo de entrega</AccordionTrigger>
-        <AccordionContent>
-          O tempo estimado de entrega é de{" "}
+        <AccordionContent className="flex items-center gap-1">
+          <span>O tempo estimado de entrega é de</span>
           <strong>{product.restaurant.deliveryTimeMinutes} minutos</strong>
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-4">
         <AccordionTrigger>Compra segura</AccordionTrigger>
-        <AccordionContent>
-          Receba outro pedido em casos de{" "}
-          <strong>má entrega, avaria ou furto</strong>
+        <AccordionContent className="flex items-center gap-1">
+          <span>Receba outro pedido em casos de</span>
+          <strong>má entrega, avaria</strong> ou <strong>furto</strong>
         </AccordionContent>
       </AccordionItem>
     </Accordion>
