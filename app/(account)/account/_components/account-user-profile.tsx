@@ -17,8 +17,10 @@ export const AccountUserProfile = ({ currentUser }: UserProfileProps) => {
         <div>
           <Avatar>
             <AvatarImage
-              className="bg-gray-100 object-cover"
-              src={currentUser?.image as string | undefined}
+              src={currentUser?.image as string}
+              alt={currentUser?.name as string}
+              title={currentUser?.name as string}
+              className="bg-gray-100 object-cover grayscale"
             />
           </Avatar>
         </div>
