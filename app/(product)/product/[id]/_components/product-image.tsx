@@ -193,7 +193,7 @@ export const ProductImage = ({
 
   return (
     <div className="flex w-full gap-[1px] lg:h-[600px] xl:w-[60%] 2xl:w-[50%]">
-      <div className="hidden h-full w-[180px] flex-col gap-[2px] overflow-hidden xl:flex [&::-webkit-scrollbar]:hidden">
+      <div className="hidden h-full w-[150px] flex-col gap-[2px] overflow-hidden xl:flex [&::-webkit-scrollbar]:hidden">
         {Array(6)
           .fill(0)
           .map((_, index) => (
@@ -204,7 +204,7 @@ export const ProductImage = ({
               width={200}
               height={200}
               quality={100}
-              className="h-[calc(100%/6)] w-[180px] cursor-zoom-in overflow-hidden object-cover brightness-[.50] hover:brightness-75"
+              className="h-[calc(100%/6)] w-[150px] cursor-zoom-in overflow-hidden object-cover brightness-[.50] hover:brightness-75"
             />
           ))}
       </div>
