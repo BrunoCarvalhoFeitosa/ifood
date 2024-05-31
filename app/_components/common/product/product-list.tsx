@@ -35,7 +35,7 @@ export const ProductList = ({
         </div>
       </div>
       <div className="custom-scrollbar flex items-center gap-5 overflow-x-auto py-3">
-        {products.slice(0, 12).map((product) => (
+        {products.slice(0, 6).map((product) => (
           <ProductListItem
             key={product.id}
             product={product}
