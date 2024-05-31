@@ -53,7 +53,9 @@ model User {
   orders Order[]
   favoriteRestaurants UserFavoriteRestaurant[]
   favoriteProducts UserFavoriteProduct[]
-  comments Comment[]
+  commentsProduct CommentProduct[]
+  commentsRestaurant CommentRestaurant[]
+  testimonials Testimonials[]
 
   @@map("users")
 }
@@ -67,6 +69,16 @@ model VerificationToken {
   @@map("verificationtokens")
 }
 
+model Testimonials {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+  userId String
+  userName String
+  userImage String
+  content String
+  user User @relation(fields: [userId], references: [id])
+}
+
 model Restaurant {
   id String @id @default(uuid())
   name String
@@ -77,7 +89,8 @@ model Restaurant {
   products Product[]
   orders Order[]
   usersWhoFavorited UserFavoriteRestaurant[]
-  comments Comment[]
+  commentsProduct CommentProduct[]
+  commentsRestaurant CommentRestaurant[]
 }
 
 model UserFavoriteRestaurant {
@@ -119,10 +132,25 @@ model Product {
   category Category @relation(fields: [categoryId], references: [id])
   orderProducts OrderProduct[]
   favoritedByUsers UserFavoriteProduct[]
-  comments Comment[]
+  commentsProduct CommentProduct[]
+  commentsRestaurant CommentRestaurant[]
 }
 
-model Comment {
+model CommentRestaurant {
+  id String @id @default(uuid())
+  content String
+  createdAt DateTime @default(now())
+  userId String
+  userName String
+  userImage String
+  user User @relation(fields: [userId], references: [id])
+  productId String?
+  product Product? @relation(fields: [productId], references: [id])
+  restaurantId String?
+  restaurant Restaurant? @relation(fields: [restaurantId], references: [id])
+}
+
+model CommentProduct {
   id String @id @default(uuid())
   content String
   createdAt DateTime @default(now())

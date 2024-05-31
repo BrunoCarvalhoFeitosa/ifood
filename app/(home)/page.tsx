@@ -1,88 +1,101 @@
 import db from "@/app/_libs/prisma"
+import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { notFound } from "next/navigation"
 import { Header } from "@/app/_components/common/header"
 import { Search } from "@/app/_components/common/search/search"
 import { CategoryList } from "@/app/_components/common/category/category-list"
 import { ProductList } from "@/app/_components/common/product/product-list"
-import getCurrentUser from "@/app/_actions/getCurrentUser"
+import { TestimonialsComments } from "@/app/_components/common/testimonials"
 
 const HomePage = async () => {
   const currentUser = await getCurrentUser()
 
-  const categories = await db.category.findMany({})
+  const [
+    categories,
+    restaurants,
+    brazilianFood,
+    japaneseFood,
+    fastFood,
+    userFavoriteProducts,
+    testimonials
+  ] = await Promise.all([
+    db.category.findMany({}),
 
-  const restaurants = await db.restaurant.findMany({})
+    db.restaurant.findMany({}),
 
-  const brazilianFood = await db.product.findMany({
-    where: {
-      category: {
-        name: "Comida Brasileira"
-      }
-    },
-    include: {
-      restaurant: {
-        select: {
-          name: true,
-          imageUrl: true,
-          deliveryFee: true,
-          deliveryTimeMinutes: true
+    db.product.findMany({
+      where: {
+        category: {
+          name: "Comida Brasileira"
+        }
+      },
+      include: {
+        restaurant: {
+          select: {
+            name: true,
+            imageUrl: true,
+            deliveryFee: true,
+            deliveryTimeMinutes: true
+          }
         }
       }
-    }
-  })
+    }),
 
-  const japaneseFood = await db.product.findMany({
-    where: {
-      category: {
-        name: "Comida Japonesa"
-      }
-    },
-    include: {
-      restaurant: {
-        select: {
-          id: true,
-          name: true,
-          imageUrl: true,
-          deliveryFee: true,
-          deliveryTimeMinutes: true
+    db.product.findMany({
+      where: {
+        category: {
+          name: "Comida Japonesa"
+        }
+      },
+      include: {
+        restaurant: {
+          select: {
+            id: true,
+            name: true,
+            imageUrl: true,
+            deliveryFee: true,
+            deliveryTimeMinutes: true
+          }
         }
       }
-    }
-  })
+    }),
 
-  const fastFood = await db.product.findMany({
-    where: {
-      category: {
-        name: "Hambúrgueres"
-      }
-    },
-    include: {
-      restaurant: {
-        select: {
-          id: true,
-          name: true,
-          imageUrl: true,
-          deliveryFee: true,
-          deliveryTimeMinutes: true
+    db.product.findMany({
+      where: {
+        category: {
+          name: "Hambúrgueres"
+        }
+      },
+      include: {
+        restaurant: {
+          select: {
+            id: true,
+            name: true,
+            imageUrl: true,
+            deliveryFee: true,
+            deliveryTimeMinutes: true
+          }
         }
       }
-    }
-  })
+    }),
 
-  const userFavoriteProducts = await db.userFavoriteProduct.findMany({
-    where: {
-      userId: currentUser?.id
-    },
-    include: {
-      product: {
-        include: {
-          restaurant: true,
-          category: true,
-          favoritedByUsers: true
+    db.userFavoriteProduct.findMany({
+      where: {
+        userId: currentUser?.id
+      },
+      include: {
+        product: {
+          include: {
+            restaurant: true,
+            category: true,
+            favoritedByUsers: true
+          }
         }
       }
-    }
-  })
+    }),
+
+    db.testimonials.findMany({})
+  ])
 
   if (
     !categories ||
@@ -120,6 +133,10 @@ const HomePage = async () => {
             products={fastFood}
             currentUser={currentUser}
             userFavoriteProducts={userFavoriteProducts}
+          />
+          <TestimonialsComments
+            currentUser={currentUser}
+            testimonials={testimonials}
           />
         </div>
       </main>
