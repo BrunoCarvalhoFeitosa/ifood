@@ -97,7 +97,7 @@ export const ProductAddToCart = ({ product }: ProductAddToCartProps) => {
             <Button
               type="button"
               variant="default"
-              className="h-[45px] w-full rounded-md text-base"
+              className="h-14 w-full rounded-md px-6 text-base"
               onClick={() => handleAddToCartClick()}
             >
               <span>Comprar</span>
