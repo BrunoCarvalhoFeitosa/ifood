@@ -43,7 +43,7 @@ const ProductPage = async ({ params: { id } }: ProductPageProps) => {
         }
       }),
 
-      db.comment.findMany({})
+      db.commentProduct.findMany({})
     ])
 
   if (!categories || !restaurants || !product || !userFavoriteProducts) {

@@ -6,6 +6,7 @@ import { Header } from "@/app/_components/common/header"
 import { Breadcrumb } from "@/app/_components/common/breadcrumb/breadcrumb"
 import { RestaurantContent } from "./_components/restaurant-content"
 import { RestaurantCategorieProducts } from "./_components/restaurant-categorie-products"
+import { Comments } from "@/app/_components/common/comments"
 
 interface RestaurantPageProps {
   params: {
@@ -21,7 +22,8 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
     restaurants,
     restaurant,
     userFavoriteRestaurants,
-    userFavoriteProducts
+    userFavoriteProducts,
+    comments
   ] = await Promise.all([
     db.category.findMany({}),
 
@@ -91,7 +93,9 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
       include: {
         product: true
       }
-    })
+    }),
+
+    db.commentRestaurant.findMany({})
   ])
 
   if (!categories || !restaurants || !restaurant || !userFavoriteRestaurants) {
@@ -114,6 +118,12 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
           restaurant={restaurant}
           currentUser={currentUser}
           userFavoriteProducts={userFavoriteProducts}
+        />
+        <Comments
+          type="restaurante"
+          restaurantId={restaurant.id}
+          currentUser={currentUser}
+          comments={comments}
         />
       </main>
     </SlideButtonProvider>

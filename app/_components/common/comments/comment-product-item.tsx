@@ -1,26 +1,26 @@
 "use client"
 import { useState } from "react"
-import { Comment } from "@prisma/client"
+import { CommentProduct } from "@prisma/client"
 import { SafeUser } from "@/app/_types/SafeUser"
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
 import { cn } from "@/app/_libs/utils"
 import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
 import { Button } from "@/app/_components/ui/button"
-import { CommentAlertDialog } from "./comment-alert-dialog"
+import { CommentProductAlertDialog } from "./comment-product-alert-dialog"
 import { ClockIcon, Trash2Icon } from "lucide-react"
 
-interface CommentItemProps {
+interface CommentProductItemProps {
   currentUser: SafeUser | null
   commentId: string
-  comment: Comment
+  comment: CommentProduct
 }
 
-export const CommentItem = ({
+export const CommentProductItem = ({
   currentUser,
   commentId,
   comment
-}: CommentItemProps) => {
+}: CommentProductItemProps) => {
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false)
 
   return (
@@ -33,6 +33,7 @@ export const CommentItem = ({
                 src={comment.userImage}
                 alt={comment.userName}
                 title={comment.userName}
+                className="bg-gray-100 object-cover grayscale"
               />
             </Avatar>
           </div>
@@ -76,7 +77,7 @@ export const CommentItem = ({
           )}
         </div>
       </div>
-      <CommentAlertDialog
+      <CommentProductAlertDialog
         currentUser={currentUser}
         commentId={commentId}
         setIsConfirmDialogOpen={setIsConfirmDialogOpen}

@@ -49,7 +49,11 @@ export const Footer = () => {
             </div>
             <div className="mt-3 flex justify-center lg:justify-start">
               <Link href="https://play.google.com/store/apps/details?id=br.com.brainweb.ifood&hl=pt_BR&gl=US">
-                <Button type="button" variant="outline" className="text-black">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="h-14 bg-white px-6 text-base text-black"
+                >
                   Baixar o app agora mesmo
                 </Button>
               </Link>

@@ -1,20 +1,24 @@
 "use client"
 import { Fragment, useState } from "react"
 import { SafeUser } from "@/app/_types/SafeUser"
-import { createComment } from "@/app/_actions/comment"
+import {
+  createProductComment,
+  createRestaurantComment
+} from "@/app/_actions/comment"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Button } from "@/app/_components/ui/button"
 import { Flip, toast } from "react-toastify"
 import { Textarea } from "@/app/_components/ui/textarea"
+import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
+import { Loader } from "@/public/svgs/loader"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
 } from "@/app/_components/ui/tooltip"
-import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
 import {
   Form,
   FormControl,
@@ -46,15 +50,18 @@ const formSchema = z.object({
 interface CommentsFormProps {
   type: "produto" | "restaurante"
   productId?: string
+  restaurantId?: string
   currentUser: SafeUser | null
 }
 
 export const CommentsForm = ({
   type,
   productId,
+  restaurantId,
   currentUser
 }: CommentsFormProps) => {
   const [charCount, setCharCount] = useState<number>(0)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -72,15 +79,30 @@ export const CommentsForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (!currentUser?.id) return
 
+    setIsLoading(true)
+
     try {
-      await createComment(
-        currentUser.id as string,
-        currentUser.name as string,
-        currentUser.image as string,
-        values.comment as string,
-        productId as string,
-        undefined
-      )
+      if (productId) {
+        await createProductComment(
+          currentUser.id as string,
+          currentUser.name as string,
+          currentUser.image as string,
+          values.comment as string,
+          productId as string,
+          undefined
+        )
+      }
+
+      if (restaurantId) {
+        await createRestaurantComment(
+          currentUser.id as string,
+          currentUser.name as string,
+          currentUser.image as string,
+          values.comment as string,
+          undefined,
+          restaurantId as string
+        )
+      }
 
       toast("Comentário postado com sucesso.", {
         type: "success",
@@ -111,6 +133,8 @@ export const CommentsForm = ({
         theme: "light",
         transition: Flip
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -132,7 +156,9 @@ export const CommentsForm = ({
                             currentUser?.image ??
                             "/images/image-blank-avatar.jpg"
                           }
-                          className="h-[60px] w-[60px] rounded-full object-cover"
+                          alt={currentUser.name ?? "Usuário"}
+                          title={currentUser.name ?? "Usuário"}
+                          className="bg-gray-100 object-cover grayscale"
                         />
                       </Avatar>
                     </div>
@@ -156,7 +182,7 @@ export const CommentsForm = ({
                           />
                         </FormControl>
                         <TooltipProvider>
-                          <div className="absolute -top-7 right-7 z-10 flex items-center gap-1 rounded-full border border-gray-200 bg-background px-5 py-1 md:-top-5 md:right-10">
+                          <div className="absolute -top-7 right-7 z-10 flex items-center gap-1 rounded-full border border-gray-200 bg-background px-5 py-1 md:-top-9 md:right-10">
                             <Tooltip>
                               <TooltipTrigger asChild>
                                 <Button
@@ -234,8 +260,13 @@ export const CommentsForm = ({
                       <Button
                         type="submit"
                         variant="default"
-                        className="mt-5 h-12 w-full text-base"
+                        className="relative mt-3 flex h-14 w-full items-center gap-2 px-6 text-base"
                       >
+                        {isLoading && (
+                          <div className="absolute left-5 top-[50%] translate-y-[-50%]">
+                            <Loader color="#FFF" width="40px" height="40px" />
+                          </div>
+                        )}
                         Postar opinião sobre o {type}
                       </Button>
                     </div>

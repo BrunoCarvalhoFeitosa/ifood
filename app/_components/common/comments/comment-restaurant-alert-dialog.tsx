@@ -2,7 +2,7 @@
 "use client"
 import { SafeUser } from "@/app/_types/SafeUser"
 import { Flip, toast } from "react-toastify"
-import { deleteComment } from "@/app/_actions/comment"
+import { deleteProductComment } from "@/app/_actions/comment"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,19 +16,19 @@ import {
 import { Loader } from "@/public/svgs/loader"
 import { useState } from "react"
 
-interface CommentAlertDialogProps {
+interface CommentRestaurantAlertDialogProps {
   currentUser: SafeUser | null
   commentId: string
   setIsConfirmDialogOpen: (isConfirmDialogOpen: boolean) => void
   isConfirmDialogOpen: boolean
 }
 
-export const CommentAlertDialog = ({
+export const CommentRestaurantAlertDialog = ({
   currentUser,
   commentId,
   setIsConfirmDialogOpen,
   isConfirmDialogOpen
-}: CommentAlertDialogProps) => {
+}: CommentRestaurantAlertDialogProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleDeleteComment = async () => {
@@ -36,7 +36,7 @@ export const CommentAlertDialog = ({
 
     try {
       if (currentUser) {
-        await deleteComment(currentUser.id, commentId)
+        await deleteProductComment(currentUser.id, commentId)
 
         toast("Comentário excluido com sucesso.", {
           type: "success",
