@@ -30,10 +30,14 @@ export const RestaurantResume = ({ restaurant }: RestaurantResumeProps) => {
       </div>
       <div className="mt-2">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis nisi
-          aliquam perspiciatis eos quidem! Excepturi expedita praesentium illo
-          cupiditate tempora voluptas dolore illum esse maiores officia
-          accusantium, in repellat facere?
+          Somos especializados no que fazemos há mais de 20 anos, seguimos todos
+          os padrões exigidos pela vigilência sanitária, possuímos localização
+          física, com boa área para estacionamento, playground para crianças e
+          um variado cardápio, procuramos sempre oferecer a melhor experiência,
+          desde o atendimento até o a entrega do prato, todos os nossos chefs
+          são certificados e são os melhores no que fazem. Ficaremos
+          extremamente satisfeitos em atender você e sua família, visite-nos
+          agora mesmo.
         </p>
       </div>
     </div>

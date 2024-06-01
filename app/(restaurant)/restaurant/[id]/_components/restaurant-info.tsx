@@ -21,13 +21,13 @@ export const RestaurantInfo = ({ restaurant }: RestaurantInfoProps) => {
   return (
     <div
       className={cn(
-        "relative z-20 -mt-10 flex flex-1 flex-col rounded-tl-[40px] rounded-tr-[40px] bg-white px-5 py-6 transition-all duration-500 md:-mt-14 md:rounded-tl-[60px] md:rounded-tr-[60px] xl:mt-0 xl:rounded-none xl:py-0",
+        "relative z-20 -mt-10 flex w-full flex-col rounded-tl-[40px] rounded-tr-[40px] bg-white px-5 py-6 transition-all duration-500 md:-mt-14 md:rounded-tl-[60px] md:rounded-tr-[60px] xl:mt-0 xl:w-2/4 xl:rounded-none xl:py-0",
         `${isOpen ? "-mt-48 md:-mt-72 lg:-mt-96" : "-mt-10 xl:mt-0"}`
       )}
     >
       <RestaurantSlideButton />
       <RestaurantResume restaurant={restaurant} />
-      <RestaurantCategories restaurant={restaurant} />
+      <RestaurantCategories />
       <RestaurantDelivery restaurant={restaurant} />
     </div>
   )

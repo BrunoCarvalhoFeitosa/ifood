@@ -43,14 +43,6 @@ export const RestaurantDelivery = ({ restaurant }: RestaurantDeliveryProps) => {
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-5">
-        <AccordionTrigger>Formas de pagamento</AccordionTrigger>
-        <AccordionContent className="flex items-center gap-1">
-          <span>Trabalhamos com todas as bandeiras de</span>
-          <strong>cartão de credito</strong> e aceitamos{" "}
-          <strong>pix e dinheiro em espécie</strong>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-6">
         <AccordionTrigger>Compra segura</AccordionTrigger>
         <AccordionContent className="flex items-center gap-1">
           <span>Receba outro pedido em casos de</span>

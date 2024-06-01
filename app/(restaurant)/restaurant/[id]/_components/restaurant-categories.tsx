@@ -1,27 +1,24 @@
 "use client"
-import { Prisma } from "@prisma/client"
+import { drinks } from "@/app/_types/Drinks"
 
-interface RestaurantCategoriesProps {
-  restaurant: Prisma.RestaurantGetPayload<{
-    include: {
-      categories: true
-    }
-  }>
-}
-
-export const RestaurantCategories = ({
-  restaurant
-}: RestaurantCategoriesProps) => {
+export const RestaurantCategories = () => {
   return (
-    <div className="custom-scrollbar flex flex-row-reverse items-center justify-end gap-3 overflow-x-auto py-4 pb-3">
-      {restaurant.categories.map((category) => (
-        <div
-          key={category.id}
-          className="min-w-fit bg-gray-100 p-2 px-5 text-sm text-muted-foreground"
-        >
-          {category.name}
+    <div className="pb-2">
+      <div className="pb-2 pt-4">
+        <h3 className="text-lg font-bold">Bebidas</h3>
+      </div>
+      <div className="custom-scrollbar flex w-full items-center gap-3 overflow-x-auto pb-3">
+        <div className="flex items-center gap-3">
+          {drinks.map((drink) => (
+            <div
+              key={drink.name}
+              className="min-w-fit bg-gray-100 p-2 px-5 text-sm text-muted-foreground"
+            >
+              {drink.name} {drink.size}
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   )
 }

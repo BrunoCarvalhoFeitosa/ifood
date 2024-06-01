@@ -194,7 +194,7 @@ export const RestaurantImage = ({
   }
 
   return (
-    <div className="w-full lg:h-[600px] xl:w-[50%]">
+    <div className="w-full lg:h-[600px] xl:w-2/4">
       <div className="relative h-[320px] flex-1 cursor-zoom-in bg-black md:h-[480px] lg:h-full">
         <TransformWrapper>
           <div className="absolute top-2 z-10 flex w-full items-start justify-between px-4 py-2">
