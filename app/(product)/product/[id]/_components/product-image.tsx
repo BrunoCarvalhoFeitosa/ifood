@@ -165,7 +165,7 @@ export const ProductImage = ({
             title="Favoritar"
             variant="ghost"
             size="sm"
-            className="text-white/60 hover:text-primary"
+            className="p-0 text-white/60 hover:text-primary"
             onClick={handleSharePageClick}
           >
             <Share2Icon />
