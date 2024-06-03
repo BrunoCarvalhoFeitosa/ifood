@@ -149,7 +149,7 @@ export const ProductImage = ({
             title="Favoritar"
             variant="ghost"
             size="sm"
-            className={`p-0 ${isFavorite ? "text-primary" : "text-white/60"} hover:text-primary`}
+            className={`p-0 ${currentUser && isFavorite ? "text-primary" : "text-white/60"} hover:text-primary`}
             onClick={handleFavoriteClick}
           >
             {isFavorite && currentUser ? (
@@ -165,7 +165,7 @@ export const ProductImage = ({
             title="Favoritar"
             variant="ghost"
             size="sm"
-            className={`p-0 ${isFavorite ? "text-primary" : "text-white/60"} hover:text-primary`}
+            className="text-white/60 hover:text-primary"
             onClick={handleSharePageClick}
           >
             <Share2Icon />
