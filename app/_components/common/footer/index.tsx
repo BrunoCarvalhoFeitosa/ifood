@@ -70,11 +70,31 @@ export const Footer = () => {
         <div className="text-center lg:text-left">
           <h6 className="mb-3 font-extrabold">Departamentos</h6>
           <ul className="flex flex-col gap-1">
-            <li className="cursor-pointer text-base">Comida brasileira</li>
-            <li className="cursor-pointer text-base">Comida japonesa</li>
-            <li className="cursor-pointer text-base">Hambúrgueres</li>
-            <li className="cursor-pointer text-base">Pizzas</li>
-            <li className="cursor-pointer text-base">Sobremesas</li>
+            <li className="cursor-pointer text-base">
+              <Link href="/category/3c78b612-186b-443f-a5a6-6da4197108aa">
+                Comida brasileira
+              </Link>
+            </li>
+            <li className="cursor-pointer text-base">
+              <Link href="/category/4448168b-73d5-46cb-be84-6fd03f84a79e">
+                Comida japonesa
+              </Link>
+            </li>
+            <li className="cursor-pointer text-base">
+              <Link href="/category/b63590f5-ecd7-4bb6-8c7c-38edc4c6d6a9">
+                Hambúrgueres
+              </Link>
+            </li>
+            <li className="cursor-pointer text-base">
+              <Link href="/category/d9c61222-c20b-4b37-832b-703babd65bc8">
+                Pizzas
+              </Link>
+            </li>
+            <li className="cursor-pointer text-base">
+              <Link href="/category/a62c0c37-4896-43d6-b5f9-dd302831b7ce">
+                Sobremesas
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="text-center lg:text-left">
