@@ -12,7 +12,9 @@ export const RestaurantResume = ({ restaurant }: RestaurantResumeProps) => {
     <div>
       <div className="flex items-center justify-between gap-4 xl:justify-start">
         <div>
-          <h1 className="text-2xl font-semibold">{restaurant.name}</h1>
+          <h1 className="text-lg font-semibold md:text-2xl">
+            {restaurant.name}
+          </h1>
         </div>
         <div>
           <Badge
@@ -28,7 +30,7 @@ export const RestaurantResume = ({ restaurant }: RestaurantResumeProps) => {
           </Badge>
         </div>
       </div>
-      <div className="mt-2">
+      <div className="mt-5 xl:mt-2">
         <p>
           Somos especializados no que fazemos há mais de 20 anos, seguimos todos
           os padrões exigidos pela vigilência sanitária, possuímos localização

@@ -3,8 +3,8 @@ import { drinks } from "@/app/_types/Drinks"
 
 export const RestaurantCategories = () => {
   return (
-    <div className="pb-2">
-      <div className="pb-2 pt-4">
+    <div className="my-7 xl:my-0 xl:pb-2">
+      <div className="pb-2 xl:pt-4">
         <h3 className="text-lg font-bold">Bebidas</h3>
       </div>
       <div className="custom-scrollbar flex w-full items-center gap-3 overflow-x-auto pb-3">
