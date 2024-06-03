@@ -31,7 +31,7 @@ export const Footer = () => {
 
   return (
     <footer ref={footerRef} className="mt-10 w-full lg:mt-20">
-      <div className="w-full bg-primary px-5 py-10 lg:py-14">
+      <div className="w-full bg-primary px-5 py-10 lg:py-16">
         <div className="flex flex-col items-center gap-6 lg:flex-row">
           <div>
             <div className="flex h-28 w-28 items-center justify-center rounded-2xl bg-white md:h-32 md:w-32">
@@ -62,7 +62,7 @@ export const Footer = () => {
         </div>
       </div>
       <div
-        className={`mx-auto -mt-1 w-full origin-top transition-all duration-1000 lg:w-3/4 ${isVisible ? "scale-y-[2]" : "scale-y-0"}`}
+        className={`mx-auto -mt-[1px] w-full origin-top transition-all duration-1000 lg:w-3/4 ${isVisible ? "scale-y-[2]" : "scale-y-0"}`}
       >
         <FooterWave width="100%" height="auto" color="#EA1D2B" />
       </div>
@@ -101,7 +101,18 @@ export const Footer = () => {
             <li className="cursor-pointer text-base">Carreiras</li>
             <li className="cursor-pointer text-base">Seja um entregador</li>
             <li className="cursor-pointer text-base">
-              Cadastre seu restaurante ou mercado
+              Cadastre seu restaurante
+            </li>
+          </ul>
+        </div>
+        <div className="text-center lg:text-left">
+          <h6 className="mb-3 font-extrabold">Conta</h6>
+          <ul className="flex flex-col gap-1">
+            <li className="cursor-pointer text-base">
+              <Link href="/sign-in">Entre</Link>
+            </li>
+            <li className="cursor-pointer text-base">
+              <Link href="/sign-up">Cadastre-se</Link>
             </li>
           </ul>
         </div>
