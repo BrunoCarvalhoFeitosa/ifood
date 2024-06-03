@@ -29,7 +29,7 @@ export const CategoryListItem = ({
       </div>
       <div>
         <h3
-          className={`font-semibold ${selectedCategoryId === category.id && "text-white"}`}
+          className={`font-extrabold ${selectedCategoryId === category.id && "text-white"}`}
         >
           {category.name}
         </h3>

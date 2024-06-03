@@ -12,7 +12,7 @@ export const RestaurantResume = ({ restaurant }: RestaurantResumeProps) => {
     <div>
       <div className="flex items-center justify-between gap-4 xl:justify-start">
         <div>
-          <h1 className="text-lg font-semibold md:text-2xl">
+          <h1 className="text-lg font-extrabold md:text-2xl">
             {restaurant.name}
           </h1>
         </div>
