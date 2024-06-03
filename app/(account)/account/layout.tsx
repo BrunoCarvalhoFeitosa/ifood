@@ -1,6 +1,6 @@
 import db from "@/app/_libs/prisma"
 import getCurrentUser from "@/app/_actions/getCurrentUser"
-import { redirect } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 import { Header } from "@/app/_components/common/header"
 import { AccountUserProfile } from "./_components/account-user-profile"
 import { AccountMenuOptions } from "./_components/account-menu-options"
@@ -20,6 +20,10 @@ const AccountPageLayout = async ({
 
   if (!currentUser) {
     return redirect("/sign-in")
+  }
+
+  if (!categories || !restaurants) {
+    return notFound()
   }
 
   return (

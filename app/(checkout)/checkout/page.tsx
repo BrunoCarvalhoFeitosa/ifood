@@ -4,6 +4,7 @@ import { Header } from "@/app/_components/common/header"
 import { CheckoutTitle } from "./_components/checkout-title"
 import { CheckoutProductsTable } from "./_components/checkout-products-table"
 import { CheckoutSubmit } from "./_components/checkout-submit"
+import { notFound } from "next/navigation"
 
 const CheckoutPage = async () => {
   const [categories, restaurants, currentUser] = await Promise.all([
@@ -13,6 +14,10 @@ const CheckoutPage = async () => {
 
     getCurrentUser()
   ])
+
+  if (!categories || !restaurants) {
+    return notFound()
+  }
 
   return (
     <div>

@@ -32,7 +32,7 @@ const RestaurantsPage = async ({ searchParams }: RestaurantPageProps) => {
     })
   ])
 
-  if (!currentUser || !categories || !restaurants) {
+  if (!categories || !restaurants) {
     return notFound()
   }
 

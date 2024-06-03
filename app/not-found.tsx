@@ -1,5 +1,6 @@
 import db from "@/app/_libs/prisma"
 import { Header } from "./_components/common/header"
+import { notFound } from "next/navigation"
 import { AccountIllustration } from "@/public/svgs/account-illustration"
 
 const NotFoundPage = async () => {
@@ -8,6 +9,10 @@ const NotFoundPage = async () => {
 
     db.restaurant.findMany({})
   ])
+
+  if (!categories || !restaurants) {
+    return notFound()
+  }
 
   return (
     <div>
