@@ -76,7 +76,7 @@ export const ProductListItemContent = ({
       <div className="my-3 overflow-hidden">
         <div className="flex items-center justify-between">
           <div className="truncate">
-            <h3 className="text-base font-semibold">{product.name}</h3>
+            <h3 className="text-base font-extrabold">{product.name}</h3>
           </div>
         </div>
         <div className="flex items-center gap-3">

@@ -63,7 +63,7 @@ export const RestaurantListItemContent = ({
   return (
     <div>
       <div className="my-3">
-        <h3 className="text-base font-semibold">{restaurant.name}</h3>
+        <h3 className="text-base font-extrabold">{restaurant.name}</h3>
       </div>
       <div className="flex items-center gap-4">
         <div className="text-primary">
