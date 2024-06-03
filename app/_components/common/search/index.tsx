@@ -16,6 +16,11 @@ import { Button } from "@/app/_components/ui/button"
 import { SearchHistoryAlertDialog } from "./search-history-alert-dialog"
 import { ClockIcon, SearchIcon } from "lucide-react"
 
+type SearchItem = {
+  term: string
+  timestamp: string
+}
+
 interface SearchProps {
   defaultValues?: z.infer<typeof formSchema>
 }
@@ -35,7 +40,7 @@ const formSchema = z.object({
 
 export const Search = ({ defaultValues }: SearchProps) => {
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState<boolean>(false)
-  const [searchHistory, setSearchHistory] = useState([])
+  const [searchHistory, setSearchHistory] = useState<SearchItem[]>([])
   const router = useRouter()
 
   const form = useForm<z.infer<typeof formSchema>>({
