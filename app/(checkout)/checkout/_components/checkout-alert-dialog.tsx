@@ -17,6 +17,7 @@ import {
 } from "@/app/_components/ui/alert-dialog"
 import { SafeUser } from "@/app/_types/SafeUser"
 import { Loader } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface CheckoutAlertDialogProps {
   setIsConfirmDialogOpen: (isConfirmDialogOpen: boolean) => void
@@ -30,6 +31,7 @@ export const CheckoutAlertDialog = ({
   currentUser
 }: CheckoutAlertDialogProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const router = useRouter()
   const { products, subtotalPrice, totalPrice, totalDiscounts, clearCart } =
     useContext(CartContext)
 
@@ -70,8 +72,6 @@ export const CheckoutAlertDialog = ({
         }
       })
 
-      clearCart()
-
       toast("Pedido realizado com sucesso.", {
         type: "success",
         toastId: "success",
@@ -84,6 +84,8 @@ export const CheckoutAlertDialog = ({
         theme: "light",
         transition: Flip
       })
+
+      router.push("/account/orders")
     } catch (error) {
       console.error(error)
       toast("Erro ao processar o pedido.", {
@@ -100,6 +102,7 @@ export const CheckoutAlertDialog = ({
       })
     } finally {
       setIsLoading(false)
+      clearCart()
     }
   }
 
