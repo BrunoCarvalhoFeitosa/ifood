@@ -223,7 +223,7 @@ export const ProductImage = ({
                 height={0}
                 quality={100}
                 sizes="100vw 100vh"
-                className="h-full w-full object-cover brightness-[.50] hover:brightness-100"
+                className="h-full w-full object-cover xl:brightness-[.50] hover:xl:brightness-100"
               />
             </TransformComponent>
           </div>
