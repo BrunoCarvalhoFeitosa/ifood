@@ -144,7 +144,10 @@ export const TestimonialsDialogModal = ({
           <DialogTitle>Como você avalia os nossos serviços?</DialogTitle>
           <DialogDescription>
             Ao postar sua opinião, ela será exposta publicamente no mural de
-            testemunhos dos nossos clientes que também já opinaram.
+            testemunhos dos nossos clientes que também já opinaram. Isso é
+            importante para nós, pois a partir das opiniões, podemos ver no que
+            estamos acertando e no que estamos errando, para assim melhorarmos
+            ainda mais sua experiência de navegação e compra.
           </DialogDescription>
         </DialogHeader>
         {currentUser && (
