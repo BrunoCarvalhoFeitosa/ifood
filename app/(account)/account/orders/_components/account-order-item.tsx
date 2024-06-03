@@ -1,12 +1,12 @@
 "use client"
+import { OrderStatus, Prisma } from "@prisma/client"
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
-import Image from "next/image"
-import { Separator } from "@/app/_components/ui/separator"
 import { formatCurrency } from "@/app/_helpers/price"
-import { OrderStatus, Prisma } from "@prisma/client"
-import { BadgeCheckIcon, StarIcon } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
+import { Separator } from "@/app/_components/ui/separator"
+import { BadgeCheckIcon, StarIcon } from "lucide-react"
 
 interface AccountOrderItemProps {
   order: Prisma.OrderGetPayload<{
@@ -146,7 +146,11 @@ export const AccountOrderItem = ({ order }: AccountOrderItemProps) => {
         </div>
         <div>
           <h5 className="font-semibold">Produtos</h5>
-          <div className="text-xs">{order.products.length} produtos</div>
+          <div className="text-xs">
+            {order.products.length === 1
+              ? `${order.products.length} produto`
+              : `${order.products.length} produtos`}
+          </div>
         </div>
         <div>
           <h5 className="font-semibold">Total</h5>
