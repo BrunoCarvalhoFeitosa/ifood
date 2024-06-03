@@ -14,7 +14,7 @@ export const TestimonialsComments = ({
   testimonials
 }: TestimonialsProps) => {
   return (
-    <section className="px-5 py-8">
+    <section className="px-5 pb-8">
       <TestimonialsTitle currentUser={currentUser} />
       <TestimonialsList currentUser={currentUser} testimonials={testimonials} />
     </section>
