@@ -1,13 +1,17 @@
 "use client"
 import { ChangeEvent, useState } from "react"
 import { useForm } from "react-hook-form"
+import { useScroll } from "@/app/_hooks/use-scroll"
+import { supabase } from "@/app/_libs/supabase"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
 import { v4 as uuidv4 } from "uuid"
-import { supabase } from "@/app/_libs/supabase"
+import { Flip, toast } from "react-toastify"
 import Image from "next/image"
 import Link from "next/link"
+import { Button } from "@/app/_components/ui/button"
+import { Input } from "@/app/_components/ui/input"
 import {
   Form,
   FormControl,
@@ -16,11 +20,8 @@ import {
   FormLabel,
   FormMessage
 } from "@/app/_components/ui/form"
-import { Button } from "@/app/_components/ui/button"
-import { Input } from "@/app/_components/ui/input"
 import { Loader } from "@/public/svgs/loader"
 import { FolderUp, LucideEye, LucideEyeOff } from "lucide-react"
-import { Flip, toast } from "react-toastify"
 
 const formSchema = z.object({
   name: z
@@ -56,6 +57,7 @@ export const SignUpForm = () => {
   const [imageUrl, setImageUrl] = useState<string>("")
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const scrolled = useScroll()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -138,8 +140,10 @@ export const SignUpForm = () => {
   }
 
   return (
-    <div className="flex w-full flex-col items-center justify-between lg:h-[100dvh] xl:overflow-hidden">
-      <div className="w-full px-5 py-3 lg:fixed">
+    <div className="flex w-full flex-col items-center justify-between xl:h-[100dvh] xl:overflow-hidden">
+      <header
+        className={`fixed top-0 w-full px-5 py-3 ${scrolled ? "bg-white" : "bg-transparent"} z-50`}
+      >
         <Link href="/" className="w-fit">
           <svg
             viewBox="0 -0.35492335728912394 1004 566.9724898595939"
@@ -153,19 +157,21 @@ export const SignUpForm = () => {
             </g>
           </svg>
         </Link>
-      </div>
-      <div className="flex h-full w-full items-center py-10 md:py-14 lg:py-0 2xl:gap-20">
-        <div className="w-full lg:w-[50%]">
-          <div className="mb-10 px-7">
-            <h1 className="text-5xl font-semibold">Cadastre-se</h1>
+      </header>
+      <div className="flex h-full w-full items-center py-10 pt-36 md:py-14 md:pt-36 xl:py-0 2xl:gap-20">
+        <div className="w-full xl:w-[50%]">
+          <div className="mb-10 px-5">
+            <h1 className="text-3xl font-semibold md:text-5xl">
+              Cadastre-se agora
+            </h1>
             <p className="text-sm text-muted-foreground">
-              Insira seus dados e aproveite todas as nossas promoções.
+              Insira seus dados e aproveite as promoções.
             </p>
           </div>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full space-y-5 px-7"
+              className="w-full space-y-5 px-5"
             >
               <div className="flex flex-col items-center gap-5 xl:flex-row">
                 <FormField

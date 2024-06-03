@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
+import { useScroll } from "@/app/_hooks/use-scroll"
 import { signIn } from "next-auth/react"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -41,6 +42,7 @@ type FormValues = z.infer<typeof formSchema>
 export const SignInForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const scrolled = useScroll()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -98,8 +100,10 @@ export const SignInForm = () => {
   }
 
   return (
-    <div className="flex h-[100dvh] w-full flex-col items-center justify-between xl:overflow-hidden">
-      <div className="fixed w-full px-5 py-3">
+    <div className="flex w-full flex-col items-center justify-between xl:h-[100dvh] xl:overflow-hidden">
+      <header
+        className={`fixed top-0 w-full px-5 py-3 ${scrolled ? "bg-white" : "bg-transparent"} z-50`}
+      >
         <Link href="/" className="w-fit">
           <svg
             viewBox="0 -0.35492335728912394 1004 566.9724898595939"
@@ -113,19 +117,21 @@ export const SignInForm = () => {
             </g>
           </svg>
         </Link>
-      </div>
-      <div className="flex h-full w-full items-center 2xl:gap-20">
-        <div className="w-full lg:w-[50%]">
-          <div className="mb-10 px-7">
-            <h1 className="text-5xl font-semibold">Bem vindo</h1>
+      </header>
+      <div className="flex h-full w-full items-center py-10 pt-36 md:py-14 md:pt-36 xl:py-0 2xl:gap-20">
+        <div className="w-full xl:w-[50%]">
+          <div className="mb-10 px-5">
+            <h1 className="text-3xl font-semibold md:text-5xl">
+              Acesse sua conta
+            </h1>
             <p className="text-sm text-muted-foreground">
-              Insira seus dados e aproveite todas as nossas promoções.
+              Insira seus dados e aproveite promoções.
             </p>
           </div>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full space-y-5 px-7"
+              className="w-full space-y-5 px-5"
             >
               <FormField
                 control={form.control}
