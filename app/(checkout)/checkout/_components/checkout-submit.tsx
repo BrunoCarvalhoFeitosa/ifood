@@ -11,7 +11,7 @@ interface CheckoutSubmitProps {
 }
 
 export const CheckoutSubmit = ({ currentUser }: CheckoutSubmitProps) => {
-  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false)
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState<boolean>(false)
   const router = useRouter()
   const { products } = useContext(CartContext)
 
