@@ -125,7 +125,7 @@ export const SignInForm = () => {
               Acesse sua conta
             </h1>
             <p className="text-sm text-muted-foreground">
-              Insira seus dados e aproveite promoções.
+              Insira seus dados e aproveite as promoções.
             </p>
           </div>
           <Form {...form}>
