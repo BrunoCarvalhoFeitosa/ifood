@@ -4,7 +4,7 @@ import { Restaurant, UserFavoriteRestaurant } from "@prisma/client"
 import { SafeUser } from "@/app/_types/SafeUser"
 import { searchRestaurants } from "@/app/_actions/search"
 import { RestaurantListItem } from "@/app/_components/common/restaurant/restaurant-list-item"
-import { Search } from "@/app/_components/common/search/search"
+import { Search } from "@/app/_components/common/search"
 import { Loader2Icon } from "lucide-react"
 
 interface RestaurantsListProps {
