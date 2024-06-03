@@ -30,9 +30,9 @@ export const RecommendedProductListContent = ({
   userFavoriteProducts
 }: RecommendedProductListContentProps) => {
   return (
-    <section className="w-full px-5 pt-10 transition-all duration-500">
+    <section className="w-full px-5 pt-8 transition-all duration-500 xl:pt-10">
       <div>
-        <h2 className="w-4/5 text-xl font-extrabold md:text-2xl">
+        <h2 className="w-4/5 text-lg font-extrabold leading-none md:text-2xl">
           {title} {productName}
         </h2>
       </div>
