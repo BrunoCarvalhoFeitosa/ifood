@@ -95,7 +95,7 @@ export const HeaderSideMenu = async ({
           </Button>
         </Link>
       </div>
-      <div className="max-h-[60vh] overflow-y-auto [&::-webkit-scrollbar]:hidden">
+      <div className="max-h-[35dvh] overflow-y-auto lg:max-h-[48dvh] [&::-webkit-scrollbar]:hidden">
         <HeaderMenuListDropdown categories={categories} />
         <HeaderRestaurantListDropdown restaurants={restaurants} />
       </div>
