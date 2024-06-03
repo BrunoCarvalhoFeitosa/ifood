@@ -8,7 +8,7 @@
     "build": "npx prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "prisma generate husky"
+    "prepare": "prisma generate && husky"
   },
   "prisma": {
     "seed": "ts-node ./prisma/seed.ts"
