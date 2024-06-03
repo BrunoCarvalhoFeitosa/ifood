@@ -24,10 +24,7 @@ export const CommentsResume = ({
             {totalComments < 10 ? `0${totalComments}` : totalComments}
           </strong>
           <span className="text-sm md:text-base">
-            {comments.filter((comment) => comment.productId === productId)
-              .length === 1
-              ? "comentário"
-              : "comentários"}
+            {totalComments === 1 ? "comentário" : "comentários"}
           </span>
         </h4>
       </div>

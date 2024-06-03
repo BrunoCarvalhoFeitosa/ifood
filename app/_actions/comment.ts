@@ -113,7 +113,7 @@ export const createRestaurantComment = async (
 
 export const deleteRestaurantComment = async (
   userId: string,
-  restaurantId: string
+  commentId: string
 ) => {
   try {
     const user = await db.user.findUnique({
@@ -127,7 +127,7 @@ export const deleteRestaurantComment = async (
 
     const comment = await db.commentRestaurant.findUnique({
       where: {
-        id: restaurantId
+        id: commentId
       }
     })
 
@@ -135,9 +135,9 @@ export const deleteRestaurantComment = async (
       throw new Error("Comment not founded.")
     }
 
-    await db.commentProduct.delete({
+    await db.commentRestaurant.delete({
       where: {
-        id: restaurantId
+        id: commentId
       }
     })
 

@@ -21,7 +21,7 @@ export const CommentRestaurantItem = ({
   commentId,
   comment
 }: CommentRestaurantItemProps) => {
-  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false)
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState<boolean>(false)
 
   return (
     <div>

@@ -21,11 +21,11 @@ export const CommentProductItem = ({
   commentId,
   comment
 }: CommentProductItemProps) => {
-  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false)
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState<boolean>(false)
 
   return (
-    <div>
-      <div className="flex gap-6 border-b border-gray-100 py-5">
+    <div className="w-full">
+      <div className="flex w-full gap-6 border-b border-gray-100 py-5">
         <div className="flex flex-col items-center">
           <div>
             <Avatar>
@@ -43,7 +43,7 @@ export const CommentProductItem = ({
             </h5>
           </div>
         </div>
-        <div>
+        <div className="flex-1">
           <div className="mb-2 flex items-center justify-end gap-1">
             <div className="text-gray-300">
               <ClockIcon size={18} />

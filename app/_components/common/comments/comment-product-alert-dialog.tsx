@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 "use client"
+import { useState } from "react"
 import { SafeUser } from "@/app/_types/SafeUser"
 import { Flip, toast } from "react-toastify"
 import { deleteProductComment } from "@/app/_actions/comment"
+import { Loader } from "@/public/svgs/loader"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,8 +15,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle
 } from "@/app/_components/ui/alert-dialog"
-import { Loader } from "@/public/svgs/loader"
-import { useState } from "react"
 
 interface CommentProductAlertDialogProps {
   currentUser: SafeUser | null
@@ -32,6 +32,8 @@ export const CommentProductAlertDialog = ({
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleDeleteComment = async () => {
+    if (!currentUser?.id) return
+
     setIsLoading(true)
 
     try {
@@ -55,8 +57,8 @@ export const CommentProductAlertDialog = ({
       console.error("Error while delete comment: ", error)
 
       toast("Erro ao remover comentário.", {
-        type: "success",
-        toastId: "success",
+        type: "error",
+        toastId: "error",
         position: "top-right",
         autoClose: 2500,
         hideProgressBar: false,
