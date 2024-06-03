@@ -50,9 +50,10 @@ export const ProductDelivery = ({ product }: ProductDeliveryProps) => {
       </AccordionItem>
       <AccordionItem value="item-4">
         <AccordionTrigger>Compra segura</AccordionTrigger>
-        <AccordionContent className="flex items-center gap-1">
+        <AccordionContent>
           <span>Receba outro pedido em casos de</span>
-          <strong>má entrega, avaria</strong> ou <strong>furto</strong>
+          <strong className="ml-1">má entrega, avaria</strong> ou{" "}
+          <strong>furto</strong>
         </AccordionContent>
       </AccordionItem>
     </Accordion>

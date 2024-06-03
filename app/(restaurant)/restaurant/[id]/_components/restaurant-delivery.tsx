@@ -23,10 +23,16 @@ export const RestaurantDelivery = ({ restaurant }: RestaurantDeliveryProps) => {
       </AccordionItem>
       <AccordionItem value="item-2">
         <AccordionTrigger>Preço de entrega</AccordionTrigger>
-        <AccordionContent className="flex items-center gap-1">
-          <span>O preço de entrega é de</span>
-          <strong>{formatCurrency(Number(restaurant.deliveryFee))}</strong>
-        </AccordionContent>
+        {restaurant.deliveryFee === "0" ? (
+          <AccordionContent className="flex items-center gap-1">
+            <span>O frete é</span> <strong>grátis</strong>
+          </AccordionContent>
+        ) : (
+          <AccordionContent className="flex items-center gap-1">
+            <span>O preço de entrega é de</span>
+            <strong>{formatCurrency(Number(restaurant.deliveryFee))}</strong>
+          </AccordionContent>
+        )}
       </AccordionItem>
       <AccordionItem value="item-3">
         <AccordionTrigger>Tempo de entrega</AccordionTrigger>
@@ -44,9 +50,10 @@ export const RestaurantDelivery = ({ restaurant }: RestaurantDeliveryProps) => {
       </AccordionItem>
       <AccordionItem value="item-5">
         <AccordionTrigger>Compra segura</AccordionTrigger>
-        <AccordionContent className="flex items-center gap-1">
+        <AccordionContent>
           <span>Receba outro pedido em casos de</span>
-          <strong>má entrega, avaria</strong> ou <strong>furto</strong>
+          <strong className="ml-1">má entrega, avaria</strong> ou{" "}
+          <strong>furto</strong>
         </AccordionContent>
       </AccordionItem>
     </Accordion>
