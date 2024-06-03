@@ -64,11 +64,11 @@ export const SearchHistoryAlertDialog = ({
           </DialogTitle>
           <DialogDescription>
             A ação de remover um item do seu histórico de busca poderá
-            dificultar um pouco sua experiência, o histórico é só uma maneira de
-            facilitar a sua navegação, por exemplo, ao ter buscado pelo nome de
-            um restaurante que você já efetuou uma compra, ele ficará registrado
-            neste histórico, caso você tenha esquecido o nome do restaurante,
-            este mecanismo lhe lembrará.
+            dificultar um pouco sua experiência, o histórico de busca é só uma
+            maneira de facilitar a sua navegação, por exemplo, ao ter buscado
+            pelo nome de um restaurante que você já efetuou uma compra, ele
+            ficará registrado neste histórico, caso você tenha esquecido o nome
+            do restaurante, este mecanismo lhe lembrará.
           </DialogDescription>
         </DialogHeader>
         <div className="mt-6 h-full overflow-y-auto">
