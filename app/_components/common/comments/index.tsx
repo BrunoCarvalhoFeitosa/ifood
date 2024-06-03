@@ -23,7 +23,7 @@ export const Comments = ({
   comments
 }: CommentsProps) => {
   return (
-    <section className="w-full px-5 pb-14 pt-20 xl:w-[1200px] 2xl:w-2/4">
+    <section className="w-full px-5 pb-14 pt-14 xl:w-[1200px] xl:pt-20 2xl:w-2/4">
       <CommentsResume
         comments={comments}
         productId={productId}

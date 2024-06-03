@@ -16,16 +16,16 @@ export const CommentMessage = ({ type, currentUser }: CommenMessageProps) => {
       {!currentUser && (
         <section className="mt-10 md:ml-28">
           <div className="mb-2">
-            <h5 className="font-semibold">
+            <h5 className="text-lg font-extrabold leading-none">
               Quer comentar como foi sua experiência com o {type}?
             </h5>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="my-6 flex items-center space-x-4">
             <Skeleton className="h-[60px] w-[60px] rounded-full" />
-            <div className="space-y-2">
-              <Skeleton className="h-3 w-[300px]" />
-              <Skeleton className="h-3 w-[250px]" />
-              <Skeleton className="h-3 w-[200px]" />
+            <div className="flex-1 space-y-2">
+              <Skeleton className="h-3 w-full md:w-[300px]" />
+              <Skeleton className="h-3 w-2/3 md:w-[250px]" />
+              <Skeleton className="h-3 w-2/4 md:w-[200px]" />
             </div>
           </div>
           {!currentUser && (
@@ -35,7 +35,7 @@ export const CommentMessage = ({ type, currentUser }: CommenMessageProps) => {
                   type="button"
                   variant="default"
                   size="default"
-                  className="h-14 px-6 text-base"
+                  className="h-14 w-full px-6 text-base md:w-fit"
                 >
                   Identifique-se para fazer um comentário
                 </Button>
