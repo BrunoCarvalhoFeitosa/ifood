@@ -25,10 +25,12 @@ export const TestimonialsTitle = ({ currentUser }: TestimonialsTitleProps) => {
     <div>
       <div className="flex flex-col items-center gap-3 lg:items-start">
         <div className="mb-2 text-center lg:text-left">
-          <h3 className="text-lg font-extrabold md:text-xl">
+          <h3 className="text-base font-extrabold md:text-xl">
             O que os nossos clientes dizem sobre nós
           </h3>
-          <p>Veja os comentários a respeito dos serviços que oferecemos.</p>
+          <p className="text-sm">
+            Veja os comentários a respeito dos serviços que oferecemos.
+          </p>
         </div>
         {currentUser && (
           <div>
