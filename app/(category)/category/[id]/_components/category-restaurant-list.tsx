@@ -24,8 +24,8 @@ export const CategoryRestaurantList = ({
 }: CategoryRestaurantListProps) => {
   return (
     <section className="px-5 py-6">
-      <div className="mb-5">
-        <h3 className="text-2xl font-extrabold">Restaurantes</h3>
+      <div className="mb-3">
+        <h3 className="text-lg font-extrabold md:text-xl">Restaurantes</h3>
       </div>
       <div className="custom-scrollbar flex items-center gap-4 overflow-x-auto">
         {restaurants.map((restaurant) => (
