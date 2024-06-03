@@ -10,92 +10,82 @@ import { TestimonialsComments } from "@/app/_components/common/testimonials"
 const HomePage = async () => {
   const currentUser = await getCurrentUser()
 
-  const [
-    categories,
-    restaurants,
-    brazilianFood,
-    japaneseFood,
-    fastFood,
-    userFavoriteProducts,
-    testimonials
-  ] = await Promise.all([
-    db.category.findMany({}),
+  const categories = await db.category.findMany({})
 
-    db.restaurant.findMany({}),
+  const restaurants = await db.restaurant.findMany({})
 
-    db.product.findMany({
-      where: {
-        category: {
-          name: "Comida Brasileira"
-        }
-      },
-      include: {
-        restaurant: {
-          select: {
-            name: true,
-            imageUrl: true,
-            deliveryFee: true,
-            deliveryTimeMinutes: true
-          }
+  const brazilianFood = await db.product.findMany({
+    where: {
+      category: {
+        name: "Comida Brasileira"
+      }
+    },
+    include: {
+      restaurant: {
+        select: {
+          name: true,
+          imageUrl: true,
+          deliveryFee: true,
+          deliveryTimeMinutes: true
         }
       }
-    }),
+    }
+  })
 
-    db.product.findMany({
-      where: {
-        category: {
-          name: "Comida Japonesa"
-        }
-      },
-      include: {
-        restaurant: {
-          select: {
-            id: true,
-            name: true,
-            imageUrl: true,
-            deliveryFee: true,
-            deliveryTimeMinutes: true
-          }
+  const japaneseFood = await db.product.findMany({
+    where: {
+      category: {
+        name: "Comida Japonesa"
+      }
+    },
+    include: {
+      restaurant: {
+        select: {
+          id: true,
+          name: true,
+          imageUrl: true,
+          deliveryFee: true,
+          deliveryTimeMinutes: true
         }
       }
-    }),
+    }
+  })
 
-    db.product.findMany({
-      where: {
-        category: {
-          name: "Hambúrgueres"
-        }
-      },
-      include: {
-        restaurant: {
-          select: {
-            id: true,
-            name: true,
-            imageUrl: true,
-            deliveryFee: true,
-            deliveryTimeMinutes: true
-          }
+  const fastFood = await db.product.findMany({
+    where: {
+      category: {
+        name: "Hambúrgueres"
+      }
+    },
+    include: {
+      restaurant: {
+        select: {
+          id: true,
+          name: true,
+          imageUrl: true,
+          deliveryFee: true,
+          deliveryTimeMinutes: true
         }
       }
-    }),
+    }
+  })
 
-    db.userFavoriteProduct.findMany({
-      where: {
-        userId: currentUser?.id
-      },
-      include: {
-        product: {
-          include: {
-            restaurant: true,
-            category: true,
-            favoritedByUsers: true
-          }
+  const userFavoriteProducts = await db.userFavoriteProduct.findMany({
+    where: {
+      userId: currentUser?.id
+    },
+    include: {
+      product: {
+        include: {
+          restaurant: true,
+          category: true,
+          favoritedByUsers: true
         }
       }
-    }),
+    }
+  })
 
-    db.testimonials.findMany({})
-  ])
+  const testimonials = await db.testimonials.findMany({})
 
   if (
     !categories ||

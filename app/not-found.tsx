@@ -4,11 +4,9 @@ import { notFound } from "next/navigation"
 import { AccountIllustration } from "@/public/svgs/account-illustration"
 
 const NotFoundPage = async () => {
-  const [categories, restaurants] = await Promise.all([
-    db.category.findMany({}),
+  const categories = await db.category.findMany({})
 
-    db.restaurant.findMany({})
-  ])
+  const restaurants = await db.restaurant.findMany({})
 
   if (!categories || !restaurants) {
     return notFound()

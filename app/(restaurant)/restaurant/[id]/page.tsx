@@ -17,86 +17,77 @@ interface RestaurantPageProps {
 const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
   const currentUser = await getCurrentUser()
 
-  const [
-    categories,
-    restaurants,
-    restaurant,
-    userFavoriteRestaurants,
-    userFavoriteProducts,
-    comments
-  ] = await Promise.all([
-    db.category.findMany({}),
+  const categories = await db.category.findMany({})
 
-    db.restaurant.findMany({}),
+  const restaurants = await db.restaurant.findMany({})
 
-    db.restaurant.findUnique({
-      where: {
-        id
-      },
-      include: {
-        categories: {
-          where: {
-            NOT: {
-              name: "Sucos e refrigerantes"
-            }
-          },
-          include: {
-            products: {
-              where: {
-                restaurantId: id
-              },
-              include: {
-                restaurant: {
-                  select: {
-                    id: true,
-                    name: true,
-                    imageUrl: true,
-                    deliveryFee: true,
-                    deliveryTimeMinutes: true,
-                    categories: true,
-                    products: true
-                  }
+  const restaurant = await db.restaurant.findUnique({
+    where: {
+      id
+    },
+    include: {
+      categories: {
+        where: {
+          NOT: {
+            name: "Sucos e refrigerantes"
+          }
+        },
+        include: {
+          products: {
+            where: {
+              restaurantId: id
+            },
+            include: {
+              restaurant: {
+                select: {
+                  id: true,
+                  name: true,
+                  imageUrl: true,
+                  deliveryFee: true,
+                  deliveryTimeMinutes: true,
+                  categories: true,
+                  products: true
                 }
               }
             }
           }
-        },
-        products: {
-          take: 10,
-          include: {
-            restaurant: {
-              select: {
-                name: true,
-                imageUrl: true,
-                deliveryFee: true,
-                deliveryTimeMinutes: true
-              }
+        }
+      },
+      products: {
+        take: 10,
+        include: {
+          restaurant: {
+            select: {
+              name: true,
+              imageUrl: true,
+              deliveryFee: true,
+              deliveryTimeMinutes: true
             }
           }
         }
       }
-    }),
+    }
+  })
 
-    db.userFavoriteRestaurant.findMany({
-      where: {
-        userId: currentUser?.id
-      },
-      include: {
-        restaurant: true
-      }
-    }),
+  const userFavoriteRestaurants = await db.userFavoriteRestaurant.findMany({
+    where: {
+      userId: currentUser?.id
+    },
+    include: {
+      restaurant: true
+    }
+  })
 
-    db.userFavoriteProduct.findMany({
-      where: {
-        userId: currentUser?.id
-      },
-      include: {
-        product: true
-      }
-    }),
+  const userFavoriteProducts = await db.userFavoriteProduct.findMany({
+    where: {
+      userId: currentUser?.id
+    },
+    include: {
+      product: true
+    }
+  })
 
-    db.commentRestaurant.findMany({})
-  ])
+  const comments = await db.commentRestaurant.findMany({})
 
   if (!categories || !restaurants || !restaurant || !userFavoriteRestaurants) {
     return notFound()

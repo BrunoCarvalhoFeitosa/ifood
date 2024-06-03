@@ -10,13 +10,11 @@ const AccountPageLayout = async ({
 }: Readonly<{
   children: React.ReactNode
 }>) => {
-  const [currentUser, categories, restaurants] = await Promise.all([
-    getCurrentUser(),
+  const currentUser = await getCurrentUser()
 
-    db.restaurant.findMany({}),
+  const categories = await db.category.findMany({})
 
-    db.restaurant.findMany({})
-  ])
+  const restaurants = await db.restaurant.findMany({})
 
   if (!currentUser) {
     return redirect("/sign-in")

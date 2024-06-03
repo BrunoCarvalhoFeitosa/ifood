@@ -18,33 +18,30 @@ interface ProductPageProps {
 const ProductPage = async ({ params: { id } }: ProductPageProps) => {
   const currentUser = await getCurrentUser()
 
-  const [categories, restaurants, product, userFavoriteProducts, comments] =
-    await Promise.all([
-      db.category.findMany({}),
+  const categories = await db.category.findMany({})
 
-      db.restaurant.findMany({}),
+  const restaurants = await db.restaurant.findMany({})
 
-      db.product.findUnique({
-        where: {
-          id
-        },
-        include: {
-          restaurant: true,
-          category: true
-        }
-      }),
+  const product = await db.product.findUnique({
+    where: {
+      id
+    },
+    include: {
+      restaurant: true,
+      category: true
+    }
+  })
 
-      db.userFavoriteProduct.findMany({
-        where: {
-          userId: currentUser?.id
-        },
-        include: {
-          product: true
-        }
-      }),
+  const userFavoriteProducts = await db.userFavoriteProduct.findMany({
+    where: {
+      userId: currentUser?.id
+    },
+    include: {
+      product: true
+    }
+  })
 
-      db.commentProduct.findMany({})
-    ])
+  const comments = await db.commentProduct.findMany({})
 
   if (!categories || !restaurants || !product || !userFavoriteProducts) {
     return notFound()

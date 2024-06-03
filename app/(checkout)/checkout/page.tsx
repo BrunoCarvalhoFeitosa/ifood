@@ -7,13 +7,11 @@ import { CheckoutSubmit } from "./_components/checkout-submit"
 import { notFound } from "next/navigation"
 
 const CheckoutPage = async () => {
-  const [categories, restaurants, currentUser] = await Promise.all([
-    db.category.findMany({}),
+  const currentUser = await getCurrentUser()
 
-    db.restaurant.findMany({}),
+  const categories = await db.category.findMany({})
 
-    getCurrentUser()
-  ])
+  const restaurants = await db.restaurant.findMany({})
 
   if (!categories || !restaurants) {
     return notFound()

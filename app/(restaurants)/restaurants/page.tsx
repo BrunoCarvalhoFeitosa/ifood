@@ -17,20 +17,18 @@ const RestaurantsPage = async ({ searchParams }: RestaurantPageProps) => {
 
   const currentUser = await getCurrentUser()
 
-  const [categories, restaurants, userFavoriteRestaurants] = await Promise.all([
-    db.category.findMany({}),
+  const categories = await db.category.findMany({})
 
-    db.restaurant.findMany({}),
+  const restaurants = await db.restaurant.findMany({})
 
-    db.userFavoriteRestaurant.findMany({
-      where: {
-        userId: currentUser?.id
-      },
-      include: {
-        restaurant: true
-      }
-    })
-  ])
+  const userFavoriteRestaurants = await db.userFavoriteRestaurant.findMany({
+    where: {
+      userId: currentUser?.id
+    },
+    include: {
+      restaurant: true
+    }
+  })
 
   if (!categories || !restaurants) {
     return notFound()
