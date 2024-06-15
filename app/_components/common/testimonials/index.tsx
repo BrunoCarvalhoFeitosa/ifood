@@ -1,8 +1,8 @@
 "use client"
 import { SafeUser } from "@/app/_types/SafeUser"
-import { TestimonialsTitle } from "./testimonials-title"
 import { Testimonials } from "@prisma/client"
 import { TestimonialsList } from "./testimonials-list"
+import { TestimonialsResume } from "./testimonials-resume"
 
 interface TestimonialsProps {
   currentUser: SafeUser | null
@@ -14,8 +14,8 @@ export const TestimonialsComments = ({
   testimonials
 }: TestimonialsProps) => {
   return (
-    <section className="px-5 pb-8">
-      <TestimonialsTitle currentUser={currentUser} />
+    <section className="w-full px-5 pb-8 xl:w-2/4">
+      <TestimonialsResume />
       <TestimonialsList currentUser={currentUser} testimonials={testimonials} />
     </section>
   )

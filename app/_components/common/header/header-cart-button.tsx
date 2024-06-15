@@ -17,7 +17,7 @@ export const HeaderCartButton = () => {
 
   useEffect(() => {
     setIsCartOpen(false)
-  }, [pathname])
+  }, [pathname, setIsCartOpen])
 
   return (
     <TooltipProvider>
@@ -37,9 +37,11 @@ export const HeaderCartButton = () => {
             </div>
           </div>
         </TooltipTrigger>
-        <TooltipContent className="text-foreground">
-          <p>Ver produtos do carrinho</p>
-        </TooltipContent>
+        <div className="hidden xl:block">
+          <TooltipContent className="text-foreground">
+            <p>Ver produtos do carrinho</p>
+          </TooltipContent>
+        </div>
       </Tooltip>
     </TooltipProvider>
   )

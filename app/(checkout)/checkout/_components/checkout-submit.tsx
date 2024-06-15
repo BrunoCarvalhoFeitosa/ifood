@@ -44,14 +44,15 @@ export const CheckoutSubmit = ({ currentUser }: CheckoutSubmitProps) => {
           )}
         </div>
       ) : (
-        <div className="flex justify-center">
+        <div className="mt-6 flex justify-end">
           <Button
             type="button"
             variant="default"
             size="default"
+            className="h-14"
             onClick={() => router.push("/sign-in")}
           >
-            Para finalizar pedidos, identifique-se
+            Para finalizar um pedido, identifique-se
           </Button>
         </div>
       )}

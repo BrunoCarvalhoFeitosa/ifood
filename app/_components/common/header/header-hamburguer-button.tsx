@@ -45,9 +45,11 @@ export const HeaderHamburguerButton = ({
               </Button>
             </SheetTrigger>
           </TooltipTrigger>
-          <TooltipContent className="text-foreground">
-            <p>Abrir o menú</p>
-          </TooltipContent>
+          <div className="hidden xl:block">
+            <TooltipContent className="text-foreground">
+              <p>Abrir o menú</p>
+            </TooltipContent>
+          </div>
         </Tooltip>
         <SheetContent>
           <SheetHeader className="text-left">

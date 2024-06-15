@@ -5,7 +5,10 @@ import { Header } from "@/app/_components/common/header"
 import { Search } from "@/app/_components/common/search"
 import { CategoryList } from "@/app/_components/common/category/category-list"
 import { ProductList } from "@/app/_components/common/product/product-list"
+import { Download } from "./_components/download"
 import { TestimonialsComments } from "@/app/_components/common/testimonials"
+import "swiper/css"
+import "swiper/css/navigation"
 
 const HomePage = async () => {
   const currentUser = await getCurrentUser()
@@ -124,11 +127,12 @@ const HomePage = async () => {
             currentUser={currentUser}
             userFavoriteProducts={userFavoriteProducts}
           />
-          <TestimonialsComments
-            currentUser={currentUser}
-            testimonials={testimonials}
-          />
         </div>
+        <Download />
+        <TestimonialsComments
+          currentUser={currentUser}
+          testimonials={testimonials}
+        />
       </main>
     </div>
   )

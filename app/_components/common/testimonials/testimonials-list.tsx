@@ -59,7 +59,7 @@ export const TestimonialsList = ({
 
   return (
     <section className={`relative ${currentUser ? "mt-16" : "mt-6"} w-full`}>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+      <div className="flex flex-col">
         {currentTestimonials.map((testimonial) => (
           <TestimonialsListItem
             key={testimonial.id}

@@ -23,9 +23,9 @@ export const CommentMessage = ({ type, currentUser }: CommenMessageProps) => {
           <div className="my-6 flex items-center space-x-4">
             <Skeleton className="h-[60px] w-[60px] rounded-full" />
             <div className="flex-1 space-y-2">
-              <Skeleton className="h-3 w-full md:w-[300px]" />
-              <Skeleton className="h-3 w-2/3 md:w-[250px]" />
-              <Skeleton className="h-3 w-2/4 md:w-[200px]" />
+              <Skeleton className="h-3 w-full rounded-none md:w-[300px]" />
+              <Skeleton className="h-3 w-2/3 rounded-none md:w-[250px]" />
+              <Skeleton className="h-3 w-2/4 rounded-none md:w-[200px]" />
             </div>
           </div>
           {!currentUser && (

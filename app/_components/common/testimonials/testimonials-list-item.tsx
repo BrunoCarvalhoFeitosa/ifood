@@ -20,7 +20,7 @@ export const TestimonialsListItem = ({
   testimonial
 }: TestimonialsListItemProps) => {
   return (
-    <Card>
+    <Card className="border-none shadow-none">
       <CardHeader>
         <div className="flex items-center gap-4">
           <div>
@@ -42,15 +42,21 @@ export const TestimonialsListItem = ({
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-sm">{testimonial.content}</p>
+        <div>
+          <p className="text-sm">{testimonial.content}</p>
+        </div>
       </CardContent>
-      <CardFooter className="flex justify-end gap-1">
-        <span className="text-xs text-muted-foreground">Publicado em:</span>
-        <p className="text-xs text-muted-foreground">
-          {format(testimonial.createdAt, "dd 'de' MMMM yyyy 'às' HH:mm", {
-            locale: ptBR
-          })}
-        </p>
+      <CardFooter>
+        <div>
+          <span className="mr-1 text-xs text-muted-foreground">
+            Publicado em:
+          </span>
+          <span className="text-xs text-muted-foreground">
+            {format(testimonial.createdAt, "dd 'de' MMMM yyyy 'às' HH:mm", {
+              locale: ptBR
+            })}
+          </span>
+        </div>
       </CardFooter>
     </Card>
   )

@@ -42,9 +42,11 @@ export const HeaderSharePage = () => {
             <Share2Icon size={20} />
           </Button>
         </TooltipTrigger>
-        <TooltipContent className="text-foreground">
-          <p>Compartilhar esta página</p>
-        </TooltipContent>
+        <div className="hidden xl:block">
+          <TooltipContent className="text-foreground">
+            <p>Compartilhar esta página</p>
+          </TooltipContent>
+        </div>
       </Tooltip>
     </TooltipProvider>
   )

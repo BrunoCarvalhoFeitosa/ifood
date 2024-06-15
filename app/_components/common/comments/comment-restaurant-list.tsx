@@ -23,7 +23,7 @@ export const CommentRestaurantList = ({
         <div>
           {comments.filter((comment) => comment.restaurantId === restaurantId)
             .length >= 1 && (
-            <section className="mt-10 md:ml-20">
+            <section className="mt-10 md:ml-28">
               {comments
                 .filter((comment) => comment.restaurantId === restaurantId)
                 .map((comment) => (
