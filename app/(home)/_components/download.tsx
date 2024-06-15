@@ -256,7 +256,7 @@ export const Download = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className="px-5 py-4">
+      <div className="px-3 py-4 md:px-5">
         <div className="flex items-center gap-8 md:gap-12">
           <div>
             <div className="flex items-center gap-[2px]">
