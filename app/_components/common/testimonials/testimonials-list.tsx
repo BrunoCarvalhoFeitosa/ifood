@@ -44,7 +44,7 @@ export const TestimonialsList = ({
             isActive={currentPage === pageNumber}
             onClick={() => paginate(pageNumber)}
             className={cn(
-              "cursor-pointer border-gray-200 bg-primary text-base text-white opacity-20 hover:bg-primary hover:text-white hover:opacity-90",
+              "h-12 w-12 cursor-pointer rounded-none border-gray-200 bg-primary text-base text-white opacity-20 hover:bg-primary hover:text-white hover:opacity-90",
               currentPage === pageNumber && "opacity-100"
             )}
           >
