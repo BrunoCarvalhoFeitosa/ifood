@@ -136,7 +136,12 @@ export const CheckoutProductsTable = () => {
             </p>
           </div>
           <div>
-            <AccountDeliveryIllustration width="600" height="420" />
+            <div className="block md:hidden">
+              <AccountDeliveryIllustration width="360" height="360" />
+            </div>
+            <div className="hidden md:block">
+              <AccountDeliveryIllustration width="660" height="420" />
+            </div>
           </div>
         </div>
       )}
