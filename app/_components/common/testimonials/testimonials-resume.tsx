@@ -7,7 +7,7 @@ export const TestimonialsResume = () => {
       <div className="flex gap-8">
         <div>
           <div className="flex flex-col items-center justify-center gap-[2px]">
-            <div className="text-4xl font-bold md:text-6xl">4.8</div>
+            <div className="text-5xl font-bold md:text-6xl">4.8</div>
             <div className="flex items-center">
               <StarIcon size={18} className="fill-red-600 stroke-red-600" />
               <StarIcon size={18} className="fill-red-600 stroke-red-600" />

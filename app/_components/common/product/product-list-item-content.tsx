@@ -94,7 +94,7 @@ export const ProductListItemContent = ({
         <div className="text-primary">
           <Button
             type="button"
-            title="Favoritar"
+            title={isFavorite ? "Desfavoritar" : "Favoritar"}
             variant="ghost"
             size="sm"
             className={`p-0 text-primary hover:text-primary`}

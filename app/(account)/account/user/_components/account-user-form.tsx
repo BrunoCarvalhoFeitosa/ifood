@@ -34,7 +34,7 @@ const formSchema = z.object({
     .max(70, {
       message: "O valor máximo é de 70 caracteres."
     })
-    .regex(/^[A-Za-z ]*$/, {
+    .regex(/^[A-Za-zÀ-ú ]*$/, {
       message: "Por favor, insira insira somente letras."
     }),
 
@@ -100,14 +100,19 @@ export const AccountUserForm = ({ currentUser }: AccountUserFormProps) => {
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true)
 
+    if (!currentUser?.id) {
+      return
+    }
+
     const formData = {
       ...data,
       image: imageUrl ? imageUrl : currentUser?.image
     }
 
     axios
-      .patch(`/api/update/${currentUser?.id}`, formData)
-      .then(() => {
+      .patch(`/api/update/${currentUser.id}`, formData)
+      .then((res) => {
+        console.log("then res", res)
         toast("Dados atualizados com sucesso.", {
           type: "success",
           toastId: "success",
@@ -124,7 +129,7 @@ export const AccountUserForm = ({ currentUser }: AccountUserFormProps) => {
         form.reset()
       })
       .catch((error: Error) => {
-        console.error("Error while registering user: ", error)
+        console.error("Error while update user: ", error)
         toast("Erro ao atualizar os dados.", {
           type: "error",
           toastId: "error",
@@ -147,7 +152,7 @@ export const AccountUserForm = ({ currentUser }: AccountUserFormProps) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full space-y-5 px-7"
+        className="w-full space-y-5 rounded-2xl border px-7 py-10"
       >
         <div className="flex flex-col items-center gap-5 xl:flex-row">
           <FormField

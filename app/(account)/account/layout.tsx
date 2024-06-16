@@ -31,16 +31,16 @@ const AccountPageLayout = async ({
         <div className="px-5 pt-10">
           <h1 className="text-lg font-extrabold md:text-xl">Minha conta</h1>
           <p className="text-sm">
-            Edite seus dados pessoais, veja, adicione ou remova os produtos e
-            restaurantes que você favoritou.
+            Edite seus dados pessoais, favorite os melhores pratos e
+            restaurantes e acompanhe seus pedidos.
           </p>
         </div>
-        <div className="flex w-full flex-col gap-12 px-5 pb-8 pt-10 lg:flex-row">
-          <div className="w-full rounded-2xl bg-primary px-6 py-8 lg:w-2/6">
+        <div className="flex w-full flex-col gap-12 px-5 pb-8 pt-10 xl:flex-row">
+          <div className="w-full bg-primary px-6 py-8 xl:w-2/6">
             <AccountUserProfile currentUser={currentUser} />
             <AccountMenuOptions />
           </div>
-          <div className="w-full lg:w-[66.333333%]">{children}</div>
+          <div className="w-full xl:w-[66.333333%]">{children}</div>
         </div>
       </main>
     </div>

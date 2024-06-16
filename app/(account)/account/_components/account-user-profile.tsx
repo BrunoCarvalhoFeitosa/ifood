@@ -24,8 +24,10 @@ export const AccountUserProfile = ({ currentUser }: UserProfileProps) => {
             />
           </Avatar>
         </div>
-        <div className="text-white">
-          <h2 className="text-base font-extrabold">{currentUser?.name}</h2>
+        <div className="truncate text-white">
+          <h2 className="w-3/4 truncate text-base font-extrabold md:w-full">
+            {currentUser?.name}
+          </h2>
           <h3 className="text-sm">{currentUser?.email}</h3>
         </div>
       </div>

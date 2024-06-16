@@ -28,7 +28,7 @@ export const ProductListItem = ({
   userFavoriteProducts
 }: ProductListItemProps) => {
   return (
-    <Link href={`/product/${product.id}`}>
+    <Link href={`/product/${product.id}`} className="w-full xl:w-fit">
       <ProductListItemImage product={product} />
       <ProductListItemContent
         product={product}

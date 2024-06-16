@@ -39,7 +39,7 @@ export const HeaderCartButton = () => {
         </TooltipTrigger>
         <div className="hidden xl:block">
           <TooltipContent className="text-foreground">
-            <p>Ver produtos do carrinho</p>
+            <p>Ver produtos da sacola</p>
           </TooltipContent>
         </div>
       </Tooltip>

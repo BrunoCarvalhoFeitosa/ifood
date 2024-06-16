@@ -38,7 +38,7 @@ export const AccountOrderItem = ({ order }: AccountOrderItemProps) => {
   }
 
   return (
-    <div className="w-full min-w-[275px] overflow-hidden rounded-2xl border p-5 md:min-w-[475px] xl:w-[calc((100dvw/4)-25px)]">
+    <div className="w-full min-w-[275px] overflow-hidden rounded-2xl border px-7 py-10 md:min-w-[475px] xl:w-[calc((100dvw/4)-25px)]">
       <div>
         <div className="mb-4 flex items-center gap-3">
           <h3 className="text-base font-semibold">
@@ -52,7 +52,7 @@ export const AccountOrderItem = ({ order }: AccountOrderItemProps) => {
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <h4 className="flex items-center gap-1 text-xs">
+          <h4 className="flex w-3/4 items-center gap-1 truncate text-xs md:w-full">
             <strong>Id do pedido:</strong>
             <span>{order.id}.</span>
           </h4>

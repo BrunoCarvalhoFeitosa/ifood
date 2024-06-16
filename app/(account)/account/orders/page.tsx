@@ -23,11 +23,11 @@ const AccountOrdersPage = async () => {
 
   return (
     <div>
-      <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto py-3 lg:flex-row lg:gap-5">
+      <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto lg:flex-row lg:gap-5">
         {orders.length >= 1 ? (
-          <div>
-            {orders.map((order) => (
-              <AccountOrderItem key={order.id} order={order} />
+          <div className="w-full">
+            {orders.map((order, index) => (
+              <AccountOrderItem key={index} order={order} />
             ))}
           </div>
         ) : (

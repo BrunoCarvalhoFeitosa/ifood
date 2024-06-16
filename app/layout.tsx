@@ -6,6 +6,7 @@ import { Cart } from "@/app/_components/common/cart/cart"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import "./globals.css"
+import { Footer } from "./_components/common/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -34,6 +35,7 @@ export default function RootLayout({
         <ClientSideHydration>
           <CartProvider>
             {children}
+            <Footer />
             <Cart />
             <ToastContainer toastStyle={{ width: "100%" }} />
           </CartProvider>

@@ -1,15 +1,19 @@
-import db from "@/app/_libs/prisma"
 import { NextApiRequest, NextApiResponse } from "next"
+import db from "@/app/_libs/prisma"
 import bcrypt from "bcrypt"
 
 export default async function handler(
-  request: NextApiRequest,
-  response: NextApiResponse
+  req: NextApiRequest,
+  res: NextApiResponse
 ) {
   const {
     query: { userId },
-    body: { name, image, email, password }
-  } = request
+    body: { name, image, password }
+  } = req
+
+  if (req.method !== "PATCH") {
+    return res.status(405).json({ error: "Method not allowed" })
+  }
 
   try {
     const user = await db.user.findUnique({
@@ -17,7 +21,7 @@ export default async function handler(
     })
 
     if (!user) {
-      return response.status(404).json({ error: "User not founded." })
+      return res.status(404).json({ error: "User not found." })
     }
 
     let hashedPassword = user.hashedPassword
@@ -31,14 +35,13 @@ export default async function handler(
       data: {
         name: name || user.name,
         image: image || user.image,
-        email: email || user.email,
         hashedPassword
       }
     })
 
-    return response.status(200).json(updatedUser)
+    return res.status(200).json(updatedUser)
   } catch (error) {
-    console.error("Error while update user: ", error)
-    return response.status(500).json({ error: "Internal server error." })
+    console.error("Error updating user:", error)
+    return res.status(500).json({ error: "Internal server error" })
   }
 }

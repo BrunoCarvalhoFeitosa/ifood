@@ -44,7 +44,7 @@ export const TestimonialsList = ({
             isActive={currentPage === pageNumber}
             onClick={() => paginate(pageNumber)}
             className={cn(
-              "h-12 w-12 cursor-pointer rounded-none border-gray-200 bg-primary text-base text-white opacity-20 hover:bg-primary hover:text-white hover:opacity-90",
+              "h-10 w-10 cursor-pointer rounded-none border-gray-200 bg-primary text-base text-white opacity-20 hover:bg-primary hover:text-white hover:opacity-90 md:h-12 md:w-12",
               currentPage === pageNumber && "opacity-100"
             )}
           >
@@ -58,7 +58,7 @@ export const TestimonialsList = ({
   }
 
   return (
-    <section className={`relative ${currentUser ? "mt-16" : "mt-6"} w-full`}>
+    <section className={`relative ${currentUser ? "mt-10" : "mt-6"} w-full`}>
       <div className="flex flex-col">
         {currentTestimonials.map((testimonial) => (
           <TestimonialsListItem

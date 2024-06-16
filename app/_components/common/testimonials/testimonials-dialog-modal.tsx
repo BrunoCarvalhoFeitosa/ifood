@@ -43,7 +43,7 @@ const formSchema = z.object({
     .max(70, {
       message: "O valor máximo é de 70 caracteres."
     })
-    .regex(/^[A-Za-z ]*$/, {
+    .regex(/^[A-Za-zÀ-ú ]*$/, {
       message: "Por favor, insira insira somente letras."
     }),
 

@@ -1,8 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { Button } from "@/app/_components/ui/button"
-import { Logo } from "@/public/svgs/logo"
+import Image from "next/image"
 import { FooterWave } from "@/public/svgs/footer-wave"
 
 export const Footer = () => {
@@ -33,29 +32,49 @@ export const Footer = () => {
     <footer ref={footerRef} className="mt-10 w-full lg:mt-20">
       <div className="w-full bg-primary px-5 py-10 lg:py-16">
         <div className="flex flex-col items-center gap-6 lg:flex-row">
-          <div>
-            <div className="flex h-28 w-28 items-center justify-center rounded-2xl bg-white md:h-32 md:w-32">
-              <Logo width="100px" height="50px" />
-            </div>
-          </div>
           <div className="text-white">
             <div className="text-center lg:text-left">
-              <h5 className="text-2xl font-extrabold">Já baixou nosso App?</h5>
+              <h5 className="text-2xl font-extrabold">
+                Siga nossas redes sociais
+              </h5>
               <p className="text-base">
-                Peça seu delivery, veja o menu, baixe stickers, peça e retire,
-                encontre os restaurantes mais próximos, tenha todos os cupons e
-                muito mais.
+                Siga-nos e fique por dentro das novidades, promoções, cupons de
+                descontos e muito mais.
               </p>
             </div>
-            <div className="mt-3 flex justify-center lg:justify-start">
-              <Link href="https://play.google.com/store/apps/details?id=br.com.brainweb.ifood&hl=pt_BR&gl=US">
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="h-14 bg-white px-6 text-base text-black"
-                >
-                  Baixar o app agora mesmo
-                </Button>
+            <div className="mt-3 flex items-center justify-center gap-2 lg:justify-start">
+              <Link
+                href="https://www.facebook.com/iFood"
+                className="flex h-12 w-12 items-center justify-center bg-white text-black"
+              >
+                <Image
+                  src="/images/icon-social-facebook.png"
+                  width={34}
+                  height={34}
+                  alt="Facebook"
+                />
+              </Link>
+              <Link
+                href="https://x.com/ifood"
+                className="flex h-12 w-12 items-center justify-center bg-white text-black"
+              >
+                <Image
+                  src="/images/icon-social-x.png"
+                  width={32}
+                  height={32}
+                  alt="X"
+                />
+              </Link>
+              <Link
+                href="https://br.linkedin.com/company/ifood-"
+                className="flex h-12 w-12 items-center justify-center bg-white text-black"
+              >
+                <Image
+                  src="/images/icon-social-linkedin.png"
+                  width={28}
+                  height={28}
+                  alt="LinkedIn"
+                />
               </Link>
             </div>
           </div>
@@ -66,7 +85,7 @@ export const Footer = () => {
       >
         <FooterWave width="100%" height="auto" color="#EA1D2B" />
       </div>
-      <div className="mx-auto flex w-[97%] flex-col gap-12 border-b border-solid border-gray-200 pb-14 pt-14 lg:flex-row lg:gap-24 lg:pb-6 lg:pt-28">
+      <div className="mx-auto flex w-[97%] flex-col gap-12 border-b border-solid border-gray-200 pb-14 pt-14 lg:flex-row lg:gap-[70px] lg:pb-6 lg:pt-28 xl:gap-24">
         <div className="text-center lg:text-left">
           <h6 className="mb-3 font-extrabold">Departamentos</h6>
           <ul className="flex flex-col gap-1">
@@ -136,10 +155,25 @@ export const Footer = () => {
             </li>
           </ul>
         </div>
+        <div className="text-center lg:text-left">
+          <h6 className="mb-3 font-extrabold">Download</h6>
+          <ul className="flex flex-col gap-1">
+            <li className="cursor-pointer text-base">
+              <Link href="https://play.google.com/store/apps/details?id=br.com.brainweb.ifood&hl=pt_BR">
+                Android
+              </Link>
+            </li>
+            <li className="cursor-pointer text-base">
+              <Link href="https://apps.apple.com/br/app/ifood-pedir-delivery-em-casa/id483017239">
+                iOS
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="mx-auto w-[97%] py-4">
         <p className="text-center text-base lg:text-left">
-          © Copyright 2024 - iFood
+          ©Copyright 2024 - iFood
         </p>
       </div>
     </footer>

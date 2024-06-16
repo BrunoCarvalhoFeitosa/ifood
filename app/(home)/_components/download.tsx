@@ -13,10 +13,10 @@ export const Download = () => {
           <div className="order-2 w-full xl:order-1 xl:w-[60%]">
             <div className="px-5 pt-6 md:py-10 xl:px-10">
               <div className="w-full">
-                <h3 className="text-lg font-extrabold text-white md:text-4xl">
-                  Comida, mercado e farmácia em casa
+                <h3 className="text-3xl font-extrabold text-white md:text-[42px]">
+                  Comida, mercado, farmácia e pet shop em casa
                 </h3>
-                <p className="mt-3 text-white xl:w-2/3">
+                <p className="mt-3 text-white xl:w-3/4">
                   É muito fácil fazer um pedido pelo iFood, por isso ele é o
                   melhor app de delivery. Primeiramente, faça o download do app
                   através da loja de aplicativos Android ou iOS, crie sua conta,
@@ -111,8 +111,9 @@ export const Download = () => {
             </p>
             <p className="mt-3 text-white">
               Semanalmente são gerados cupons de descontos pelos próprios
-              mercados e restaurantes, baixe o app e siga-os para ser notificado
-              sobre os cupons, acumule cupons e economize sempre.
+              restaurantes, mercados, farmácias e pet shops. Baixe o app e
+              siga-os para ser notificado sobre os cupons, acumule cupons e
+              economize sempre.
             </p>
           </div>
         </div>
@@ -120,7 +121,7 @@ export const Download = () => {
           <div className="flex min-h-[360px] flex-1 flex-col justify-between bg-primary md:min-h-[400px]">
             <div className="p-5 xl:p-10">
               <div className="mb-4">
-                <h3 className="text-2xl font-bold text-white">Android</h3>
+                <h3 className="text-2xl font-semibold text-white">Android</h3>
                 <p className="mt-1 text-white">
                   Se você possui um smartphone Android, aponte a camêra do seu
                   celular para este QR Code.
@@ -141,7 +142,7 @@ export const Download = () => {
           <div className="flex min-h-[360px] flex-1 flex-col justify-between bg-primary md:min-h-[400px]">
             <div className="p-5 xl:p-10">
               <div className="mb-4">
-                <h3 className="text-2xl font-bold text-white">iOS</h3>
+                <h3 className="text-2xl font-semibold text-white">iOS</h3>
                 <p className="mt-1 text-white">
                   Se você possui um smartphone iOS, aponte a camêra do seu
                   celular para este QR Code.

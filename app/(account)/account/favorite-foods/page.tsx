@@ -24,7 +24,7 @@ const AccountFavoriteFoodsPage = async () => {
   return (
     <div>
       {userFavoriteProducts.length >= 1 ? (
-        <div className="custom-scrollbar flex items-center gap-14 overflow-x-auto py-3 lg:gap-5">
+        <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto lg:flex-row lg:gap-5">
           {userFavoriteProducts.map(({ product }) => (
             <ProductListItem
               key={product.id}

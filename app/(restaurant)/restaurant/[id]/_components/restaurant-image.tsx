@@ -146,7 +146,7 @@ export const RestaurantImage = ({
         <div>
           <Button
             type="button"
-            title="Favoritar"
+            title={isFavorite ? "Desfavoritar" : "Favoritar"}
             variant="ghost"
             size="sm"
             className={`p-0 ${currentUser && isFavorite ? "text-primary" : "text-white/60"} hover:text-primary`}
@@ -162,7 +162,7 @@ export const RestaurantImage = ({
         <div className="xl:hidden">
           <Button
             type="button"
-            title="Favoritar"
+            title="Compartilhar página"
             variant="ghost"
             size="sm"
             className="p-0 text-white/60 hover:text-primary"

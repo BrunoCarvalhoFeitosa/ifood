@@ -23,7 +23,7 @@ export const AccountFavoriteRestaurants = ({
   return (
     <Fragment>
       {userFavoriteRestaurants.length ? (
-        <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto py-3 lg:flex-row lg:gap-5">
+        <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto lg:flex-row lg:gap-5">
           {userFavoriteRestaurants.map(({ restaurant }) => (
             <RestaurantListItem
               key={restaurant.id}
