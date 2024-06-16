@@ -23,19 +23,17 @@ const AccountOrdersPage = async () => {
 
   return (
     <div>
-      <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto lg:flex-row lg:gap-5">
-        {orders.length >= 1 ? (
-          <div className="w-full">
-            {orders.map((order, index) => (
-              <AccountOrderItem key={index} order={order} />
-            ))}
-          </div>
-        ) : (
-          <div>
-            <h3 className="font-semibold">Nenhum pedido registrado.</h3>
-          </div>
-        )}
-      </div>
+      {orders.length >= 1 ? (
+        <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto lg:flex-row lg:gap-5">
+          {orders.map((order, index) => (
+            <AccountOrderItem key={index} order={order} />
+          ))}
+        </div>
+      ) : (
+        <div>
+          <h3 className="font-semibold">Nenhum pedido registrado.</h3>
+        </div>
+      )}
     </div>
   )
 }
