@@ -44,7 +44,10 @@ export const HeaderSignOutAlertDialog = ({
     })
 
     setTimeout(() => {
-      signOut()
+      signOut({
+        callbackUrl: "/",
+        redirect: true
+      })
     }, 2500)
   }
 

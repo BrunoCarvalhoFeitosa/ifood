@@ -1,4 +1,5 @@
-"use server"
+"use client"
+import { Fragment, useState } from "react"
 import { Category, Restaurant } from "@prisma/client"
 import { SafeUser } from "@/app/_types/SafeUser"
 import Link from "next/link"
@@ -7,11 +8,13 @@ import { HeaderMenuListDropdown } from "./header-menu-list-dropdown"
 import { HeaderRestaurantListDropdown } from "./header-restaurant-list-dropdown"
 import { HeaderAuthenticatedContent } from "./header-authenticated-content"
 import { HeaderUnauthenticatedContent } from "./header-unautheticated-content"
+import { HeaderSignOutAlertDialog } from "./header-sign-out-alert-dialog"
 import {
   ChefHatIcon,
   CircleUserRoundIcon,
   CookingPotIcon,
   HomeIcon,
+  LogOutIcon,
   NotebookTextIcon
 } from "lucide-react"
 
@@ -21,19 +24,28 @@ interface HeaderSideMenuProps {
   currentUser: SafeUser | null
 }
 
-export const HeaderSideMenu = async ({
+export const HeaderSideMenu = ({
   categories,
   restaurants,
   currentUser
 }: HeaderSideMenuProps) => {
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState<boolean>(false)
+
   return (
     <div>
       {currentUser ? (
-        <HeaderAuthenticatedContent currentUser={currentUser} />
+        <Fragment>
+          <HeaderAuthenticatedContent currentUser={currentUser} />
+          <HeaderSignOutAlertDialog
+            isConfirmDialogOpen={isConfirmDialogOpen}
+            setIsConfirmDialogOpen={setIsConfirmDialogOpen}
+            currentUser={currentUser}
+          />
+        </Fragment>
       ) : (
         <HeaderUnauthenticatedContent />
       )}
-      <div className="my-6 flex flex-col gap-3 border-b border-solid pb-3">
+      <div className="my-6 flex flex-col gap-1 border-b border-solid pb-3 md:gap-2">
         <Link href="/" className="w-full">
           <Button
             type="button"
@@ -94,6 +106,19 @@ export const HeaderSideMenu = async ({
             <div className="text-sm xl:text-base">Restaurantes Favoritos</div>
           </Button>
         </Link>
+        {currentUser && (
+          <Button
+            type="button"
+            variant="ghost"
+            className="flex w-full justify-start gap-2 rounded-full font-semibold hover:bg-gray-100"
+            onClick={() => setIsConfirmDialogOpen(true)}
+          >
+            <div>
+              <LogOutIcon size={22} />
+            </div>
+            <div className="text-sm xl:text-base">Finalizar sessão</div>
+          </Button>
+        )}
       </div>
       <div className="max-h-[35dvh] overflow-y-auto lg:max-h-[48dvh] [&::-webkit-scrollbar]:hidden">
         <HeaderMenuListDropdown categories={categories} />
