@@ -58,7 +58,7 @@ export const ProductQuantity = () => {
         type="button"
         variant="default"
         size="icon"
-        className="h-9 w-9 rounded-md md:h-10 md:w-10"
+        className="h-9 w-9 rounded-sm md:h-10 md:w-10"
         onClick={() => handleDecreaseQuantityClick()}
       >
         <ChevronLeftIcon />
@@ -73,7 +73,7 @@ export const ProductQuantity = () => {
         type="button"
         variant="default"
         size="icon"
-        className="h-9 w-9 rounded-md md:h-10 md:w-10"
+        className="h-9 w-9 rounded-sm md:h-10 md:w-10"
         onClick={() => handleIncreaseQuantityClick()}
       >
         <ChevronRightIcon />
