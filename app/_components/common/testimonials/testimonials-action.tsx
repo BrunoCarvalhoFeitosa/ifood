@@ -7,11 +7,13 @@ import { Avatar, AvatarImage } from "@/app/_components/ui/avatar"
 import { Skeleton } from "@/app/_components/ui/skeleton"
 import { TestimonialsDialogModal } from "./testimonials-dialog-modal"
 
-interface TestimonialsTitleProps {
+interface TestimonialsActionProps {
   currentUser: SafeUser | null
 }
 
-export const TestimonialsTitle = ({ currentUser }: TestimonialsTitleProps) => {
+export const TestimonialsAction = ({
+  currentUser
+}: TestimonialsActionProps) => {
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState<boolean>(false)
   const router = useRouter()
 
@@ -24,8 +26,8 @@ export const TestimonialsTitle = ({ currentUser }: TestimonialsTitleProps) => {
   }
 
   return (
-    <div className="pt-14">
-      <div className="flex flex-col items-center gap-3 lg:items-start">
+    <div className="py-14">
+      <div className="flex flex-col items-center gap-3 md:items-start">
         <div className="text-center lg:text-left">
           <h3 className="text-base font-extrabold md:text-xl">
             {currentUser ? (
@@ -34,7 +36,9 @@ export const TestimonialsTitle = ({ currentUser }: TestimonialsTitleProps) => {
                 utilizando os nossos serviços
               </div>
             ) : (
-              <div>Avalie os nossos serviços</div>
+              <div>
+                Conte-nos como foi sua experiência utilizando nossos serviços
+              </div>
             )}
           </h3>
         </div>
