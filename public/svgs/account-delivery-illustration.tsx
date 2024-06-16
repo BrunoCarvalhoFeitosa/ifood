@@ -18,6 +18,7 @@ export const AccountDeliveryIllustration = ({
       viewBox="0 0 500 500"
       width={width}
       height={height}
+      className="w-full"
     >
       <g id="Background_Complete">
         <g>

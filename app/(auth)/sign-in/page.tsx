@@ -10,7 +10,7 @@ const SignInPage = async () => {
   }
 
   return (
-    <main>
+    <main className="mb-10 lg:mb-0">
       <SignInForm />
     </main>
   )

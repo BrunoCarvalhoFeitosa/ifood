@@ -27,12 +27,12 @@ const AccountPageLayout = async ({
   return (
     <div>
       <Header categories={categories} restaurants={restaurants} />
-      <main>
-        <div className="px-5 pt-10">
+      <main className="py-14">
+        <div className="px-5">
           <h1 className="text-lg font-extrabold md:text-xl">Minha conta</h1>
-          <p className="text-sm">
-            Edite seus dados pessoais, favorite os melhores pratos e
-            restaurantes e acompanhe seus pedidos.
+          <p className="text-sm md:text-base">
+            Edite seus dados pessoais, favorite pratos, restaurantes e acompanhe
+            seus pedidos.
           </p>
         </div>
         <div className="flex w-full flex-col gap-12 px-5 pb-8 pt-10 xl:flex-row">
