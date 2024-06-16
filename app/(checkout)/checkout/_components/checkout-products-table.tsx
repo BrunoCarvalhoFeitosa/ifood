@@ -44,7 +44,7 @@ export const CheckoutProductsTable = () => {
           <TableBody>
             {products.map((product) => (
               <TableRow key={product.id}>
-                <TableCell className="font-medium">
+                <TableCell className="pl-0 font-medium">
                   <div className="relative flex items-center gap-2 truncate">
                     <div className="relative h-[100px] w-[130px]">
                       <Image
@@ -126,21 +126,22 @@ export const CheckoutProductsTable = () => {
           </TableFooter>
         </Table>
       ) : (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-4">
           <div className="text-center">
-            <h1 className="text-lg font-extrabold md:text-xl">
-              Sacola de compras
+            <h1 className="text-2xl font-extrabold md:text-4xl">
+              Sacola de compras vazia
             </h1>
-            <p className="text-sm">
-              Sacola vazia, retorne às compras e aproveite as promoções.
+            <p className="text-sm md:text-base">
+              Sacola de compras vazia, retorne às compras e aproveite as
+              promoções.
             </p>
           </div>
-          <div>
-            <div className="block md:hidden">
-              <AccountDeliveryIllustration width="360" height="360" />
+          <div className="mt-2">
+            <div className="flex justify-center md:hidden">
+              <AccountDeliveryIllustration width="360" height="230" />
             </div>
-            <div className="hidden md:block">
-              <AccountDeliveryIllustration width="660" height="420" />
+            <div className="hidden justify-center md:flex">
+              <AccountDeliveryIllustration width="760" height="440" />
             </div>
           </div>
         </div>
