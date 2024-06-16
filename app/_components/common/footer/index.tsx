@@ -158,17 +158,6 @@ export const Footer = () => {
               </ul>
             </div>
             <div className="text-center lg:text-left">
-              <h6 className="mb-3 font-extrabold">Conta</h6>
-              <ul className="flex flex-col gap-1">
-                <li className="cursor-pointer text-base">
-                  <Link href="/sign-in">Entre</Link>
-                </li>
-                <li className="cursor-pointer text-base">
-                  <Link href="/sign-up">Cadastre-se</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="text-center lg:text-left">
               <h6 className="mb-3 font-extrabold">Download</h6>
               <ul className="flex flex-col gap-1">
                 <li className="cursor-pointer text-base">
@@ -180,6 +169,17 @@ export const Footer = () => {
                   <Link href="https://apps.apple.com/br/app/ifood-pedir-delivery-em-casa/id483017239">
                     iOS
                   </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="text-center lg:text-left">
+              <h6 className="mb-3 font-extrabold">Conta</h6>
+              <ul className="flex flex-col gap-1">
+                <li className="cursor-pointer text-base">
+                  <Link href="/sign-in">Entre</Link>
+                </li>
+                <li className="cursor-pointer text-base">
+                  <Link href="/sign-up">Cadastre-se</Link>
                 </li>
               </ul>
             </div>
