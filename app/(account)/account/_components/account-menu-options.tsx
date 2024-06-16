@@ -1,5 +1,6 @@
 "use client"
 import { usePathname } from "next/navigation"
+import { signOut } from "next-auth/react"
 import Link from "next/link"
 import { Button } from "@/app/_components/ui/button"
 import {
@@ -7,6 +8,7 @@ import {
   CircleUserRoundIcon,
   CookingPotIcon,
   HomeIcon,
+  LogOutIcon,
   NotebookTextIcon
 } from "lucide-react"
 
@@ -14,7 +16,7 @@ export const AccountMenuOptions = () => {
   const pathname = usePathname()
 
   return (
-    <div className="pt-6">
+    <div className="pt-3">
       <ul className="flex flex-col gap-2">
         <li>
           <Link href="/" className="w-full">
@@ -85,6 +87,24 @@ export const AccountMenuOptions = () => {
               <div className="text-sm xl:text-base">Restaurantes Favoritos</div>
             </Button>
           </Link>
+        </li>
+        <li>
+          <Button
+            type="button"
+            variant="default"
+            className="flex w-full justify-start gap-2 rounded-full bg-primary font-semibold hover:bg-red-800"
+            onClick={() =>
+              signOut({
+                callbackUrl: "/",
+                redirect: true
+              })
+            }
+          >
+            <div>
+              <LogOutIcon />
+            </div>
+            <div className="text-sm xl:text-base">Finalizar sessão</div>
+          </Button>
         </li>
       </ul>
     </div>
