@@ -55,7 +55,7 @@ A página de checkout é totalmente responsiva, se adapta a qualquer resolução
 
 https://github.com/BrunoCarvalhoFeitosa/ifood/assets/46093815/f6d0db99-ff6d-45e0-9515-690d82ceaefe
 
-Minha Conta
+### Minha Conta
 A página de minha conta é totalmente responsiva, se adapta a qualquer resolução/tamanho de tela, nesta página é possível atualizar alguns dos dados já cadastrados, acompanhar o status dos pedidos que já foram feitos, bem como ver os produtos e restaurantes que foram favoritados e removê-los dos favoritos.
 
 https://github.com/BrunoCarvalhoFeitosa/ifood/assets/46093815/056aadb2-9a0e-485b-be2f-34d2125ae4ad
