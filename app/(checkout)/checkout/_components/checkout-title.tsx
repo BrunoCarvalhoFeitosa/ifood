@@ -8,17 +8,17 @@ export const CheckoutTitle = () => {
   return (
     <Fragment>
       {products.length >= 1 && (
-        <div className="pb-5 pt-8">
+        <div className="pb-5">
           <h1 className="text-lg font-extrabold md:text-xl">
             Sacola de compras
           </h1>
           {products.length >= 2 ? (
-            <p className="text-sm">
+            <p className="text-sm md:text-base">
               Estes foram os <strong>{products.length} produtos</strong> que
               você adicionou a sacola.
             </p>
           ) : (
-            <p className="text-sm">
+            <p className="text-sm md:text-base">
               Este foi o <strong>produto</strong> que você adicionou a sacola.
             </p>
           )}
