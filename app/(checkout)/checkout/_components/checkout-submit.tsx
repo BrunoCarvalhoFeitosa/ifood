@@ -19,7 +19,7 @@ export const CheckoutSubmit = ({ currentUser }: CheckoutSubmitProps) => {
     <div>
       {currentUser ? (
         <div>
-          {products.length >= 1 ? (
+          {products.length >= 1 && (
             <div className="flex justify-end pt-5">
               <Button
                 type="button"
@@ -28,17 +28,6 @@ export const CheckoutSubmit = ({ currentUser }: CheckoutSubmitProps) => {
                 onClick={() => setIsConfirmDialogOpen(true)}
               >
                 Finalizar pedido agora
-              </Button>
-            </div>
-          ) : (
-            <div className="flex justify-center">
-              <Button
-                type="button"
-                variant="default"
-                size="default"
-                onClick={() => router.push("/")}
-              >
-                Volte e adicione produtos à sua sacola
               </Button>
             </div>
           )}
