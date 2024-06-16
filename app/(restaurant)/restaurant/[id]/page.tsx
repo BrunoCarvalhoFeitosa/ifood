@@ -98,7 +98,7 @@ const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
       <div className="hidden xl:flex">
         <Header categories={categories} restaurants={restaurants} />
       </div>
-      <main>
+      <main className="pb-10">
         <Breadcrumb param={restaurant.name} />
         <RestaurantContent
           restaurant={restaurant}

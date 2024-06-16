@@ -70,7 +70,7 @@ const CategoryPage = async ({ params: { id } }: CategoryPageProps) => {
   return (
     <div>
       <Header categories={categories} restaurants={restaurants} />
-      <main>
+      <main className="pb-14">
         <CategoryList selectedCategoryId={id} />
         <CategoryProductList
           category={category}

@@ -20,7 +20,7 @@ const CheckoutPage = async () => {
   return (
     <div>
       <Header categories={categories} restaurants={restaurants} />
-      <main>
+      <main className="py-14">
         <div className="px-5">
           <CheckoutTitle />
           <CheckoutProductsTable />

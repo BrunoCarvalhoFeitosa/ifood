@@ -37,7 +37,7 @@ const RestaurantsPage = async ({ searchParams }: RestaurantPageProps) => {
   return (
     <div>
       <Header categories={categories} restaurants={restaurants} />
-      <main>
+      <main className="pb-10">
         <RestaurantsList
           term={searchParams.search}
           currentUser={currentUser}
