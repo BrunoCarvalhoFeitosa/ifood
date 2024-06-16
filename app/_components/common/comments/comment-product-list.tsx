@@ -23,7 +23,7 @@ export const CommentProductList = ({
         <div>
           {comments.filter((comment) => comment.productId === productId)
             .length >= 1 && (
-            <section className="mt-10 md:ml-28">
+            <section className="mt-10 md:ml-20">
               {comments
                 .filter((comment) => comment.productId === productId)
                 .map((comment) => (
