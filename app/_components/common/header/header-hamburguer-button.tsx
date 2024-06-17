@@ -53,7 +53,7 @@ export const HeaderHamburguerButton = ({
         </Tooltip>
         <SheetContent>
           <SheetHeader className="text-left">
-            <SheetTitle>Menu</SheetTitle>
+            <SheetTitle>Menú</SheetTitle>
           </SheetHeader>
           <HeaderSideMenu
             categories={categories}
