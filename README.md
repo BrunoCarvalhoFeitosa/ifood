@@ -6,7 +6,7 @@
   </a>
 
   <p align="center">
-    Redesign completo do iFood feito em Next.js, Typescript, Prisma, MongoDB e TailwindCSS. A aplicação possui página de cadastro e login feitos com o Next-Auth, Prisma e MongoDB. A aplicação possui uma home page, onde são exibidas as categorias e os respectivos produtos, há um mural de exibição dos testemunhos, bem como a funcionalidade em si, onde o usuário descreve sua experiência aoo utilizar a aplicação e ao submeter os dados eles são expostos publicamente neste mural. Nas páginas de categoria são exibidos os produtos e restaurantes relacionados. Na página de produto há uma galeria de imagens com funcionalidade para aplicar e remover zoom das imagens, há a funcionalidade de adição do produto ao carrinho, também há uma vitrine de produtos relacionados, bem como opção para postar uma comentário avaliando o produto. Na página de checkout, os produtos adicionados ao carrinho são exibidos, o usuário pode remover o produto que quiser e ao finalizar a compra, o pedido é salvo no banco de dados e fica disponível para visualização na página de minha conta. A página de minha conta contém os dados cadastrados pelo usuários, os pedidos realizados bem como o status de compra e os produtos e restaurantes que foram favoritados pelo usuário.
+    Redesign completo do iFood feito em Next.js, Typescript, Prisma, PostgreSQL e TailwindCSS. A aplicação possui página de cadastro e login feitos com o Next-Auth, Prisma e PostgreSQL. A aplicação possui uma home page, onde são exibidas as categorias e os respectivos produtos, há um mural de exibição dos testemunhos, bem como a funcionalidade em si, onde o usuário descreve sua experiência aoo utilizar a aplicação e ao submeter os dados eles são expostos publicamente neste mural. Nas páginas de categoria são exibidos os produtos e restaurantes relacionados. Na página de produto há uma galeria de imagens com funcionalidade para aplicar e remover zoom das imagens, há a funcionalidade de adição do produto ao carrinho, também há uma vitrine de produtos relacionados, bem como opção para postar uma comentário avaliando o produto. Na página de checkout, os produtos adicionados ao carrinho são exibidos, o usuário pode remover o produto que quiser e ao finalizar a compra, o pedido é salvo no banco de dados e fica disponível para visualização na página de minha conta. A página de minha conta contém os dados cadastrados pelo usuários, os pedidos realizados bem como o status de compra e os produtos e restaurantes que foram favoritados pelo usuário.
 </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -65,7 +65,7 @@ https://github.com/BrunoCarvalhoFeitosa/ifood/assets/46093815/056aadb2-9a0e-485b
 * [Next.js](https://nextjs.org)
 * [Typescript](https://www.typescriptlang.org)
 * [Prisma](https://www.prisma.io)
-* [MongoDB](https://www.mongodb.com)
+* [PostgreSQL](https://www.postgresql.org)
 * [TailwindCSS](https://tailwindcss.com)
 * [Vercel](https://vercel.com)
 
