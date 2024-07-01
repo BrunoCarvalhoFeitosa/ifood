@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/BrunoCarvalhoFeitosa/ecommerce-store">
+  <a href="https://github.com/BrunoCarvalhoFeitosa/ifood">
     <img src="\public\images\ifood-logo.png" alt="Logo" width="120" weight="120" />
   </a>
 
