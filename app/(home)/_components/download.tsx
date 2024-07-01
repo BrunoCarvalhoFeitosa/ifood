@@ -10,10 +10,10 @@ export const Download = () => {
     <section className="w-full pb-8 pt-14">
       <div className="w-full bg-primary xl:ml-5">
         <div className="flex flex-col justify-between xl:flex-row">
-          <div className="order-2 w-full xl:order-1 xl:w-[60%]">
+          <div className="order-2 w-full xl:order-1 xl:w-[44%] 2xl:w-[60%]">
             <div className="px-5 pt-6 md:py-10 xl:px-10">
               <div className="w-full">
-                <h3 className="text-3xl font-extrabold text-white md:text-[42px]">
+                <h3 className="text-3xl font-extrabold text-white md:text-[42px] xl:text-[21px] 2xl:text-[42px]">
                   Comida, mercado, farmácia e pet shop em casa
                 </h3>
                 <p className="mt-3 text-white xl:w-3/4">
