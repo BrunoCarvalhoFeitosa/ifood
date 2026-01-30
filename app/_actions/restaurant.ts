@@ -1,4 +1,4 @@
-"use server"
+export const dynamic = "force-dynamic"
 import db from "@/app/_libs/prisma"
 
 export const toggleFavoriteRestaurant = async (

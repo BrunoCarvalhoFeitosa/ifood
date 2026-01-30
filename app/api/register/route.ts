@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { NextResponse } from "next/server"
 import db from "@/app/_libs/prisma"
 import bcrypt from "bcrypt"

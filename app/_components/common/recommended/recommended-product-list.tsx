@@ -1,4 +1,4 @@
-"use server"
+export const dynamic = "force-dynamic"
 import db from "@/app/_libs/prisma"
 import { UserFavoriteProduct } from "@prisma/client"
 import { SafeUser } from "@/app/_types/SafeUser"

@@ -1,4 +1,4 @@
-"use server"
+export const dynamic = "force-dynamic"
 import db from "@/app/_libs/prisma"
 import Link from "next/link"
 import { CategoryListItem } from "./category-list-item"
