@@ -55,7 +55,7 @@ export const HeaderSideMenu = ({
             <div>
               <HomeIcon size={20} />
             </div>
-            <div className="text-sm xl:text-base">Início</div>
+            <div className="text-sm xl:text-base">Página inicial</div>
           </Button>
         </Link>
         <Link href="/account/user" className="w-full">
