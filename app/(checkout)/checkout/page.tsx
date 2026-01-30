@@ -8,9 +8,7 @@ import { notFound } from "next/navigation"
 
 const CheckoutPage = async () => {
   const currentUser = await getCurrentUser()
-
   const categories = await db.category.findMany({})
-
   const restaurants = await db.restaurant.findMany({})
 
   if (!categories || !restaurants) {

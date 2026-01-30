@@ -1,7 +1,7 @@
 "use client"
 import { Product } from "@prisma/client"
 import { useContext } from "react"
-import { CartContext } from "@/app/_contexts/Cart"
+import { CartContext } from "@/app/_contexts/CartContext"
 import {
   AlertDialog,
   AlertDialogAction,

@@ -1,6 +1,6 @@
 "use client"
 import { Fragment, useContext } from "react"
-import { CartContext } from "@/app/_contexts/Cart"
+import { CartContext } from "@/app/_contexts/CartContext"
 import { formatCurrency } from "@/app/_helpers/price"
 import Image from "next/image"
 import Link from "next/link"

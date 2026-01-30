@@ -1,7 +1,7 @@
 "use client"
 import { Prisma } from "@prisma/client"
 import { cn } from "@/app/_libs/utils"
-import { useSlideButton } from "@/app/_contexts/SlideButtonContext"
+import { useSlideButtonContext } from "@/app/_contexts/SlideButtonContext"
 import { RestaurantSlideButton } from "./restaurant-slide-button"
 import { RestaurantResume } from "./restaurant-resume"
 import { RestaurantCategories } from "./restaurant-categories"
@@ -16,7 +16,7 @@ interface RestaurantInfoProps {
 }
 
 export const RestaurantInfo = ({ restaurant }: RestaurantInfoProps) => {
-  const { isOpen } = useSlideButton()
+  const { isOpen } = useSlideButtonContext()
 
   return (
     <div

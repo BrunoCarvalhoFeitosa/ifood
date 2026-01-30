@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { ClientSideHydration } from "@/app/_components/common/client-side-hydration"
-import { CartProvider } from "@/app/_contexts/Cart"
+import { CartProvider } from "@/app/_contexts/CartContext"
 import { Cart } from "@/app/_components/common/cart/cart"
 import { ToastContainer } from "react-toastify"
+import { Footer } from "./_components/common/footer"
 import "react-toastify/dist/ReactToastify.css"
 import "./globals.css"
-import { Footer } from "./_components/common/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 

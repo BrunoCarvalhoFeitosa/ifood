@@ -82,12 +82,12 @@ export const AccountUserForm = ({ currentUser }: AccountUserFormProps) => {
     }
 
     const { data, error } = await supabase.storage
-      .from("images")
+      .from("image")
       .upload("public/" + `${uuidv4()}_${file?.name}`, file as File)
 
     if (data) {
       setImageUrl(
-        `https://ezafeolqfkggqkvnyfxj.supabase.co/storage/v1/object/public/images/${data.path}`
+        `https://paldkdgawuouxbuehojq.supabase.co/storage/v1/object/public/image/${data.path}`
       )
     } else {
       console.error(
@@ -152,7 +152,7 @@ export const AccountUserForm = ({ currentUser }: AccountUserFormProps) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full space-y-5 rounded-2xl border px-7 py-10"
+        className="w-full space-y-5 border px-7 py-10"
       >
         <div className="flex flex-col items-center gap-5 xl:flex-row">
           <FormField
@@ -242,14 +242,14 @@ export const AccountUserForm = ({ currentUser }: AccountUserFormProps) => {
           render={({ field }) => (
             <FormItem className="space-y-0">
               <FormLabel className="cursor-pointer text-base font-semibold text-black">
-                Nova senha
+                Confirmar senha
               </FormLabel>
               <FormMessage className="p-0 text-xs font-bold" />
               <div className="relative">
                 <FormControl>
                   <div className="mt-3">
                     <Input
-                      placeholder="Senha"
+                      placeholder="Senha de confirmação"
                       type={showPassword ? "text" : "password"}
                       autoComplete="off"
                       className="h-12 w-full border-[#EFEFEF] bg-white pr-14 text-base text-zinc-800 placeholder:font-normal placeholder:text-gray-300 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0"

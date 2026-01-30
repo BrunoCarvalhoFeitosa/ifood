@@ -38,10 +38,10 @@ export const AccountOrderItem = ({ order }: AccountOrderItemProps) => {
   }
 
   return (
-    <div className="w-full min-w-[275px] overflow-hidden rounded-2xl border px-7 py-10 md:min-w-[475px] xl:w-[calc((100dvw/4)-25px)]">
+    <div className="w-full min-w-[275px] overflow-hidden border px-7 py-10 md:min-w-[475px] xl:w-[calc((100dvw/4)-25px)]">
       <div>
         <div className="mb-4 flex items-center gap-3">
-          <h3 className="text-base font-semibold">
+          <h3 className="text-xl font-semibold">
             <Link href={`/restaurant/${order.restaurant.id}`}>
               {order.restaurant.name}
             </Link>
@@ -110,14 +110,27 @@ export const AccountOrderItem = ({ order }: AccountOrderItemProps) => {
                   key={product.id}
                   className="[&:not(:first-of-type)]:relative [&:not(:first-of-type)]:-ml-3"
                 >
-                  <Link href={`/product/${product.id}`}>
-                    <Image
-                      src={product.imageUrl}
-                      width={120}
-                      height={120}
-                      alt={product.name}
-                      className="h-[60px] w-[60px] overflow-hidden rounded-full object-cover transition-transform duration-300 hover:scale-110 lg:h-[80px] lg:w-[80px]"
-                    />
+                  <Link
+                    href={`/product/${product.id}`}
+                    className="flex items-center gap-2"
+                  >
+                    <div className="h-[60px] w-[60px] overflow-hidden rounded-full lg:h-[80px] lg:w-[80px]">
+                      <Image
+                        src={product.imageUrl}
+                        width={120}
+                        height={120}
+                        alt={product.name}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-lg font-semibold">
+                        {product.name}
+                      </span>
+                      <span className="text-sm">
+                        {formatCurrency(Number(product.price))}
+                      </span>
+                    </div>
                   </Link>
                 </div>
               ))}

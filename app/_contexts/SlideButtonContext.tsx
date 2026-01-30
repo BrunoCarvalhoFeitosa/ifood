@@ -2,7 +2,7 @@
 "use client"
 import { ReactNode, createContext, useContext, useState } from "react"
 
-type SlideButtonType = {
+type ISlideButtonContext = {
   isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
 }
@@ -11,7 +11,9 @@ type SlideButtonProviderProps = {
   children: ReactNode
 }
 
-const SlideButtonContext = createContext<SlideButtonType | undefined>(undefined)
+const SlideButtonContext = createContext<ISlideButtonContext | undefined>(
+  undefined
+)
 
 export const SlideButtonProvider: React.FC<SlideButtonProviderProps> = ({
   children
@@ -30,7 +32,7 @@ export const SlideButtonProvider: React.FC<SlideButtonProviderProps> = ({
   )
 }
 
-export const useSlideButton = (): SlideButtonType => {
+export const useSlideButtonContext = (): ISlideButtonContext => {
   const context = useContext(SlideButtonContext)
 
   if (!context) {

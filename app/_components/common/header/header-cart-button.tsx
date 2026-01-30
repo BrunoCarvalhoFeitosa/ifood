@@ -1,7 +1,7 @@
 "use client"
 import { useContext, useEffect } from "react"
 import { usePathname } from "next/navigation"
-import { CartContext } from "@/app/_contexts/Cart"
+import { CartContext } from "@/app/_contexts/CartContext"
 import { Button } from "@/app/_components/ui/button"
 import {
   Tooltip,

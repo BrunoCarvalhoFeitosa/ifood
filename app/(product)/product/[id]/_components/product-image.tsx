@@ -1,9 +1,9 @@
 "use client"
 import { useContext } from "react"
-import { SafeUser } from "@/app/_types/SafeUser"
-import { CartContext } from "@/app/_contexts/Cart"
-import { Product, UserFavoriteProduct } from "@prisma/client"
 import { useRouter } from "next/navigation"
+import { SafeUser } from "@/app/_types/SafeUser"
+import { CartContext } from "@/app/_contexts/CartContext"
+import { Product, UserFavoriteProduct } from "@prisma/client"
 import { Flip, toast } from "react-toastify"
 import { toggleFavoriteProduct } from "@/app/_actions/product"
 import {

@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 "use client"
 import { useContext, useState } from "react"
-import { CartContext } from "@/app/_contexts/Cart"
+import { useRouter } from "next/navigation"
+import { SafeUser } from "@/app/_types/SafeUser"
+import { CartContext } from "@/app/_contexts/CartContext"
 import { createOrder } from "@/app/_actions/order"
 import { OrderStatus } from "@prisma/client"
 import { Flip, toast } from "react-toastify"
@@ -15,9 +17,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle
 } from "@/app/_components/ui/alert-dialog"
-import { SafeUser } from "@/app/_types/SafeUser"
 import { Loader } from "lucide-react"
-import { useRouter } from "next/navigation"
 
 interface CheckoutAlertDialogProps {
   setIsConfirmDialogOpen: (isConfirmDialogOpen: boolean) => void

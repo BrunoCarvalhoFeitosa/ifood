@@ -16,12 +16,7 @@ export const HeaderMenuListDropdown = ({
   categories
 }: HeaderMenuListDropdownProps) => {
   return (
-    <Accordion
-      type="single"
-      defaultValue="item-1"
-      collapsible
-      className="flex w-full flex-col gap-2"
-    >
+    <Accordion type="single" collapsible className="flex w-full flex-col gap-2">
       <AccordionItem value="item-1">
         <AccordionTrigger>Cardápio</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-2">

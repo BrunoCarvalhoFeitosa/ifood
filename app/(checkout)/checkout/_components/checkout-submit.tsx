@@ -2,7 +2,7 @@
 import { useContext, useState } from "react"
 import { SafeUser } from "@/app/_types/SafeUser"
 import { useRouter } from "next/navigation"
-import { CartContext } from "@/app/_contexts/Cart"
+import { CartContext } from "@/app/_contexts/CartContext"
 import { Button } from "@/app/_components/ui/button"
 import { CheckoutAlertDialog } from "./checkout-alert-dialog"
 

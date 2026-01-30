@@ -17,7 +17,7 @@ export const RestaurantListItem = ({
   userFavoriteRestaurants
 }: RestaurantListItemProps) => {
   return (
-    <Link href={`/restaurant/${restaurant.id}`} className="w-full xl:w-fit">
+    <Link href={`/restaurant/${restaurant.id}`}>
       <RestaurantListItemImage restaurant={restaurant} />
       <RestaurantListItemContent
         restaurant={restaurant}

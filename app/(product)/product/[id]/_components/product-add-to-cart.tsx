@@ -2,7 +2,7 @@
 import { useContext, useEffect, useRef } from "react"
 import { Prisma } from "@prisma/client"
 import { useScroll } from "@/app/_hooks/use-scroll"
-import { CartContext } from "@/app/_contexts/Cart"
+import { CartContext } from "@/app/_contexts/CartContext"
 import { formatCurrency } from "@/app/_helpers/price"
 import { getCalculateProductTotalPrice } from "@/app/_helpers/price"
 import { Button } from "@/app/_components/ui/button"

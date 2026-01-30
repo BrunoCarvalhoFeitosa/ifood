@@ -1,6 +1,6 @@
 "use client"
 import { Fragment, useContext } from "react"
-import { CartContext } from "@/app/_contexts/Cart"
+import { CartContext } from "@/app/_contexts/CartContext"
 
 export const CheckoutTitle = () => {
   const { products } = useContext(CartContext)

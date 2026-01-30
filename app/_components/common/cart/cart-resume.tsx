@@ -1,6 +1,6 @@
 "use client"
 import { useContext } from "react"
-import { CartContext } from "@/app/_contexts/Cart"
+import { CartContext } from "@/app/_contexts/CartContext"
 import { formatCurrency } from "@/app/_helpers/price"
 import { Button } from "@/app/_components/ui/button"
 import { useRouter } from "next/navigation"

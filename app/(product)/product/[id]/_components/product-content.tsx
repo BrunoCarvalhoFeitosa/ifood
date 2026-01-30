@@ -1,8 +1,8 @@
 "use client"
 import { Prisma, UserFavoriteProduct } from "@prisma/client"
+import { SafeUser } from "@/app/_types/SafeUser"
 import { ProductImage } from "./product-image"
 import { ProductInfo } from "./product-info"
-import { SafeUser } from "@/app/_types/SafeUser"
 
 interface ProductContentProps {
   product: Prisma.ProductGetPayload<{

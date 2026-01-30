@@ -4,8 +4,8 @@ import {
   Restaurant,
   UserFavoriteRestaurant as BaseUserFavoriteRestaurant
 } from "@prisma/client"
-import { RestaurantListItem } from "@/app/_components/common/restaurant/restaurant-list-item"
 import { SafeUser } from "@/app/_types/SafeUser"
+import { RestaurantListItem } from "@/app/_components/common/restaurant/restaurant-list-item"
 
 interface UserFavoriteRestaurant extends BaseUserFavoriteRestaurant {
   restaurant: Restaurant
@@ -23,7 +23,7 @@ export const AccountFavoriteRestaurants = ({
   return (
     <Fragment>
       {userFavoriteRestaurants.length ? (
-        <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto lg:flex-row lg:gap-5">
+        <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto py-4 lg:flex-row lg:gap-5">
           {userFavoriteRestaurants.map(({ restaurant }) => (
             <RestaurantListItem
               key={restaurant.id}

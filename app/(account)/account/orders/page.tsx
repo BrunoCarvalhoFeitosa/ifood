@@ -1,5 +1,4 @@
 "use server"
-
 import getCurrentUser from "@/app/_actions/getCurrentUser"
 import db from "@/app/_libs/prisma"
 import { AccountOrderItem } from "./_components/account-order-item"
@@ -24,7 +23,7 @@ const AccountOrdersPage = async () => {
   return (
     <div>
       {orders.length >= 1 ? (
-        <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto lg:flex-row lg:gap-5">
+        <div className="custom-scrollbar flex flex-col items-center gap-14 overflow-x-auto py-4 lg:flex-row lg:gap-5">
           {orders.map((order, index) => (
             <AccountOrderItem key={index} order={order} />
           ))}

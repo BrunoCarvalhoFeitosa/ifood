@@ -72,6 +72,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const cartProductsString = localStorage.getItem("cart-products")
+
     if (cartProductsString) {
       setProducts(JSON.parse(cartProductsString))
     }
@@ -142,7 +143,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
             setPlayAudio(true)
             setQuantity(1)
-
             saveCartToLocalStorage(updatedProducts)
 
             return updatedProduct
@@ -188,6 +188,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const removeProductFromCart = (productId: string) => {
     setProducts((prev) => {
       const updatedProducts = prev.filter((product) => product.id !== productId)
+
       saveCartToLocalStorage(updatedProducts)
       return updatedProducts
     })

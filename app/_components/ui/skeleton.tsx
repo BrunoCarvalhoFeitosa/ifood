@@ -1,3 +1,4 @@
+"use client"
 import { cn } from "@/app/_libs/utils"
 
 function Skeleton({

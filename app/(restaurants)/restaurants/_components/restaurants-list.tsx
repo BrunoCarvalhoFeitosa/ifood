@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react"
-import { Restaurant, UserFavoriteRestaurant } from "@prisma/client"
 import { SafeUser } from "@/app/_types/SafeUser"
+import { Restaurant, UserFavoriteRestaurant } from "@prisma/client"
 import { searchRestaurants } from "@/app/_actions/search"
 import { RestaurantListItem } from "@/app/_components/common/restaurant/restaurant-list-item"
 import { Search } from "@/app/_components/common/search"
@@ -67,7 +67,7 @@ const RestaurantsList = ({
           )}
         </h1>
       </div>
-      <div className="mt-5 flex flex-col flex-wrap items-center gap-4 xl:flex-row">
+      <div className="mt-5 flex flex-col items-center gap-4 xl:flex-row">
         {restaurantsList.map((restaurant) => (
           <RestaurantListItem
             key={restaurant.id}

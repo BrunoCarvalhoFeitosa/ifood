@@ -16,12 +16,10 @@ const AccountFavoriteRestaurantPage = async () => {
   })
 
   return (
-    <div className="overflow-hidden">
-      <AccountFavoriteRestaurants
-        currentUser={currentUser}
-        userFavoriteRestaurants={userFavoriteRestaurants}
-      />
-    </div>
+    <AccountFavoriteRestaurants
+      currentUser={currentUser}
+      userFavoriteRestaurants={userFavoriteRestaurants}
+    />
   )
 }
 

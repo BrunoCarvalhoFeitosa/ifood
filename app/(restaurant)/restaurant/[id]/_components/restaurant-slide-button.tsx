@@ -1,9 +1,9 @@
 "use client"
-import { useSlideButton } from "@/app/_contexts/SlideButtonContext"
+import { useSlideButtonContext } from "@/app/_contexts/SlideButtonContext"
 import { Button } from "@/app/_components/ui/button"
 
 export const RestaurantSlideButton = () => {
-  const { setIsOpen, isOpen } = useSlideButton()
+  const { setIsOpen, isOpen } = useSlideButtonContext()
 
   return (
     <div className="mb-5 flex justify-center xl:hidden">

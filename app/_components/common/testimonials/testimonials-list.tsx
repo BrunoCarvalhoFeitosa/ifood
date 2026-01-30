@@ -10,8 +10,8 @@ import {
   PaginationItem,
   PaginationLink
 } from "@/app/_components/ui/pagination"
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import { cn } from "@/app/_libs/utils"
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
 interface TestimonialsListProps {
   currentUser: SafeUser | null

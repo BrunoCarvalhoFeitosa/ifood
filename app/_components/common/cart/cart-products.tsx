@@ -1,6 +1,6 @@
 "use client"
 import { useContext } from "react"
-import { CartContext } from "@/app/_contexts/Cart"
+import { CartContext } from "@/app/_contexts/CartContext"
 import { CartItem } from "./cart-item"
 import { PackageSearchIcon } from "lucide-react"
 

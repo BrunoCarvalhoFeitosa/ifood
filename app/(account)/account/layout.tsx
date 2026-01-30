@@ -11,9 +11,7 @@ const AccountPageLayout = async ({
   children: React.ReactNode
 }>) => {
   const currentUser = await getCurrentUser()
-
   const categories = await db.category.findMany({})
-
   const restaurants = await db.restaurant.findMany({})
 
   if (!currentUser) {
@@ -35,7 +33,7 @@ const AccountPageLayout = async ({
             seus pedidos.
           </p>
         </div>
-        <div className="flex w-full flex-col gap-12 px-5 pb-8 pt-10 xl:flex-row">
+        <div className="flex w-full flex-col gap-12 px-5 pb-8 pt-10 lg:items-start xl:flex-row xl:gap-6">
           <div className="w-full bg-primary px-6 py-8 xl:w-2/6">
             <AccountUserProfile currentUser={currentUser} />
             <AccountMenuOptions />

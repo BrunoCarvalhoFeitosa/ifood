@@ -1,6 +1,6 @@
 "use client"
 import { useContext } from "react"
-import { CartContext, CartProduct } from "@/app/_contexts/Cart"
+import { CartContext, CartProduct } from "@/app/_contexts/CartContext"
 import {
   formatCurrency,
   getCalculateProductTotalPrice

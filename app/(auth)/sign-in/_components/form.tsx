@@ -119,8 +119,8 @@ export const SignInForm = () => {
         </Link>
       </header>
       <div className="flex h-full min-h-[100dvh] w-full items-center py-10 pt-24 md:min-h-max md:py-28 md:pt-44 lg:pt-56 xl:py-0 2xl:gap-20">
-        <div className="w-full xl:w-[50%]">
-          <div className="mb-10 px-5">
+        <div className="w-full xl:mt-12 xl:w-[50%]">
+          <div className="mb-10 px-5 xl:mb-5">
             <h1 className="text-3xl font-semibold md:text-5xl">
               Acesse sua conta
             </h1>

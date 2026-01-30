@@ -18,7 +18,6 @@ export const HeaderRestaurantListDropdown = ({
   return (
     <Accordion
       type="single"
-      defaultValue="item-1"
       collapsible
       className="mt-6 flex w-full flex-col gap-2"
     >

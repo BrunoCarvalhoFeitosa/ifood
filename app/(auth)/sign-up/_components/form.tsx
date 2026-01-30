@@ -81,12 +81,12 @@ export const SignUpForm = () => {
     }
 
     const { data, error } = await supabase.storage
-      .from("images")
+      .from("image")
       .upload("public/" + `${uuidv4()}_${file?.name}`, file as File)
 
     if (data) {
       setImageUrl(
-        `https://ezafeolqfkggqkvnyfxj.supabase.co/storage/v1/object/public/images/${data.path}`
+        `https://paldkdgawuouxbuehojq.supabase.co/storage/v1/object/public/images/${data.path}`
       )
     } else {
       console.error(
@@ -159,8 +159,8 @@ export const SignUpForm = () => {
         </Link>
       </header>
       <div className="flex h-full w-full items-center py-10 pt-32 md:py-14 md:pt-36 lg:py-5 lg:pt-32 xl:py-0 2xl:gap-20">
-        <div className="w-full xl:w-[50%]">
-          <div className="mb-10 px-5">
+        <div className="w-full xl:mt-12 xl:w-[50%]">
+          <div className="mb-10 px-5 xl:mb-5">
             <h1 className="text-3xl font-semibold md:text-5xl">
               Cadastre-se agora
             </h1>

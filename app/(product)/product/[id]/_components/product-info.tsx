@@ -1,6 +1,6 @@
 "use client"
 import { Prisma } from "@prisma/client"
-import { useSlideButton } from "@/app/_contexts/SlideButtonContext"
+import { useSlideButtonContext } from "@/app/_contexts/SlideButtonContext"
 import { ProductName } from "./product-name"
 import { ProductPriceWrapper } from "./product-price-wrapper"
 import { ProductDescription } from "./product-description"
@@ -24,7 +24,7 @@ interface ProductInfoProps {
 }
 
 export const ProductInfo = ({ product }: ProductInfoProps) => {
-  const { isOpen } = useSlideButton()
+  const { isOpen } = useSlideButtonContext()
 
   return (
     <div
