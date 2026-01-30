@@ -1,4 +1,4 @@
-"use server"
+export const dynamic = "force-dynamic"
 import { supabase } from "@/app/_libs/supabase"
 import getCurrentUser from "./getCurrentUser"
 

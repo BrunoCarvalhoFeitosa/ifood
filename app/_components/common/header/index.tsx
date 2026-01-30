@@ -1,4 +1,4 @@
-"use server"
+export const dynamic = "force-dynamic"
 import { Category, Restaurant } from "@prisma/client"
 import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { HeaderLogo } from "./header-logo"
