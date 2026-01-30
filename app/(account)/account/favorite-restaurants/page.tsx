@@ -1,4 +1,3 @@
-"use server"
 import db from "@/app/_libs/prisma"
 import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { AccountFavoriteRestaurants } from "./_components/account-favorite-restaurants"

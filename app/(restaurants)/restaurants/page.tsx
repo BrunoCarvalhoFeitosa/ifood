@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import db from "@/app/_libs/prisma"
 import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { notFound, redirect } from "next/navigation"

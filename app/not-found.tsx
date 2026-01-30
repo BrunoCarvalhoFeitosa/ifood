@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import db from "@/app/_libs/prisma"
 import { notFound } from "next/navigation"
 import { Header } from "./_components/common/header"

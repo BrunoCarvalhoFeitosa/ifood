@@ -1,4 +1,4 @@
-"use server"
+export const dynamic = "force-dynamic"
 import db from "@/app/_libs/prisma"
 import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { ProductListItem } from "@/app/_components/common/product/product-list-item"

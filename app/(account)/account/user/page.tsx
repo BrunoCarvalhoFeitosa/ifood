@@ -1,4 +1,3 @@
-"use server"
 export const dynamic = "force-dynamic"
 import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { AccountUserForm } from "./_components/account-user-form"
