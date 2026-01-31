@@ -4,17 +4,17 @@ import type { NextRequest } from "next/server"
 const publicPaths = ["/sign-in", "/sign-up", "/api/auth"]
 
 export function middleware(req: NextRequest) {
-  const token = req.cookies.get("next-auth.session-token")?.value
   const { pathname } = req.nextUrl
 
   if (publicPaths.some((path) => pathname.startsWith(path))) {
     return NextResponse.next()
   }
 
-  if (
-    pathname.startsWith("/account") ||
-    (pathname.startsWith("/api") && !pathname.startsWith("/api/auth"))
-  ) {
+  const token =
+    req.cookies.get("__Secure-next-auth.session-token")?.value ??
+    req.cookies.get("next-auth.session-token")?.value
+
+  if (pathname.startsWith("/account") || pathname.startsWith("/api")) {
     if (!token) {
       const signInUrl = new URL("/sign-in", req.url)
       return NextResponse.redirect(signInUrl)
