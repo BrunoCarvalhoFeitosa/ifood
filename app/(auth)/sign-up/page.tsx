@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { SignUpForm } from "./_components/form"
 
 const SignInPage = async () => {
