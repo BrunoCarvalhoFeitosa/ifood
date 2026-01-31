@@ -3,21 +3,22 @@ import { notFound, redirect } from "next/navigation"
 import { Header } from "@/app/_components/common/header"
 import { AccountUserProfile } from "./_components/account-user-profile"
 import { AccountMenuOptions } from "./_components/account-menu-options"
+import getCurrentUser from "@/app/_actions/getCurrentUser"
+import db from "@/app/_libs/prisma"
 
 const AccountPageLayout = async ({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) => {
-  const db = (await import("@/app/_libs/prisma")).default
-  const getCurrentUser = (await import("@/app/_actions/getCurrentUser")).default
   const currentUser = await getCurrentUser()
-  const categories = await db.category.findMany({})
-  const restaurants = await db.restaurant.findMany({})
 
   if (!currentUser) {
     return redirect("/sign-in")
   }
+
+  const categories = await db.category.findMany()
+  const restaurants = await db.restaurant.findMany()
 
   if (!categories || !restaurants) {
     return notFound()
