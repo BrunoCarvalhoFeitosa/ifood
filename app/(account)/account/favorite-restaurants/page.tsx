@@ -1,9 +1,9 @@
 export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
-import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { AccountFavoriteRestaurants } from "./_components/account-favorite-restaurants"
 
 const AccountFavoriteRestaurantPage = async () => {
+  const db = (await import("@/app/_libs/prisma")).default
+  const getCurrentUser = (await import("@/app/_actions/getCurrentUser")).default
   const currentUser = await getCurrentUser()
 
   const userFavoriteRestaurants = await db.userFavoriteRestaurant.findMany({

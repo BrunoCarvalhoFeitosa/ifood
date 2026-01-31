@@ -1,10 +1,11 @@
-export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
+"use server"
 
 export const toggleFavoriteRestaurant = async (
   userId: string,
   restaurantId: string
 ) => {
+  const db = (await import("@/app/_libs/prisma")).default
+
   const isFavorite = await db.userFavoriteRestaurant.findFirst({
     where: {
       userId,

@@ -1,6 +1,4 @@
 export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
-import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { SlideButtonProvider } from "@/app/_contexts/SlideButtonContext"
 import { notFound } from "next/navigation"
 import { Header } from "@/app/_components/common/header"
@@ -16,10 +14,10 @@ interface RestaurantPageProps {
 }
 
 const RestaurantPage = async ({ params: { id } }: RestaurantPageProps) => {
+  const db = (await import("@/app/_libs/prisma")).default
+  const getCurrentUser = (await import("@/app/_actions/getCurrentUser")).default
   const currentUser = await getCurrentUser()
-
   const categories = await db.category.findMany({})
-
   const restaurants = await db.restaurant.findMany({})
 
   const restaurant = await db.restaurant.findUnique({

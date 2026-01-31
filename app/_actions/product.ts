@@ -1,11 +1,12 @@
-export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
+"use server"
 import { revalidatePath } from "next/cache"
 
 export const toggleFavoriteProduct = async (
   userId: string,
   productId: string
 ) => {
+  const db = (await import("@/app/_libs/prisma")).default
+
   const isFavorite = await db.userFavoriteProduct.findFirst({
     where: {
       userId,

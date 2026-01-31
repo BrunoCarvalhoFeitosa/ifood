@@ -1,9 +1,9 @@
 export const dynamic = "force-dynamic"
-import getCurrentUser from "@/app/_actions/getCurrentUser"
-import db from "@/app/_libs/prisma"
 import { AccountOrderItem } from "./_components/account-order-item"
 
 const AccountOrdersPage = async () => {
+  const db = (await import("@/app/_libs/prisma")).default
+  const getCurrentUser = (await import("@/app/_actions/getCurrentUser")).default
   const currentUser = await getCurrentUser()
 
   const orders = await db.order.findMany({

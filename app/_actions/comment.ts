@@ -1,5 +1,4 @@
 "use server"
-import db from "@/app/_libs/prisma"
 import { revalidatePath } from "next/cache"
 
 export const createProductComment = async (
@@ -11,6 +10,8 @@ export const createProductComment = async (
   restaurantId?: string
 ) => {
   try {
+    const db = (await import("@/app/_libs/prisma")).default
+
     const user = await db.user.findUnique({
       where: { id: userId },
       select: { id: true }
@@ -43,6 +44,8 @@ export const deleteProductComment = async (
   commentId: string
 ) => {
   try {
+    const db = (await import("@/app/_libs/prisma")).default
+
     const user = await db.user.findUnique({
       where: { id: userId },
       select: { id: true }
@@ -84,6 +87,8 @@ export const createRestaurantComment = async (
   restaurantId?: string
 ) => {
   try {
+    const db = (await import("@/app/_libs/prisma")).default
+
     const user = await db.user.findUnique({
       where: { id: userId },
       select: { id: true }
@@ -116,6 +121,8 @@ export const deleteRestaurantComment = async (
   commentId: string
 ) => {
   try {
+    const db = (await import("@/app/_libs/prisma")).default
+
     const user = await db.user.findUnique({
       where: { id: userId },
       select: { id: true }

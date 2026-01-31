@@ -1,8 +1,8 @@
-export const dynamic = "force-dynamic"
+"use server"
 import { supabase } from "@/app/_libs/supabase"
-import getCurrentUser from "./getCurrentUser"
 
 export const getCurrentUserImageProfile = async () => {
+  const getCurrentUser = (await import("@/app/_actions/getCurrentUser")).default
   const currentUser = await getCurrentUser()
 
   try {

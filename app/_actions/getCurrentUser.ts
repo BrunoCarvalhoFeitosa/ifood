@@ -1,10 +1,14 @@
-export const dynamic = "force-dynamic"
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/pages/api/auth/[...nextauth]"
-import db from "@/app/_libs/prisma"
+"use server"
+import { getServerSession } from "next-auth"
+
+async function getAuthOptions() {
+  const mod = await import("@/pages/api/auth/[...nextauth]")
+  return mod.authOptions
+}
 
 export async function getSession() {
-  return await getServerSession(authOptions)
+  const authOptions = await getAuthOptions()
+  return getServerSession(authOptions)
 }
 
 export default async function getCurrentUser() {
@@ -15,9 +19,11 @@ export default async function getCurrentUser() {
       return null
     }
 
+    const db = (await import("@/app/_libs/prisma")).default
+
     const currentUser = await db.user.findUnique({
       where: {
-        email: session.user.email as string
+        email: session.user.email
       }
     })
 
@@ -31,7 +37,7 @@ export default async function getCurrentUser() {
       updatedAt: currentUser.updatedAt.toISOString(),
       emailVerified: currentUser.emailVerified?.toISOString() || null
     }
-  } catch (error: any) {
+  } catch {
     return null
   }
 }

@@ -1,5 +1,4 @@
-export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
+"use server"
 import { revalidatePath } from "next/cache"
 
 export const createTestimonialComment = async (
@@ -9,6 +8,8 @@ export const createTestimonialComment = async (
   content: string
 ) => {
   try {
+    const db = (await import("@/app/_libs/prisma")).default
+
     const user = await db.user.findUnique({
       where: { id: userId },
       select: { id: true }

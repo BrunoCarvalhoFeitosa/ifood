@@ -307,7 +307,7 @@ export const SignUpForm = () => {
               <div className="flex justify-end pt-4">
                 <Button
                   type="submit"
-                  className="relative flex h-14 w-full items-center gap-2 px-6 text-base xl:w-2/4"
+                  className="relative flex h-14 w-full items-center gap-2 px-6 text-base xl:w-[380px]"
                 >
                   {isLoading && (
                     <div className="absolute left-5 top-[50%] translate-y-[-50%]">

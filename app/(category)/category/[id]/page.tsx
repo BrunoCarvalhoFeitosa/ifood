@@ -1,11 +1,9 @@
 export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
 import { notFound } from "next/navigation"
 import { Header } from "@/app/_components/common/header"
 import { CategoryProductList } from "./_components/category-product-list"
 import { CategoryRestaurantList } from "./_components/category-restaurant-list"
 import { CategoryList } from "@/app/_components/common/category/category-list"
-import getCurrentUser from "@/app/_actions/getCurrentUser"
 
 interface CategoryPageProps {
   params: {
@@ -14,10 +12,10 @@ interface CategoryPageProps {
 }
 
 const CategoryPage = async ({ params: { id } }: CategoryPageProps) => {
+  const db = (await import("@/app/_libs/prisma")).default
+  const getCurrentUser = (await import("@/app/_actions/getCurrentUser")).default
   const currentUser = await getCurrentUser()
-
   const categories = await db.category.findMany({})
-
   const restaurants = await db.restaurant.findMany({})
 
   const category = await db.category.findUnique({

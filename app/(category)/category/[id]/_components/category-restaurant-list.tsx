@@ -27,7 +27,7 @@ export const CategoryRestaurantList = ({
       <div className="mb-3">
         <h3 className="text-lg font-extrabold md:text-xl">Restaurantes</h3>
       </div>
-      <div className="custom-scrollbar flex items-center gap-4 overflow-x-auto">
+      <div className="custom-scrollbar flex items-center gap-4 overflow-x-auto pb-3">
         {restaurants.map((restaurant) => (
           <RestaurantListItem
             key={restaurant.id}

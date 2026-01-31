@@ -1,7 +1,8 @@
-export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
+"use server"
 
 export const searchRestaurants = async (search: string) => {
+  const db = (await import("@/app/_libs/prisma")).default
+
   const restaurants = await db.restaurant.findMany({
     where: {
       name: {

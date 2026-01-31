@@ -1,10 +1,10 @@
 export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
 import { notFound } from "next/navigation"
 import { Header } from "./_components/common/header"
 import { AccountIllustration } from "@/public/svgs/account-illustration"
 
 const NotFoundPage = async () => {
+  const db = (await import("@/app/_libs/prisma")).default
   const categories = await db.category.findMany({})
   const restaurants = await db.restaurant.findMany({})
 

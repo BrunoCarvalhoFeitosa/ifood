@@ -1,6 +1,4 @@
 export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
-import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { notFound, redirect } from "next/navigation"
 import { Header } from "@/app/_components/common/header"
 import RestaurantsList from "./_components/restaurants-list"
@@ -16,10 +14,10 @@ const RestaurantsPage = async ({ searchParams }: RestaurantPageProps) => {
     return redirect("/")
   }
 
+  const db = (await import("@/app/_libs/prisma")).default
+  const getCurrentUser = (await import("@/app/_actions/getCurrentUser")).default
   const currentUser = await getCurrentUser()
-
   const categories = await db.category.findMany({})
-
   const restaurants = await db.restaurant.findMany({})
 
   const userFavoriteRestaurants = await db.userFavoriteRestaurant.findMany({

@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
 import { UserFavoriteProduct } from "@prisma/client"
 import { SafeUser } from "@/app/_types/SafeUser"
 import { RecommendedProductListContent } from "./recommended-product-list-content"
@@ -19,6 +18,8 @@ export const RecommendedProductList = async ({
   currentUser,
   userFavoriteProducts
 }: RecommendedProductListProps) => {
+  const db = (await import("@/app/_libs/prisma")).default
+
   const recommendedProducts = await db.product.findMany({
     where: {
       categoryId

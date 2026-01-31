@@ -1,5 +1,4 @@
 export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
 import Link from "next/link"
 import { CategoryListItem } from "./category-list-item"
 
@@ -10,6 +9,7 @@ interface CategoryListProps {
 export const CategoryList = async ({
   selectedCategoryId
 }: CategoryListProps) => {
+  const db = (await import("@/app/_libs/prisma")).default
   const categories = await db.category.findMany({})
 
   return (

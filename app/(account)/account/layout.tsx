@@ -1,6 +1,4 @@
 export const dynamic = "force-dynamic"
-import db from "@/app/_libs/prisma"
-import getCurrentUser from "@/app/_actions/getCurrentUser"
 import { notFound, redirect } from "next/navigation"
 import { Header } from "@/app/_components/common/header"
 import { AccountUserProfile } from "./_components/account-user-profile"
@@ -11,6 +9,8 @@ const AccountPageLayout = async ({
 }: Readonly<{
   children: React.ReactNode
 }>) => {
+  const db = (await import("@/app/_libs/prisma")).default
+  const getCurrentUser = (await import("@/app/_actions/getCurrentUser")).default
   const currentUser = await getCurrentUser()
   const categories = await db.category.findMany({})
   const restaurants = await db.restaurant.findMany({})

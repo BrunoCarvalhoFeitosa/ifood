@@ -1,6 +1,5 @@
 export const dynamic = "force-dynamic"
 import { NextRequest, NextResponse } from "next/server"
-import db from "@/app/_libs/prisma"
 import bcrypt from "bcrypt"
 
 export async function PATCH(
@@ -8,6 +7,7 @@ export async function PATCH(
   { params }: { params: { userId: string } }
 ) {
   try {
+    const db = (await import("@/app/_libs/prisma")).default
     const userId = params.userId
     const body = await req.json()
     const { name, image, password } = body
